@@ -116,7 +116,7 @@
  ;; Publish all pages within the Graph
  ;; Regardless of whether individual pages have been marked as public.
  ;; Default value: false
- ;; :publishing/all-pages-public? false
+ :publishing/all-pages-public? true
 
  ;; Define the default home page and sidebar status.
  ;; If unspecified, the journal page will be loaded on startup and the right sidebar will stay hidden.
@@ -136,11 +136,11 @@
 
  ;; Set the default location for storing notes.
  ;; Default value: "pages"
- ;; :pages-directory "pages"
+ :pages-directory "pages"
 
  ;; Set the default location for storing journals.
  ;; Default value: "journals"
- ;; :journals-directory "journals"
+ :journals-directory "journals"
 
  ;; Set the default location for storing whiteboards.
  ;; Default value: "whiteboards"
