@@ -1,0 +1,15 @@
+# logseq/publish.yml
+title: "Canbe Knowledge Base"
+description: "My Logseq Knowledge Base"
+# 关键：必须和你的仓库名一致
+basePath: "/canbe_knowledge_base"
+# 明确指定要发布的页面
+pages:
+  - "pages/**/*.md"
+  - "journals/**/*.md"
+# 排除不需要的文件
+exclude:
+  - ".git/**"
+  - ".github/**"
+# 强制生成所有页面，不区分公开/私有
+force: true
