@@ -1,7 +1,7 @@
 name: Publish Logseq to GitHub Pages
 on:
   push:
-    branches: [main]  # 如果你用的是 master 分支，改成 master
+    branches: [main]
 permissions:
   contents: write
 jobs:
@@ -10,17 +10,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 确保能获取所有提交记录
+          fetch-depth: 0
+          # 明确拉取到根目录，避免多一层文件夹
+          path: ./canbe_knowledge_base
+
+      # 新增：打印完整目录结构（方便验证）
+      - name: Print full directory structure
+        run: ls -la ./canbe_knowledge_base && ls -la ./canbe_knowledge_base/pages/
+
       - name: Build Logseq Site
-        uses: logseq/publish-spa@v0.3.1  # Logseq 官方发布工具
+        uses: logseq/publish-spa@v0.3.1
         with:
-          graph-directory: .  # Logseq 图档在根目录
-          output-directory: www
+          # 指向包含 pages/ 的正确目录
+          graph-directory: ./canbe_knowledge_base
+          output-directory: ./canbe_knowledge_base/www
+
       - name: Add .nojekyll
-        run: touch www/.nojekyll  # 避免 GitHub 忽略下划线开头的文件
+        run: touch ./canbe_knowledge_base/www/.nojekyll
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: www
-          branch: gh-pages  # 自动创建 gh-pages 分支存放静态网站
-          clean: true  # 每次部署清空旧文件
+          folder: ./canbe_knowledge_base/www
+          branch: gh-pages
+          clean: true
+          single-commit: true
