@@ -1,4 +1,4 @@
-# .github/workflows/publish.yml - 最终解决方案
+# .github/workflows/publish.yml - 修复 pages 目录识别问题
 name: Logseq Publish to GitHub Pages
 
 on:
@@ -20,9 +20,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 步骤 1: 准备配置文件
-      - name: Prepare config.edn at root
+      # 步骤 1: 准备配置文件并验证目录结构
+      - name: Prepare and verify directory structure
         run: |
+          echo "=== 当前目录结构 ==="
+          pwd
+          ls -la
+          
+          echo ""
+          echo "=== 检查 logseq 子目录 ==="
+          ls -la logseq/
+          
+          echo ""
+          echo "=== 检查 pages 目录 ==="
+          ls -la pages/
+          
+          echo ""
           echo "=== 复制配置文件到根目录 ==="
           if [ ! -f "config.edn" ] && [ -f "logseq/config.edn" ]; then
             cp logseq/config.edn config.edn
@@ -34,8 +47,14 @@ jobs:
             exit 1
           fi
           
-          echo "=== 验证 pages 目录 ==="
-          ls -la pages/
+          echo ""
+          echo "=== 验证 config.edn 中的 pages-directory 配置 ==="
+          if grep -q "pages-directory" config.edn; then
+            echo "找到 pages-directory 配置:"
+            grep "pages-directory" config.edn
+          else
+            echo "未找到 pages-directory 配置，使用默认值 'pages'"
+          fi
 
       # 步骤 2: 使用 logseq/publish-spa@v0.3.1
       - name: Build with Logseq Publish SPA
@@ -45,43 +64,28 @@ jobs:
           graph-directory: .
           output-directory: www
 
-      # 步骤 3: 详细调试输出 - 必须查看构建结果
+      # 步骤 3: 详细调试输出
       - name: Debug build output
         run: |
           echo "========================================="
-          echo "=== 构建输出目录结构 ==="
+          echo "=== 查找所有 JSON 文件 ==="
           echo "========================================="
-          find www -type f | sort
-          
-          echo ""
-          echo "========================================="
-          echo "=== 检查所有 JSON 文件 ==="
-          echo "========================================="
-          find www -name "*.json" -type f
-          
-          echo ""
-          echo "========================================="
-          echo "=== 检查 index.html ==="
-          echo "========================================="
-          if [ -f "www/index.html" ]; then
-            echo "✅ index.html 存在"
-            echo "文件大小:"
-            ls -lh www/index.html
-            echo "文件内容前 50 行:"
-            head -50 www/index.html
+          json_files=$(find www -name "*.json" -type f 2>/dev/null)
+          if [ -n "$json_files" ]; then
+            echo "找到以下 JSON 文件:"
+            echo "$json_files"
           else
-            echo "❌ index.html 不存在"
+            echo "❌ 未找到任何 JSON 文件 - 这是问题所在!"
           fi
           
           echo ""
           echo "========================================="
-          echo "=== 检查 static/js 目录 ==="
+          echo "=== 检查 index.html 完整内容 ==="
           echo "========================================="
-          if [ -d "www/static/js" ]; then
-            echo "static/js 目录存在，包含:"
-            ls -la www/static/js/
+          if [ -f "www/index.html" ]; then
+            cat www/index.html
           else
-            echo "⚠️ static/js 目录不存在"
+            echo "❌ index.html 不存在"
           fi
 
       # 步骤 4: 添加 .nojekyll
