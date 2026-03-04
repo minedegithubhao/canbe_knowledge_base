@@ -1,0 +1,26 @@
+name: Publish Logseq to GitHub Pages
+on:
+  push:
+    branches: [main]  # 如果你用的是 master 分支，改成 master
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 确保能获取所有提交记录
+      - name: Build Logseq Site
+        uses: logseq/publish-spa@v0.3.1  # Logseq 官方发布工具
+        with:
+          graph-directory: .  # Logseq 图档在根目录
+          output-directory: www
+      - name: Add .nojekyll
+        run: touch www/.nojekyll  # 避免 GitHub 忽略下划线开头的文件
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: www
+          branch: gh-pages  # 自动创建 gh-pages 分支存放静态网站
+          clean: true  # 每次部署清空旧文件
