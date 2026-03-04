@@ -1,16 +1,18 @@
-# logseq/publish.yml 核心配置修正
+# logseq/publish.yml 完整配置
 title: "Canbe Knowledge Base"
 description: "My Logseq Knowledge Base"
-basePath: "/canbe_knowledge_base"  # 必须与仓库名完全一致（小写/下划线）
-# 确保覆盖所有需要发布的文件（包含生成 pages.json 所需的元数据）
+basePath: "/canbe_knowledge_base"  # 必须和你的仓库名完全一致（小写）
+# 强制包含所有页面和元数据
 pages:
-  - "pages/**/*.md"
-  - "journals/**/*.md"
-  - "logseq/**/*.edn"  # 新增：确保读取 config.edn 配置
+  - "**/*.md"  # 匹配所有 markdown 文件
+  - "**/*.edn"  # 匹配 Logseq 配置文件
+# 排除不需要的文件
 exclude:
   - ".git/**"
   - ".github/**"
-force: true  # 强制生成所有元数据（包括 pages.json）
-# 新增：显式指定输出静态资源（部分版本需手动声明）
-static:
-  - "static/**/*"
+  - "node_modules/**"
+  - "logseq/node_modules/**"
+# 关键：开启完整元数据生成
+features:
+  - "pages-index"  # 强制生成 pages.json 索引
+force: true  # 强制重新生成所有内容，避免缓存
