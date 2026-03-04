@@ -1,3 +1,4 @@
+# .github/workflows/publish.yml
 name: Publish Logseq to GitHub Pages
 on:
   push:
@@ -7,43 +8,35 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    # 切换到仓库根目录执行所有步骤，避免git目录错误
-    defaults:
-      run:
-        working-directory: ./canbe_knowledge_base
     steps:
+      # 1. 拉取代码到仓库根目录（不再嵌套子目录）
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # 拉取到 canbe_knowledge_base 子目录
-          path: ./canbe_knowledge_base
 
-      # 打印目录结构，验证pages是否存在
-      - name: Print directory structure
+      # 2. 打印目录结构（验证文件是否齐全）
+      - name: Check files
         run: |
           ls -la
-          ls -la pages/ || echo "pages folder not found"
+          ls -la logseq/  # 确认能看到 config.edn
+          ls -la pages/   # 确认能看到你的md文件
 
-      # 构建Logseq静态网站
+      # 3. 构建Logseq静态网站（核心：graph-directory 指向根目录）
       - name: Build Logseq Site
         uses: logseq/publish-spa@v0.3.1
         with:
-          graph-directory: ./  # 此时工作目录已是canbe_knowledge_base，直接用./
-          output-directory: ./www
+          graph-directory: .  # 根目录（包含logseq/config.edn、pages/）
+          output-directory: www
 
-      # 添加.nojekyll文件
+      # 4. 避免GitHub Pages忽略下划线文件
       - name: Add .nojekyll
-        run: touch ./www/.nojekyll
+        run: touch www/.nojekyll
 
-      # 部署到gh-pages分支（关键：指定正确的git目录）
+      # 5. 部署到gh-pages分支（最简配置）
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v4  # 换更稳定的部署工具
         with:
-          # 部署的文件夹路径（相对于仓库根目录）
-          folder: ./canbe_knowledge_base/www
-          branch: gh-pages
-          clean: true
-          single-commit: true
-          # 强制指定git工作目录，解决not in a git directory问题
-          repository-name: ${{ github.repository }}
-          working-directory: ./
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./www
+          publish_branch: gh-pages
+          force_orphan: true  # 清空旧的gh-pages内容
