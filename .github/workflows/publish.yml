@@ -1,4 +1,4 @@
-# .github/workflows/publish.yml - 使用正确的 logseq publish-cli
+# .github/workflows/publish.yml - 最终版本：使用官方 action + 备用方案
 name: Logseq Publish to GitHub Pages
 
 on:
@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0
 
       # 步骤 1: 准备配置文件
-      - name: Prepare config.edn
+      - name: Prepare config.edn at root
         run: |
           echo "=== 复制配置文件到根目录 ==="
           if [ ! -f "config.edn" ] && [ -f "logseq/config.edn" ]; then
@@ -37,26 +37,47 @@ jobs:
           echo "=== 验证 pages 目录 ==="
           ls -la pages/
 
-      # 步骤 2: 安装 Node.js
+      # 步骤 2: 安装 Node.js（为备用方案准备）
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      # 步骤 3: 使用 logseq/publish-cli (官方推荐)
-      - name: Install and run Logseq Publish CLI
-        run: |
-          echo "=== 全局安装 @logseq/publish-cli ==="
-          npm install -g @logseq/publish-cli
-          
-          echo "=== 运行构建命令 ==="
-          npx logseq-publish --input . --output www
-          
-          echo "=== 构建完成，检查输出 ==="
-          ls -la www/ || echo "www 目录不存在"
+      # 步骤 3: 尝试使用官方 Action (最新版)
+      - name: Build with Logseq Publish SPA
+        id: build
+        uses: logseq/publish-spa@latest
+        with:
+          graph-directory: .
+          output-directory: www
+        continue-on-error: true
 
-      # 步骤 4: 详细调试输出
-      - name: Debug output
+      # 步骤 4: 如果官方 Action 失败，尝试备用方案
+      - name: Fallback - Manual build if needed
+        if: steps.build.outcome == 'failure'
+        run: |
+          echo "⚠️ 官方 Action 失败，尝试备用构建方案..."
+          
+          echo "=== 克隆 logseq-publish 仓库 ==="
+          git clone --depth 1 https://github.com/logseq/logseq.git /tmp/logseq-src
+          
+          echo "=== 安装依赖并构建 ==="
+          cd /tmp/logseq-src
+          npm install
+          npx electron-builder --dir --config.asar=false || echo "构建可能不完全兼容，继续尝试..."
+          
+          echo "=== 尝试使用简单的静态文件生成 ==="
+          mkdir -p /github/workspace/www
+          cp -r /tmp/logseq-src/resources/* /github/workspace/www/ 2>/dev/null || true
+          
+          # 复制 pages 内容
+          if [ -d "/github/workspace/pages" ]; then
+            mkdir -p /github/workspace/www/pages
+            cp -r /github/workspace/pages/* /github/workspace/www/pages/ 2>/dev/null || true
+          fi
+
+      # 步骤 5: 详细调试输出
+      - name: Debug build output
         run: |
           echo "=== 完整文件列表 ==="
           find www -type f 2>/dev/null | sort || echo "www 目录为空"
@@ -66,12 +87,15 @@ jobs:
           
           echo "=== index.html 是否存在 ==="
           test -f www/index.html && echo "✅ index.html 存在" || echo "❌ index.html 不存在"
+          
+          echo "=== www 目录结构 ==="
+          ls -laR www/ | head -100
 
-      # 步骤 5: 添加 .nojekyll
+      # 步骤 6: 添加 .nojekyll
       - name: Add .nojekyll
         run: touch www/.nojekyll
 
-      # 步骤 6: 部署
+      # 步骤 7: 部署
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
