@@ -1,4 +1,4 @@
-# .github/workflows/publish.yml 最终正确版
+# .github/workflows/publish.yml 完整调试版
 name: Logseq Publish to GitHub Pages
 
 on:
@@ -20,35 +20,83 @@ jobs:
         with:
           fetch-depth: 0  # 拉取完整提交历史
 
-      # 核心修正：使用官方 Action 构建，而非 npm 安装
+      # 步骤 1: 在构建前准备配置文件
+      - name: Prepare config.edn at root
+        run: |
+          echo "=== 当前目录结构 ==="
+          pwd
+          ls -la
+          
+          echo ""
+          echo "=== 检查 logseq 子目录 ==="
+          ls -la logseq/ 2>/dev/null || echo "logseq 目录不存在"
+          
+          echo ""
+          echo "=== 检查 pages 目录 ==="
+          ls -la pages/ 2>/dev/null || echo "pages 目录不存在"
+          
+          echo ""
+          echo "=== 复制配置文件 ==="
+          if [ ! -f "config.edn" ] && [ -f "logseq/config.edn" ]; then
+            cp logseq/config.edn config.edn
+            echo "✅ 已复制 config.edn 到根目录"
+            ls -la config.edn
+          elif [ -f "config.edn" ]; then
+            echo "✅ config.edn 已存在于根目录"
+            ls -la config.edn
+          else
+            echo "❌ 错误：未找到 config.edn 文件"
+            exit 1
+          fi
+
+      # 步骤 2: 构建 Logseq 静态站点
       - name: Build Logseq static site
         uses: logseq/publish-spa@v0.3.1
         with:
           graph-directory: .
           output-directory: www
 
-      # 新增步骤：将 config.edn 复制到根目录（如果不存在）
-      - name: Ensure config.edn exists at root
+      # 步骤 3: 详细检查构建输出
+      - name: Debug build output
         run: |
-          if [ ! -f "config.edn" ] && [ -f "logseq/config.edn" ]; then
-            cp logseq/config.edn config.edn
-            echo "已复制 config.edn 到根目录"
-          elif [ -f "config.edn" ]; then
-            echo "config.edn 已存在于根目录"
+          echo ""
+          echo "=== 检查 www 根目录 ==="
+          ls -la www/
+          
+          echo ""
+          echo "=== 检查 www 所有文件和目录（递归） ==="
+          find www -type f -o -type d | sort
+          
+          echo ""
+          echo "=== 检查 static 目录 ==="
+          if [ -d "www/static" ]; then
+            ls -laR www/static/
           else
-            echo "错误：未找到 config.edn 文件"
-            exit 1
+            echo "⚠️ static 目录不存在"
+          fi
+          
+          echo ""
+          echo "=== 查找所有 JSON 文件 ==="
+          find www -name "*.json" -type f
+          
+          echo ""
+          echo "=== 查找 pages.json 或 graph.json ==="
+          find www \( -name "pages.json" -o -name "graph.json" \) -type f
+          
+          echo ""
+          echo "=== 检查 index.html ==="
+          if [ -f "www/index.html" ]; then
+            echo "✅ index.html 存在"
+            head -50 www/index.html
+          else
+            echo "❌ index.html 不存在"
           fi
 
-      - name: Check pages.json existence
-        run: |
-          ls -la www/static/js/ || true  # 即使目录不存在也不报错
-          # 全局搜索 pages.json，确认实际生成位置
-          find www -name "pages.json" || echo "pages.json 未找到"
-
+      # 步骤 4: 添加 .nojekyll 文件
       - name: Add .nojekyll file
         run: touch www/.nojekyll
 
+      # 步骤 5: 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -56,3 +104,5 @@ jobs:
           publish_dir: ./www
           publish_branch: gh-pages
           force_orphan: true
+          # 启用详细日志
+          verbose: true
