@@ -1,4 +1,4 @@
-# .github/workflows/publish.yml 语法修复版
+# .github/workflows/publish.yml
 name: Logseq Publish to GitHub Pages
 
 on:
@@ -19,58 +19,34 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 设置 Node.js 环境
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"  # 使用稳定版 Node.js
+          node-version: "20"
 
-      - name: 手动安装 Logseq 发布工具
+      - name: Install publish-spa
+        run: npm install -g @logseq/publish-spa@0.3.1
+
+      - name: Build Logseq site
         run: |
-          npm install -g @logseq/publish-spa@0.3.1  # 手动安装，避免 Action 版本问题
+          logseq-publish-spa \
+            --graph-directory . \
+            --output-directory www \
+            --verbose
 
-      - name: 检查仓库目录结构
-        run: |
-          ls -la
-          ls -la logseq/ || echo "logseq 目录不存在，创建默认配置"
-          # 如果没有 publish.yml，自动创建
-          if [ ! -f "logseq/publish.yml" ]; then
-            mkdir -p logseq
-            cat > logseq/publish.yml << EOF
-title: "Canbe Knowledge Base"
-description: "My Logseq Knowledge Base"
-basePath: "/canbe_knowledge_base"
-pages:
-  - "**/*.md"
-  - "**/*.edn"
-exclude:
-  - ".git/**"
-  - ".github/**"
-features:
-  - "pages-index"
-force: true
-EOF
-          fi
-
-      - name: 手动执行 Logseq 构建（替代 Action 方式）
-        run: |
-          # 手动运行构建命令，输出更详细的日志（修复换行格式：单行写法 或 保持 | 块内的正确缩进）
-          logseq-publish-spa --graph-directory . --output-directory www --verbose
-
-      - name: 再次检查 pages.json（放宽校验，先确保部署）
+      - name: Check pages.json
         run: |
           ls -la www/static/js/
-          # 先注释掉强制退出，确保能部署，后续再排查
           if [ ! -f "www/static/js/pages.json" ]; then
-            echo "⚠️ 警告：pages.json 未生成，但继续部署"
-            # exit 1  # 暂时注释，先完成部署
+            echo "⚠️ pages.json not found, continuing deployment..."
           else
-            echo "✅ pages.json 生成成功"
+            echo "✅ pages.json generated successfully"
           fi
 
-      - name: 添加 .nojekyll 文件
+      - name: Add .nojekyll
         run: touch www/.nojekyll
 
-      - name: 部署到 gh-pages 分支
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
