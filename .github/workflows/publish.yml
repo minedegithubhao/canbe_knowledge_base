@@ -1,5 +1,5 @@
-# .github/workflows/publish.yml - 使用 npm 构建的替代方案
-name: Logseq Publish to GitHub Pages (npm build)
+# .github/workflows/publish.yml - 使用正确的 logseq publish-cli
+name: Logseq Publish to GitHub Pages
 
 on:
   push:
@@ -43,14 +43,14 @@ jobs:
         with:
           node-version: '18'
 
-      # 步骤 3: 使用 npm 安装并运行 Logseq Publish
-      - name: Install and run Logseq Publish
+      # 步骤 3: 使用 logseq/publish-cli (官方推荐)
+      - name: Install and run Logseq Publish CLI
         run: |
-          echo "=== 全局安装 @logseq/publish ==="
-          npm install -g @logseq/publish
+          echo "=== 全局安装 @logseq/publish-cli ==="
+          npm install -g @logseq/publish-cli
           
           echo "=== 运行构建命令 ==="
-          npx @logseq/publish --input . --output www
+          npx logseq-publish --input . --output www
           
           echo "=== 构建完成，检查输出 ==="
           ls -la www/ || echo "www 目录不存在"
