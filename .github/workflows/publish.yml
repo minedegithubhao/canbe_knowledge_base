@@ -7,31 +7,43 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # 切换到仓库根目录执行所有步骤，避免git目录错误
+    defaults:
+      run:
+        working-directory: ./canbe_knowledge_base
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # 明确拉取到根目录，避免多一层文件夹
+          # 拉取到 canbe_knowledge_base 子目录
           path: ./canbe_knowledge_base
 
-      # 新增：打印完整目录结构（方便验证）
-      - name: Print full directory structure
-        run: ls -la ./canbe_knowledge_base && ls -la ./canbe_knowledge_base/pages/
+      # 打印目录结构，验证pages是否存在
+      - name: Print directory structure
+        run: |
+          ls -la
+          ls -la pages/ || echo "pages folder not found"
 
+      # 构建Logseq静态网站
       - name: Build Logseq Site
         uses: logseq/publish-spa@v0.3.1
         with:
-          # 指向包含 pages/ 的正确目录
-          graph-directory: ./canbe_knowledge_base
-          output-directory: ./canbe_knowledge_base/www
+          graph-directory: ./  # 此时工作目录已是canbe_knowledge_base，直接用./
+          output-directory: ./www
 
+      # 添加.nojekyll文件
       - name: Add .nojekyll
-        run: touch ./canbe_knowledge_base/www/.nojekyll
+        run: touch ./www/.nojekyll
 
+      # 部署到gh-pages分支（关键：指定正确的git目录）
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          # 部署的文件夹路径（相对于仓库根目录）
           folder: ./canbe_knowledge_base/www
           branch: gh-pages
           clean: true
           single-commit: true
+          # 强制指定git工作目录，解决not in a git directory问题
+          repository-name: ${{ github.repository }}
+          working-directory: ./
