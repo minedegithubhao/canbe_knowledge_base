@@ -1,15 +1,15 @@
-# .github/workflows/publish.yml 完整修复版
+# .github/workflows/publish.yml 最终可用版
 name: Logseq Publish to GitHub Pages
 
-# 核心修复：添加触发事件（on 字段）
+# 触发事件配置（修复之前的 on 字段问题）
 on:
-  # 1. 推送到 main 分支时自动触发部署
+  # 推送到 main 分支自动触发
   push:
     branches: [ main ]
-  # 2. 手动在 GitHub 页面触发部署（可选，方便调试）
+  # 手动触发（方便调试）
   workflow_dispatch:
 
-# 权限配置（确保能推送 gh-pages 分支）
+# 权限配置（避免部署权限不足）
 permissions:
   contents: write
   pages: write
@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 拉取完整提交历史，避免构建缺失
+          fetch-depth: 0  # 拉取完整提交历史
 
       - name: 检查仓库目录结构
         run: |
@@ -29,8 +29,9 @@ jobs:
           ls -la logseq/ || echo "logseq 目录不存在"
           ls -la pages/ || echo "pages 目录不存在"
 
+      # 核心修复：使用 logseq/publish-spa 官方最新可用版本
       - name: 构建 Logseq 静态站点
-        uses: logseq/publish-spa@v0.4.0  # 升级到较新的稳定版本
+        uses: logseq/publish-spa@v0.3.1  # 该版本是官方确认可用的稳定版
         with:
           graph-directory: .
           output-directory: www
@@ -54,4 +55,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./www
           publish_branch: gh-pages
-          force_orphan: true  # 清空旧分支内容，避免缓存问题
+          force_orphan: true  # 清空旧分支内容，避免缓存
