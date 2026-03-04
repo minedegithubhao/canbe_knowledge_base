@@ -1,5 +1,5 @@
-# .github/workflows/publish.yml 完整调试版
-name: Logseq Publish to GitHub Pages
+# .github/workflows/publish.yml - 使用 npm 构建的替代方案
+name: Logseq Publish to GitHub Pages (npm build)
 
 on:
   push:
@@ -18,85 +18,60 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 拉取完整提交历史
+          fetch-depth: 0
 
-      # 步骤 1: 在构建前准备配置文件
-      - name: Prepare config.edn at root
+      # 步骤 1: 准备配置文件
+      - name: Prepare config.edn
         run: |
-          echo "=== 当前目录结构 ==="
-          pwd
-          ls -la
-          
-          echo ""
-          echo "=== 检查 logseq 子目录 ==="
-          ls -la logseq/ 2>/dev/null || echo "logseq 目录不存在"
-          
-          echo ""
-          echo "=== 检查 pages 目录 ==="
-          ls -la pages/ 2>/dev/null || echo "pages 目录不存在"
-          
-          echo ""
-          echo "=== 复制配置文件 ==="
+          echo "=== 复制配置文件到根目录 ==="
           if [ ! -f "config.edn" ] && [ -f "logseq/config.edn" ]; then
             cp logseq/config.edn config.edn
-            echo "✅ 已复制 config.edn 到根目录"
-            ls -la config.edn
+            echo "✅ 已复制 config.edn"
           elif [ -f "config.edn" ]; then
-            echo "✅ config.edn 已存在于根目录"
-            ls -la config.edn
+            echo "✅ config.edn 已存在"
           else
-            echo "❌ 错误：未找到 config.edn 文件"
+            echo "❌ 未找到 config.edn"
             exit 1
           fi
+          
+          echo "=== 验证 pages 目录 ==="
+          ls -la pages/
 
-      # 步骤 2: 构建 Logseq 静态站点
-      - name: Build Logseq static site
-        uses: logseq/publish-spa@v0.3.1
+      # 步骤 2: 安装 Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          graph-directory: .
-          output-directory: www
+          node-version: '18'
 
-      # 步骤 3: 详细检查构建输出
-      - name: Debug build output
+      # 步骤 3: 使用 npm 安装并运行 Logseq Publish
+      - name: Install and run Logseq Publish
         run: |
-          echo ""
-          echo "=== 检查 www 根目录 ==="
-          ls -la www/
+          echo "=== 全局安装 @logseq/publish ==="
+          npm install -g @logseq/publish
           
-          echo ""
-          echo "=== 检查 www 所有文件和目录（递归） ==="
-          find www -type f -o -type d | sort
+          echo "=== 运行构建命令 ==="
+          npx @logseq/publish --input . --output www
           
-          echo ""
-          echo "=== 检查 static 目录 ==="
-          if [ -d "www/static" ]; then
-            ls -laR www/static/
-          else
-            echo "⚠️ static 目录不存在"
-          fi
-          
-          echo ""
-          echo "=== 查找所有 JSON 文件 ==="
-          find www -name "*.json" -type f
-          
-          echo ""
-          echo "=== 查找 pages.json 或 graph.json ==="
-          find www \( -name "pages.json" -o -name "graph.json" \) -type f
-          
-          echo ""
-          echo "=== 检查 index.html ==="
-          if [ -f "www/index.html" ]; then
-            echo "✅ index.html 存在"
-            head -50 www/index.html
-          else
-            echo "❌ index.html 不存在"
-          fi
+          echo "=== 构建完成，检查输出 ==="
+          ls -la www/ || echo "www 目录不存在"
 
-      # 步骤 4: 添加 .nojekyll 文件
-      - name: Add .nojekyll file
+      # 步骤 4: 详细调试输出
+      - name: Debug output
+        run: |
+          echo "=== 完整文件列表 ==="
+          find www -type f 2>/dev/null | sort || echo "www 目录为空"
+          
+          echo "=== 所有 JSON 文件 ==="
+          find www -name "*.json" -type f 2>/dev/null || echo "无 JSON 文件"
+          
+          echo "=== index.html 是否存在 ==="
+          test -f www/index.html && echo "✅ index.html 存在" || echo "❌ index.html 不存在"
+
+      # 步骤 5: 添加 .nojekyll
+      - name: Add .nojekyll
         run: touch www/.nojekyll
 
-      # 步骤 5: 部署到 GitHub Pages
+      # 步骤 6: 部署
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -104,5 +79,3 @@ jobs:
           publish_dir: ./www
           publish_branch: gh-pages
           force_orphan: true
-          # 启用详细日志
-          verbose: true
