@@ -1,4 +1,4 @@
-# .github/workflows/publish.yml 优化版
+# .github/workflows/publish.yml 语法修复版
 name: Logseq Publish to GitHub Pages
 
 on:
