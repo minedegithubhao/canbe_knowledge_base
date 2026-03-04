@@ -1,40 +1,57 @@
-# .github/workflows/publish.yml 新增校验步骤
+# .github/workflows/publish.yml 完整修复版
+name: Logseq Publish to GitHub Pages
+
+# 核心修复：添加触发事件（on 字段）
+on:
+  # 1. 推送到 main 分支时自动触发部署
+  push:
+    branches: [ main ]
+  # 2. 手动在 GitHub 页面触发部署（可选，方便调试）
+  workflow_dispatch:
+
+# 权限配置（确保能推送 gh-pages 分支）
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # 拉取完整提交历史，避免构建缺失
 
-      - name: Check files
+      - name: 检查仓库目录结构
         run: |
           ls -la
-          ls -la logseq/
-          ls -la pages/
+          ls -la logseq/ || echo "logseq 目录不存在"
+          ls -la pages/ || echo "pages 目录不存在"
 
-      - name: Build Logseq Site
-        uses: logseq/publish-spa@v0.3.1
+      - name: 构建 Logseq 静态站点
+        uses: logseq/publish-spa@v0.4.0  # 升级到较新的稳定版本
         with:
           graph-directory: .
           output-directory: www
 
-      # 新增：校验 pages.json 是否生成（关键！）
-      - name: Verify pages.json exists
+      - name: 校验 pages.json 是否生成（关键）
         run: |
-          ls -la www/static/js/  # 打印目录，确认 pages.json 存在
+          ls -la www/static/js/  # 打印目录内容，方便排查
           if [ ! -f "www/static/js/pages.json" ]; then
-            echo "ERROR: pages.json not found in www/static/js/"
+            echo "❌ 错误：pages.json 未生成！"
             exit 1
+          else
+            echo "✅ pages.json 生成成功"
           fi
 
-      - name: Add .nojekyll
+      - name: 添加 .nojekyll 文件（避免 GitHub Pages 解析错误）
         run: touch www/.nojekyll
 
-      - name: Deploy to GitHub Pages
+      - name: 部署到 gh-pages 分支
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./www
           publish_branch: gh-pages
-          force_orphan: true
+          force_orphan: true  # 清空旧分支内容，避免缓存问题
