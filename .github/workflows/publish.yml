@@ -53,11 +53,8 @@ EOF
 
       - name: 手动执行 Logseq 构建（替代 Action 方式）
         run: |
-          # 手动运行构建命令，输出更详细的日志
-          logseq-publish-spa \
-            --graph-directory . \
-            --output-directory www \
-            --verbose  # 开启详细日志，方便排查
+          # 手动运行构建命令，输出更详细的日志（修复换行格式：单行写法 或 保持 | 块内的正确缩进）
+          logseq-publish-spa --graph-directory . --output-directory www --verbose
 
       - name: 再次检查 pages.json（放宽校验，先确保部署）
         run: |
