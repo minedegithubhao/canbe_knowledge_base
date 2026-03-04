@@ -23,9 +23,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          # 可选：配置 npm 注册表（若包在私有仓库）
+          # registry-url: https://registry.npmjs.org/
 
-      - name: Install publish-spa
-        run: npm install -g @logseq/publish-spa@0.3.1
+      - name: Install publish-spa（修正版本/包名）
+        run: npm install -g @logseq/publish-spa@latest  # 改用 latest 版本，或确认存在的版本
 
       - name: Build Logseq site
         run: |
