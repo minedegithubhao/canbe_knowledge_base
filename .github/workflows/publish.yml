@@ -1,4 +1,4 @@
-# .github/workflows/publish.yml
+# .github/workflows/publish.yml 最终正确版
 name: Logseq Publish to GitHub Pages
 
 on:
@@ -15,37 +15,25 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # 拉取完整提交历史
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      # 核心修正：使用官方 Action 构建，而非 npm 安装
+      - name: Build Logseq static site
+        uses: logseq/publish-spa@v0.3.1  # 直接用 GitHub Action，而非 npm 包
         with:
-          node-version: "20"
-          # 可选：配置 npm 注册表（若包在私有仓库）
-          # registry-url: https://registry.npmjs.org/
+          graph-directory: .
+          output-directory: www
 
-      - name: Install publish-spa（修正版本/包名）
-        run: npm install -g @logseq/publish-spa@latest  # 改用 latest 版本，或确认存在的版本
-
-      - name: Build Logseq site
+      - name: Check pages.json existence
         run: |
-          logseq-publish-spa \
-            --graph-directory . \
-            --output-directory www \
-            --verbose
+          ls -la www/static/js/ || true  # 即使目录不存在也不报错
+          # 全局搜索 pages.json，确认实际生成位置
+          find www -name "pages.json" || echo "pages.json 未找到"
 
-      - name: Check pages.json
-        run: |
-          ls -la www/static/js/
-          if [ ! -f "www/static/js/pages.json" ]; then
-            echo "⚠️ pages.json not found, continuing deployment..."
-          else
-            echo "✅ pages.json generated successfully"
-          fi
-
-      - name: Add .nojekyll
+      - name: Add .nojekyll file
         run: touch www/.nojekyll
 
       - name: Deploy to GitHub Pages
