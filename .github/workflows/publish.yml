@@ -1,42 +1,40 @@
-# .github/workflows/publish.yml
-name: Publish Logseq to GitHub Pages
-on:
-  push:
-    branches: [main]
-permissions:
-  contents: write
+# .github/workflows/publish.yml 新增校验步骤
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      # 1. 拉取代码到仓库根目录（不再嵌套子目录）
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # 2. 打印目录结构（验证文件是否齐全）
       - name: Check files
         run: |
           ls -la
-          ls -la logseq/  # 确认能看到 config.edn
-          ls -la pages/   # 确认能看到你的md文件
+          ls -la logseq/
+          ls -la pages/
 
-      # 3. 构建Logseq静态网站（核心：graph-directory 指向根目录）
       - name: Build Logseq Site
         uses: logseq/publish-spa@v0.3.1
         with:
-          graph-directory: .  # 根目录（包含logseq/config.edn、pages/）
+          graph-directory: .
           output-directory: www
 
-      # 4. 避免GitHub Pages忽略下划线文件
+      # 新增：校验 pages.json 是否生成（关键！）
+      - name: Verify pages.json exists
+        run: |
+          ls -la www/static/js/  # 打印目录，确认 pages.json 存在
+          if [ ! -f "www/static/js/pages.json" ]; then
+            echo "ERROR: pages.json not found in www/static/js/"
+            exit 1
+          fi
+
       - name: Add .nojekyll
         run: touch www/.nojekyll
 
-      # 5. 部署到gh-pages分支（最简配置）
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4  # 换更稳定的部署工具
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./www
           publish_branch: gh-pages
-          force_orphan: true  # 清空旧的gh-pages内容
+          force_orphan: true
