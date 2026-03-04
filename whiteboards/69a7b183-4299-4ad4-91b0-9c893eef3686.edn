@@ -1,0 +1,25 @@
+{:blocks (
+{:block/content "你好"
+:block/format :markdown
+:block/left 
+{:block/uuid #uuid "69a7b183-4299-4ad4-91b0-9c893eef3686"}
+:block/parent 
+{:block/uuid #uuid "69a7b183-4299-4ad4-91b0-9c893eef3686"}
+:block/uuid #uuid "69a7b1d0-a1f7-4e74-b46b-8e316b7a2d55"})
+:pages (
+{:block/uuid #uuid "69a7b183-4299-4ad4-91b0-9c893eef3686"
+:block/properties 
+{:ls-type :whiteboard-page
+:logseq.tldraw.page 
+{:id "69a7b183-4299-4ad4-91b0-9c893eef3686"
+:name "69a7b183-4299-4ad4-91b0-9c893eef3686"
+:bindings 
+{}
+:nonce 1
+:assets []
+:shapes-index ()}}
+:block/updated-at 1772597745366
+:block/created-at 1772597635828
+:block/type "whiteboard"
+:block/name "69a7b183-4299-4ad4-91b0-9c893eef3686"
+:block/original-name "69a7b183-4299-4ad4-91b0-9c893eef3686"})}
