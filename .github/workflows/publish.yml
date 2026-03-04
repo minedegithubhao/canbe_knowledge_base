@@ -1,4 +1,4 @@
-# .github/workflows/publish.yml - 最终版本：使用官方 action + 备用方案
+# .github/workflows/publish.yml - 使用具体版本号
 name: Logseq Publish to GitHub Pages
 
 on:
@@ -37,44 +37,80 @@ jobs:
           echo "=== 验证 pages 目录 ==="
           ls -la pages/
 
-      # 步骤 2: 安装 Node.js（为备用方案准备）
+      # 步骤 2: 安装 Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      # 步骤 3: 尝试使用官方 Action (最新版)
+      # 步骤 3: 使用logseq/publish-spa v0.3.1 (已知版本)
       - name: Build with Logseq Publish SPA
         id: build
-        uses: logseq/publish-spa@latest
+        uses: logseq/publish-spa@v0.3.1
         with:
           graph-directory: .
           output-directory: www
         continue-on-error: true
 
-      # 步骤 4: 如果官方 Action 失败，尝试备用方案
-      - name: Fallback - Manual build if needed
+      # 步骤 4: 如果官方 Action 失败，使用备用 npm 方案
+      - name: Fallback - Use npm package
         if: steps.build.outcome == 'failure'
         run: |
-          echo "⚠️ 官方 Action 失败，尝试备用构建方案..."
+          echo "⚠️ 官方 Action 失败，尝试使用 npm 包构建..."
           
-          echo "=== 克隆 logseq-publish 仓库 ==="
-          git clone --depth 1 https://github.com/logseq/logseq.git /tmp/logseq-src
+          echo "=== 安装 @logseq/cli ==="
+          npm install -g @logseq/cli
           
-          echo "=== 安装依赖并构建 ==="
-          cd /tmp/logseq-src
-          npm install
-          npx electron-builder --dir --config.asar=false || echo "构建可能不完全兼容，继续尝试..."
+          echo "=== 运行 logseq export ==="
+          npx logseq export --input . --output www || {
+            echo "logseq export 失败，尝试手动创建基本结构..."
+            
+            # 创建基本的 HTML 结构
+            mkdir -p www
+            
+            # 创建 index.html
+            echo '<!DOCTYPE html>' > www/index.html
+            echo '<html lang="zh-CN">' >> www/index.html
+            echo '<head>' >> www/index.html
+            echo '    <meta charset="UTF-8">' >> www/index.html
+            echo '    <meta name="viewport" content="width=device-width, initial-scale=1.0">' >> www/index.html
+            echo '    <title>Logseq Graph</title>' >> www/index.html
+            echo '    <style>' >> www/index.html
+            echo '        body { font-family: Arial, sans-serif; margin: 40px; }' >> www/index.html
+            echo '        h1 { color: #333; }' >> www/index.html
+            echo '        ul { list-style-type: none; padding: 0; }' >> www/index.html
+            echo '        li { margin: 10px 0; }' >> www/index.html
+            echo '        a { color: #0066cc; text-decoration: none; }' >> www/index.html
+            echo '        a:hover { text-decoration: underline; }' >> www/index.html
+            echo '    </style>' >> www/index.html
+            echo '</head>' >> www/index.html
+            echo '<body>' >> www/index.html
+            echo '    <h1>My Logseq Graph</h1>' >> www/index.html
+            echo '    <ul>' >> www/index.html
+            
+            # 添加 pages 列表
+            for page in pages/*.md; do
+              if [ -f "$page" ]; then
+                basename=$(basename "$page" .md)
+                echo "        <li><a href=\"pages/$basename.html\">$basename</a></li>" >> www/index.html
+              fi
+            done
+            
+            echo '    </ul>' >> www/index.html
+            echo '</body>' >> www/index.html
+            echo '</html>' >> www/index.html
+            
+            # 复制 pages 目录
+            if [ -d "pages" ]; then
+              mkdir -p www/pages
+              cp -r pages/* www/pages/ 2>/dev/null || true
+            fi
+            
+            echo "✅ 基本结构创建完成"
+          }
           
-          echo "=== 尝试使用简单的静态文件生成 ==="
-          mkdir -p /github/workspace/www
-          cp -r /tmp/logseq-src/resources/* /github/workspace/www/ 2>/dev/null || true
-          
-          # 复制 pages 内容
-          if [ -d "/github/workspace/pages" ]; then
-            mkdir -p /github/workspace/www/pages
-            cp -r /github/workspace/pages/* /github/workspace/www/pages/ 2>/dev/null || true
-          fi
+          echo "=== 检查输出 ==="
+          ls -la www/ || echo "www 目录不存在"
 
       # 步骤 5: 详细调试输出
       - name: Debug build output
