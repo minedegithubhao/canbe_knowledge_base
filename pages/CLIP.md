@@ -1,5 +1,5 @@
-# 概念
-	- {{embed ((69a83373-d073-49fd-b948-180f3e67f231))}}
+alias:: Contrastive Language–Image Pre-training, 图文对比预训练模型
+
 - # 核心思想
 	- 训练过程：
 		- 给模型看海量**图文对**（比如一张猫的图 + 文字 “一只猫”）
@@ -11,12 +11,12 @@
 		- 文本 → 向量
 		- 两者在**同一个向量空间**，可以直接算相似度
 - # CLIP 的架构
-	- CLIP 本身就是 双 [[Only-Encoder]] 架构：
-	- 图片编码器（Image Encoder）
-		- 主流：**ViT（Vision Transformer）**（如 ViT-B/32, ViT-L/14）
+	- [[CLIP]] 本身就是 双 [[Only-Encoder]] 架构：
+	- [[图片编码器]]
+		- 主流： [[ViT]]
 		- 作用：把图片变成向量
 		- 本质： [[Only-Encoder]]  结构（纯 Transformer Encoder）
-	- 文本编码器（Text Encoder）
+	- [[文本编码器]]
 		- 主流：**Transformer Encoder**（类似 BERT 结构）
 		- 作用：把文本变成向量
 		- 本质：也是 [[Only-Encoder]] 结构
@@ -26,7 +26,7 @@
 		- 图搜图：上传一张图 → 召回相似图
 		- 图搜文：上传一张图 → 召回描述这张图的文本
 	- **[[多模态 RAG]]（常用）**
-		- 把图片 / 图文都转成 CLIP 向量
+		- 把图片 / 图文都转成 [[CLIP]] 向量
 		- 存入向量库，支持混合检索（文本 + 图片一起搜）
 	- **零样本图像分类**
 		- 不用标注数据，直接用文本 prompt 分类
@@ -35,7 +35,8 @@
 		- 电商：检查商品图和标题是否匹配
 		- 内容审核：检查图片和文案是否一致
 - # 和 [[大模型分类]] 的关系
+  id:: 69a92deb-3a0f-4627-b5e7-4cd8ac656cfc
 	- CLIP 的图片编码器 = **Only-Encoder（ViT）**
 	- CLIP 的文本编码器 = **Only-Encoder（Transformer Encoder）**
-	- 整个 CLIP = **双 Encoder 多模态架构**
+	- 整个 CLIP = 双 [[Only-Encoder]] 多模态架构
 	- 用途：**跨模态理解、图文检索**，属于 [[理解型/表示型]]场景

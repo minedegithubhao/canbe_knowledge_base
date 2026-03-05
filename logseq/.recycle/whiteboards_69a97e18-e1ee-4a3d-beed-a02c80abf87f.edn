@@ -1,0 +1,87 @@
+{:blocks (
+{:block/created-at 1772715650194
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "B"
+:stroke ""
+:collapsed false
+:borderRadius 8
+:index 1
+:scale [1 1]
+:pageId "69a92deb-3a0f-4627-b5e7-4cd8ac656cfc"
+:scaleLevel "md"
+:fill ""
+:compact true
+:isAutoResizing true
+:type "logseq-portal"
+:size [400 78]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "1a377fe0-1893-11f1-86d7-fd4f66a95d49"
+:noFill false
+:point [208 328]
+:parentId "69a97e18-e1ee-4a3d-beed-a02c80abf87f"
+:collapsedHeight 0
+:nonce 1772715550644}}
+:block/updated-at 1772715650194} 
+{:block/created-at 1772715650200
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "B"
+:stroke ""
+:collapsed false
+:borderRadius 8
+:index 2
+:scale [1 1]
+:pageId "69a92deb-4592-4835-b7d1-fc75ab3f9cb6"
+:scaleLevel "md"
+:fill ""
+:compact true
+:isAutoResizing true
+:type "logseq-portal"
+:size [400 41]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "43e646a0-1893-11f1-86d7-fd4f66a95d49"
+:noFill false
+:point [224 176]
+:parentId "69a97e18-e1ee-4a3d-beed-a02c80abf87f"
+:collapsedHeight 0
+:nonce 1772715620576}}
+:block/updated-at 1772715650200} 
+{:block/created-at 1772715659731
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:children ["1a377fe0-1893-11f1-86d7-fd4f66a95d49" "43e646a0-1893-11f1-86d7-fd4f66a95d49"]
+:index 0
+:scale [1 1]
+:type "group"
+:size [0 0]
+:id "4fe3bbe0-1893-11f1-86d7-fd4f66a95d49"
+:isLocked false
+:point [-8 80]
+:parentId "69a97e18-e1ee-4a3d-beed-a02c80abf87f"
+:nonce 1772715640549}}
+:block/updated-at 1772715659731})
+:pages (
+{:block/uuid #uuid "69a97e18-e1ee-4a3d-beed-a02c80abf87f"
+:block/properties 
+{:ls-type :whiteboard-page
+:logseq.tldraw.page 
+{:id "69a97e18-e1ee-4a3d-beed-a02c80abf87f"
+:name "69a97e18-e1ee-4a3d-beed-a02c80abf87f"
+:bindings 
+{}
+:nonce 1
+:assets []
+:shapes-index ("4fe3bbe0-1893-11f1-86d7-fd4f66a95d49" "1a377fe0-1893-11f1-86d7-fd4f66a95d49" "43e646a0-1893-11f1-86d7-fd4f66a95d49")}}
+:block/updated-at 1772715659731
+:block/created-at 1772715544088
+:block/type "whiteboard"
+:block/name "69a97e18-e1ee-4a3d-beed-a02c80abf87f"
+:block/original-name "69a97e18-e1ee-4a3d-beed-a02c80abf87f"})}

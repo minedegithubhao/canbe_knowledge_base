@@ -1,2 +1,4 @@
-- 代表模型：BERT, ViT
-- 编码器块 = Self-Attention + FFN
+alias:: 仅编码器
+
+- 代表模型： [[BERT]] , [[ViT]]
+- 编码器块 = [[Self-Attention]] + [[FFN]]
