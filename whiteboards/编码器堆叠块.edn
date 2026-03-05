@@ -1,0 +1,115 @@
+{:blocks (
+{:block/created-at 1772721212400
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:collapsed false
+:borderRadius 8
+:index 1
+:scale [1 1]
+:pageId "编码器块"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing true
+:type "logseq-portal"
+:size [400 346]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "fa81bff0-189f-11f1-b503-ff1d46509324"
+:noFill false
+:point [344 280]
+:parentId "69a993b2-5569-4351-9a5a-336c9d9b0cf7"
+:collapsedHeight 0
+:nonce 1772721080689}}
+:block/updated-at 1772721212400} 
+{:block/created-at 1772721212400
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:collapsed false
+:borderRadius 8
+:index 2
+:scale [1 1]
+:pageId "编码器块"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing true
+:type "logseq-portal"
+:size [400 346]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "02c4c540-18a0-11f1-b503-ff1d46509324"
+:noFill false
+:isLocked false
+:point [432 216]
+:parentId "69a993b2-5569-4351-9a5a-336c9d9b0cf7"
+:collapsedHeight 0
+:nonce 1772721080884}}
+:block/updated-at 1772721212400} 
+{:block/created-at 1772721212400
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:collapsed false
+:borderRadius 8
+:index 3
+:scale [1 1]
+:pageId "编码器块"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing true
+:type "logseq-portal"
+:size [400 346]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "0e523aa0-18a0-11f1-b503-ff1d46509324"
+:noFill false
+:isLocked false
+:point [520 160]
+:parentId "69a993b2-5569-4351-9a5a-336c9d9b0cf7"
+:collapsedHeight 0
+:nonce 1772721114173}}
+:block/updated-at 1772721212400} 
+{:block/created-at 1772721212398
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:children ["fa81bff0-189f-11f1-b503-ff1d46509324" "02c4c540-18a0-11f1-b503-ff1d46509324" "0e523aa0-18a0-11f1-b503-ff1d46509324"]
+:index 0
+:scale [1 1]
+:type "group"
+:size [0 0]
+:id "490081c0-18a0-11f1-b503-ff1d46509324"
+:point [0 0]
+:parentId "69a993b2-5569-4351-9a5a-336c9d9b0cf7"
+:nonce 1772721212380}}
+:block/updated-at 1772721212398})
+:pages (
+{:block/uuid #uuid "69a993b2-5569-4351-9a5a-336c9d9b0cf7"
+:block/properties 
+{:ls-type :whiteboard-page
+:logseq.tldraw.page 
+{:id "69a993b2-5569-4351-9a5a-336c9d9b0cf7"
+:name "编码器堆叠块"
+:bindings 
+{}
+:nonce 1
+:assets []
+:shapes-index ("490081c0-18a0-11f1-b503-ff1d46509324" "fa81bff0-189f-11f1-b503-ff1d46509324" "02c4c540-18a0-11f1-b503-ff1d46509324" "0e523aa0-18a0-11f1-b503-ff1d46509324")}}
+:block/updated-at 1772721212398
+:block/created-at 1772721074487
+:block/type "whiteboard"
+:block/name "编码器堆叠块"
+:block/original-name "编码器堆叠块"})}

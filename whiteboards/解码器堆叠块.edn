@@ -1,0 +1,118 @@
+{:blocks (
+{:block/created-at 1772722316011
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:rotation 0
+:collapsed false
+:borderRadius 8
+:index 1
+:scale [1 1]
+:pageId "解码器块"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing true
+:type "logseq-portal"
+:size [400 345.9999832732883]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "b980f180-18a2-11f1-b503-ff1d46509324"
+:noFill false
+:point [480 192]
+:parentId "69a99820-846e-4a80-aedb-ee40ec842942"
+:collapsedHeight 0
+:nonce 1772722260186}}
+:block/updated-at 1772722316011} 
+{:block/created-at 1772722316011
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:rotation 0
+:collapsed false
+:borderRadius 8
+:index 2
+:scale [1 1]
+:pageId "解码器块"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing true
+:type "logseq-portal"
+:size [400 345.9999832732883]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "c9d7aec0-18a2-11f1-b503-ff1d46509324"
+:noFill false
+:isLocked false
+:point [544 128]
+:parentId "69a99820-846e-4a80-aedb-ee40ec842942"
+:collapsedHeight 0
+:nonce 1772722260521}}
+:block/updated-at 1772722316011} 
+{:block/created-at 1772722316011
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:rotation 0
+:collapsed false
+:borderRadius 8
+:index 3
+:scale [1 1]
+:pageId "解码器块"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing true
+:type "logseq-portal"
+:size [400 345.9999832732883]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "d113a450-18a2-11f1-b503-ff1d46509324"
+:noFill false
+:isLocked false
+:point [608 64]
+:parentId "69a99820-846e-4a80-aedb-ee40ec842942"
+:collapsedHeight 0
+:nonce 1772722260901}}
+:block/updated-at 1772722316011} 
+{:block/created-at 1772722316009
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:children ["b980f180-18a2-11f1-b503-ff1d46509324" "c9d7aec0-18a2-11f1-b503-ff1d46509324" "d113a450-18a2-11f1-b503-ff1d46509324"]
+:index 0
+:scale [1 1]
+:type "group"
+:size [0 0]
+:id "dace2e70-18a2-11f1-b503-ff1d46509324"
+:point [0 0]
+:parentId "69a99820-846e-4a80-aedb-ee40ec842942"
+:nonce 1772722315991}}
+:block/updated-at 1772722316009})
+:pages (
+{:block/uuid #uuid "69a99820-846e-4a80-aedb-ee40ec842942"
+:block/properties 
+{:ls-type :whiteboard-page
+:logseq.tldraw.page 
+{:id "69a99820-846e-4a80-aedb-ee40ec842942"
+:name "解码器堆叠块"
+:bindings 
+{}
+:nonce 1
+:assets []
+:shapes-index ("dace2e70-18a2-11f1-b503-ff1d46509324" "b980f180-18a2-11f1-b503-ff1d46509324" "c9d7aec0-18a2-11f1-b503-ff1d46509324" "d113a450-18a2-11f1-b503-ff1d46509324")}}
+:block/updated-at 1772722316009
+:block/created-at 1772722208397
+:block/type "whiteboard"
+:block/name "解码器堆叠块"
+:block/original-name "解码器堆叠块"})}
