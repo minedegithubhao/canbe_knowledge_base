@@ -1,11 +1,9 @@
-alias:: 仅编码器
-tags:: 大模型, Transformer
-type:: 概念
-status:: 草稿 | 整理中 | 已掌握
-
+- alias::
+  tags::
+  type:: 概念
+  status:: 草稿 | 整理中 | 已掌握
 	- ## 🧠 一句话说清楚（费曼）
-		- **Only-Encoder** = 以 [[Transformer Encoder]] 为**主体**的模型
-		- 代表模型： [[BERT]] , [[ViT]], [[CLIP]], 所有 embedding 模型
+		- 只提取图片本身特征，输出图片专用向量，**不需要**和文本对齐，**不能**直接和文本向量算相似度
 	- ## 💘企业开发场景
 	  collapsed:: true
 		- {{实际企业开发当中的场景，按常见度由高往低排序，低于10%的场景不记录}}

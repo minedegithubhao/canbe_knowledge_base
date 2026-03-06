@@ -1,11 +1,10 @@
-alias:: 仅编码器
-tags:: 大模型, Transformer
+alias::  全模态RAG
+tags:: 大模型, RAG
 type:: 概念
 status:: 草稿 | 整理中 | 已掌握
 
 	- ## 🧠 一句话说清楚（费曼）
-		- **Only-Encoder** = 以 [[Transformer Encoder]] 为**主体**的模型
-		- 代表模型： [[BERT]] , [[ViT]], [[CLIP]], 所有 embedding 模型
+		- {{费曼法表述清楚}}
 	- ## 💘企业开发场景
 	  collapsed:: true
 		- {{实际企业开发当中的场景，按常见度由高往低排序，低于10%的场景不记录}}

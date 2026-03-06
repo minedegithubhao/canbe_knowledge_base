@@ -9,7 +9,7 @@
 :borderRadius 8
 :index 1
 :scale [1 1]
-:pageId "编码器层"
+:pageId "编码器块"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -36,7 +36,7 @@
 :borderRadius 8
 :index 2
 :scale [1 1]
-:pageId "编码器层"
+:pageId "编码器块"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -64,7 +64,7 @@
 :borderRadius 8
 :index 3
 :scale [1 1]
-:pageId "编码器层"
+:pageId "编码器块"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -97,9 +97,7 @@
 :nonce 1772721212380}}
 :block/updated-at 1772721212398})
 :pages (
-{:block/alias [
-{:db/id 250}]
-:block/uuid #uuid "69aac38a-87dd-485b-9e56-4ed8ffc7293e"
+{:block/uuid #uuid "69a993b2-5569-4351-9a5a-336c9d9b0cf7"
 :block/properties 
 {:ls-type :whiteboard-page
 :logseq.tldraw.page 
@@ -110,9 +108,8 @@
 :nonce 1
 :assets []
 :shapes-index ("490081c0-18a0-11f1-b503-ff1d46509324" "fa81bff0-189f-11f1-b503-ff1d46509324" "02c4c540-18a0-11f1-b503-ff1d46509324" "0e523aa0-18a0-11f1-b503-ff1d46509324")}}
-:block/journal? false
 :block/updated-at 1772796186166
 :block/created-at 1772721074487
 :block/type "whiteboard"
-:block/name "编码器块"
-:block/original-name "编码器块"})}
+:block/name "编码器堆叠块"
+:block/original-name "编码器堆叠块"})}

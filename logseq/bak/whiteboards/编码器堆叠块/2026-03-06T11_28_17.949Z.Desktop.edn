@@ -1,11 +1,11 @@
 {:blocks (
-{:block/created-at 1772721212400
+{:block/created-at 1772796181735
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
 {:blockType "P"
 :stroke ""
-:collapsed false
+:collapsed true
 :borderRadius 8
 :index 1
 :scale [1 1]
@@ -13,9 +13,9 @@
 :scaleLevel "md"
 :fill ""
 :compact false
-:isAutoResizing true
+:isAutoResizing false
 :type "logseq-portal"
-:size [400 346]
+:size [400 40]
 :strokeType "line"
 :strokeWidth 2
 :opacity 1
@@ -23,16 +23,16 @@
 :noFill false
 :point [344 280]
 :parentId "69a993b2-5569-4351-9a5a-336c9d9b0cf7"
-:collapsedHeight 0
-:nonce 1772721080689}}
-:block/updated-at 1772721212400} 
-{:block/created-at 1772721212400
+:collapsedHeight 1125.0000257668205
+:nonce 1772721080691}}
+:block/updated-at 1772796181735} 
+{:block/created-at 1772796177829
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
 {:blockType "P"
 :stroke ""
-:collapsed false
+:collapsed true
 :borderRadius 8
 :index 2
 :scale [1 1]
@@ -40,9 +40,9 @@
 :scaleLevel "md"
 :fill ""
 :compact false
-:isAutoResizing true
+:isAutoResizing false
 :type "logseq-portal"
-:size [400 346]
+:size [400 40]
 :strokeType "line"
 :strokeWidth 2
 :opacity 1
@@ -51,16 +51,16 @@
 :isLocked false
 :point [432 216]
 :parentId "69a993b2-5569-4351-9a5a-336c9d9b0cf7"
-:collapsedHeight 0
-:nonce 1772721080884}}
-:block/updated-at 1772721212400} 
-{:block/created-at 1772721212400
+:collapsedHeight 1092.9999536197229
+:nonce 1772721080886}}
+:block/updated-at 1772796177829} 
+{:block/created-at 1772796186159
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
 {:blockType "P"
 :stroke ""
-:collapsed false
+:collapsed true
 :borderRadius 8
 :index 3
 :scale [1 1]
@@ -68,9 +68,9 @@
 :scaleLevel "md"
 :fill ""
 :compact false
-:isAutoResizing true
+:isAutoResizing false
 :type "logseq-portal"
-:size [400 346]
+:size [400 40]
 :strokeType "line"
 :strokeWidth 2
 :opacity 1
@@ -79,9 +79,9 @@
 :isLocked false
 :point [520 160]
 :parentId "69a993b2-5569-4351-9a5a-336c9d9b0cf7"
-:collapsedHeight 0
-:nonce 1772721114173}}
-:block/updated-at 1772721212400} 
+:collapsedHeight 1092.9999536197229
+:nonce 1772721114175}}
+:block/updated-at 1772796186159} 
 {:block/created-at 1772721212398
 :block/properties 
 {:ls-type :whiteboard-shape
@@ -108,7 +108,7 @@
 :nonce 1
 :assets []
 :shapes-index ("490081c0-18a0-11f1-b503-ff1d46509324" "fa81bff0-189f-11f1-b503-ff1d46509324" "02c4c540-18a0-11f1-b503-ff1d46509324" "0e523aa0-18a0-11f1-b503-ff1d46509324")}}
-:block/updated-at 1772721212398
+:block/updated-at 1772796186166
 :block/created-at 1772721074487
 :block/type "whiteboard"
 :block/name "编码器堆叠块"
