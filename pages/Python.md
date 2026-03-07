@@ -11,4 +11,6 @@
 - [[Python_字典_操作方法]]
 -
 - [[Python_函数]]
--
+- [[python_lambda函数]]
+- [[python_文件]]
+  id:: 69ac0e8f-281a-4bd8-af53-4fdd9497185f

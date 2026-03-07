@@ -70,3 +70,65 @@
 	  print(result)
 	  print(type(result))  # <class 'tuple'>
 	  ```
+- 全局变量的修改：python中定义的全局变量（数值、字符串、布尔类型、元组类型）修改时需要加上`global`,`可变类型`(引用可变)可以不加global关键字。
+	- ```python
+	  # 定义全局变量num = 10
+	  num = 10
+	  # 定义一个函数func
+	  def func():
+	      # 尝试在局部作用域中修改全局变量
+	      num = 20
+	  # 调用函数func
+	  func()
+	  # 尝试访问全局变量num
+	  print(num) # 输出：10
+	  
+	  
+	  def func():
+	      # 加上global才能修改全局变量
+	      global num
+	      num = 20
+	  ```
+- 函数缺省参数（默认值）：定义缺省参数要写在参数列表最后
+	- ```python
+	  def user_info(name, age, gender='男'):
+	      print(f'我的名字{name}，今年{age}岁了，我的性别为{gender}')
+	  
+	  user_info('李林', 25)
+	  user_info('振华', 28)
+	  user_info('婉儿', 18, '女')
+	  ```
+- 不定长元组（位置）参数
+	- ```python
+	  def user_info(*args):
+	      # print(args)  # 元组类型数据，对传递参数有顺序要求
+	      print(f'我的名字{args[0]}，今年{args[1]}岁了，住在{args[2]}')
+	  
+	  # 调用函数，传递参数
+	  user_info('Tom', 23, '美国纽约')
+	  ```
+- 不定长字典（关键字）参数
+	- ```python
+	  def user_info(**kwargs):
+	      # print(kwargs)  # 字典类型数据，对传递参数没有顺序要求，格式要求key = value值
+	      print(f'我的名字{kwargs["name"]}，今年{kwargs["age"]}岁了，住在{kwargs["address"]}')
+	  
+	  # 调用函数，传递参数
+	  user_info(name='Tom', address='美国纽约', age=23)
+	  ```
+- 不定长元组 + 字典参数
+	- ```python
+	  def func(*args, **kwargs):
+	      print(args)
+	      print(kwargs)
+	  
+	  
+	  # 定义一个元组（也可以是列表）
+	  tuple1 = (10, 20, 30)
+	  # 定义一个字典
+	  dict1 = {'first': 40, 'second': 50, 'third': 60}
+	  # 需求：把元组传递给*args参数，字典传递给**kwargs
+	  # ① 如果想把元组传递给*args，必须在tuple1的前面加一个*号
+	  # ② 如果想把字典传递给**kwargs，必须在dict1的前面加两个**号
+	  func(*tuple1, **dict1)
+	  ```
