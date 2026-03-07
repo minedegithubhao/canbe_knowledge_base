@@ -1,0 +1,14 @@
+- [[Python_数据类型]]
+- [[Python_常用函数]]
+- [[Python_数据类型转化]]
+- [[Python_运算符]]
+- [[Python_for循环]]
+- [[Python_字符串切片]]
+- [[Python_字符串_操作方法]]
+- [[Python_列表_操作方法]]
+- [[Python_元组_操作方法]]
+- [[Python_集合_操作方法]]
+- [[Python_字典_操作方法]]
+-
+- [[Python_函数]]
+-
