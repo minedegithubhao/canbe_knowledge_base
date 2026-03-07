@@ -1,46 +1,4 @@
 {:blocks (
-{:block/content "合并"
-:block/format :markdown
-:block/left 
-{:block/uuid #uuid "69aa351a-2783-4ae3-9199-957dade29c43"}
-:block/parent 
-{:block/uuid #uuid "69aa351a-2783-4ae3-9199-957dade29c43"}
-:block/uuid #uuid "69aa356d-9f77-46b6-96be-d23ef94c33bf"} 
-{:block/created-at 1772762552225
-:block/properties 
-{:ls-type :whiteboard-shape
-:logseq.tldraw.shape 
-{:blockType "B"
-:stroke ""
-:rotation 0
-:collapsed false
-:borderRadius 8
-:index 1
-:scale [1 1]
-:pageId "69aa356d-9f77-46b6-96be-d23ef94c33bf"
-:scaleLevel "md"
-:fill ""
-:compact true
-:isAutoResizing true
-:type "logseq-portal"
-:size [96 41]
-:strokeType "line"
-:strokeWidth 2
-:opacity 1
-:id "54a0ba30-1900-11f1-a226-a7f101db9430"
-:noFill false
-:point [432 208]
-:parentId "69aa351a-2783-4ae3-9199-957dade29c43"
-:collapsedHeight 0
-:nonce 1772762463696}}
-:block/updated-at 1772762552225} 
-{:block/content "去重"
-:block/format :markdown
-:block/left 
-{:block/uuid #uuid "69aa356d-9f77-46b6-96be-d23ef94c33bf"}
-:block/parent 
-{:block/uuid #uuid "69aa351a-2783-4ae3-9199-957dade29c43"}
-:block/uuid #uuid "69aa3577-f0e6-4a98-993d-158737dfc91e"} 
 {:block/created-at 1772762552225
 :block/properties 
 {:ls-type :whiteboard-shape
@@ -69,13 +27,6 @@
 :collapsedHeight 0
 :nonce 1772762483504}}
 :block/updated-at 1772762552225} 
-{:block/content "过滤"
-:block/format :markdown
-:block/left 
-{:block/uuid #uuid "69aa3577-f0e6-4a98-993d-158737dfc91e"}
-:block/parent 
-{:block/uuid #uuid "69aa351a-2783-4ae3-9199-957dade29c43"}
-:block/uuid #uuid "69aa357e-a66e-4831-bb52-4deafa8c9714"} 
 {:block/created-at 1772762552225
 :block/properties 
 {:ls-type :whiteboard-shape
@@ -104,13 +55,6 @@
 :collapsedHeight 0
 :nonce 1772762490337}}
 :block/updated-at 1772762552225} 
-{:block/content "重排"
-:block/format :markdown
-:block/left 
-{:block/uuid #uuid "69aa357e-a66e-4831-bb52-4deafa8c9714"}
-:block/parent 
-{:block/uuid #uuid "69aa351a-2783-4ae3-9199-957dade29c43"}
-:block/uuid #uuid "69aa3589-7ed8-4264-9f07-e9544bd54f02"} 
 {:block/created-at 1772762552225
 :block/properties 
 {:ls-type :whiteboard-shape
@@ -120,9 +64,9 @@
 :rotation 0
 :collapsed false
 :borderRadius 8
-:index 4
+:index 1
 :scale [1 1]
-:pageId "69aa3589-7ed8-4264-9f07-e9544bd54f02"
+:pageId "69aa356d-9f77-46b6-96be-d23ef94c33bf"
 :scaleLevel "md"
 :fill ""
 :compact true
@@ -132,13 +76,86 @@
 :strokeType "line"
 :strokeWidth 2
 :opacity 1
-:id "698515e0-1900-11f1-a226-a7f101db9430"
+:id "54a0ba30-1900-11f1-a226-a7f101db9430"
 :noFill false
-:point [432 496]
+:point [432 208]
 :parentId "69aa351a-2783-4ae3-9199-957dade29c43"
 :collapsedHeight 0
-:nonce 1772762498721}}
+:nonce 1772762463696}}
 :block/updated-at 1772762552225} 
+{:block/content "重排"
+:block/format :markdown
+:block/left 
+{:block/uuid #uuid "69aa357e-a66e-4831-bb52-4deafa8c9714"}
+:block/parent 
+{:block/uuid #uuid "69aac38a-5aec-4cd7-a26b-c8df11ab92b3"}
+:block/uuid #uuid "69aa3589-7ed8-4264-9f07-e9544bd54f02"} 
+{:block/created-at 1772762552225
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:stroke ""
+:index 7
+:scale [1 1]
+:scaleLevel "md"
+:fill ""
+:type "line"
+:strokeType "line"
+:strokeWidth 1
+:opacity 1
+:label ""
+:id "820ef9f2-1900-11f1-a226-a7f101db9430"
+:fontWeight 400
+:noFill true
+:point [480 442]
+:fontSize 20
+:handles 
+{:start 
+{:id "start"
+:canBind true
+:point [0 0]
+:bindingId "820ef9f0-1900-11f1-a226-a7f101db9430"}
+:end 
+{:id "end"
+:canBind true
+:point [0 50]
+:bindingId "820ef9f1-1900-11f1-a226-a7f101db9430"}}
+:decorations 
+{:end "arrow"}
+:parentId "69aa351a-2783-4ae3-9199-957dade29c43"
+:nonce 1772762539949
+:italic false}}
+:block/updated-at 1772762552225} 
+{:block/content "过滤"
+:block/format :markdown
+:block/left 
+{:block/uuid #uuid "69aa3577-f0e6-4a98-993d-158737dfc91e"}
+:block/parent 
+{:block/uuid #uuid "69aac38a-5aec-4cd7-a26b-c8df11ab92b3"}
+:block/uuid #uuid "69aa357e-a66e-4831-bb52-4deafa8c9714"} 
+{:block/content "合并\nid:: 69aa356d-9f77-46b6-96be-d23ef94c33bf"
+:block/format :markdown
+:block/left 
+{:block/uuid #uuid "69aac38a-5aec-4cd7-a26b-c8df11ab92b3"}
+:block/parent 
+{:block/uuid #uuid "69aac38a-5aec-4cd7-a26b-c8df11ab92b3"}
+:block/properties 
+{:id "69aa356d-9f77-46b6-96be-d23ef94c33bf"}
+:block/uuid #uuid "69aa356d-9f77-46b6-96be-d23ef94c33bf"} 
+{:block/created-at 1772762552222
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:children ["54a0ba30-1900-11f1-a226-a7f101db9430" "60741230-1900-11f1-a226-a7f101db9430" "64852da0-1900-11f1-a226-a7f101db9430" "698515e0-1900-11f1-a226-a7f101db9430" "7a63c7d0-1900-11f1-a226-a7f101db9430" "8047a772-1900-11f1-a226-a7f101db9430" "820ef9f2-1900-11f1-a226-a7f101db9430"]
+:index 0
+:scale [1 1]
+:type "group"
+:size [0 0]
+:id "87ae2f70-1900-11f1-a226-a7f101db9430"
+:point [112 48]
+:parentId "69aa351a-2783-4ae3-9199-957dade29c43"
+:nonce 1772762549281}}
+:block/updated-at 1772762552222} 
 {:block/created-at 1772762552225
 :block/properties 
 {:ls-type :whiteboard-shape
@@ -179,6 +196,34 @@
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
+{:blockType "B"
+:stroke ""
+:rotation 0
+:collapsed false
+:borderRadius 8
+:index 4
+:scale [1 1]
+:pageId "69aa3589-7ed8-4264-9f07-e9544bd54f02"
+:scaleLevel "md"
+:fill ""
+:compact true
+:isAutoResizing true
+:type "logseq-portal"
+:size [96 41]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "698515e0-1900-11f1-a226-a7f101db9430"
+:noFill false
+:point [432 496]
+:parentId "69aa351a-2783-4ae3-9199-957dade29c43"
+:collapsedHeight 0
+:nonce 1772762498721}}
+:block/updated-at 1772762552225} 
+{:block/created-at 1772762552225
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
 {:stroke ""
 :index 6
 :scale [1 1]
@@ -211,62 +256,19 @@
 :nonce 1772762536899
 :italic false}}
 :block/updated-at 1772762552225} 
-{:block/created-at 1772762552225
-:block/properties 
-{:ls-type :whiteboard-shape
-:logseq.tldraw.shape 
-{:stroke ""
-:index 7
-:scale [1 1]
-:scaleLevel "md"
-:fill ""
-:type "line"
-:strokeType "line"
-:strokeWidth 1
-:opacity 1
-:label ""
-:id "820ef9f2-1900-11f1-a226-a7f101db9430"
-:fontWeight 400
-:noFill true
-:point [480 442]
-:fontSize 20
-:handles 
-{:start 
-{:id "start"
-:canBind true
-:point [0 0]
-:bindingId "820ef9f0-1900-11f1-a226-a7f101db9430"}
-:end 
-{:id "end"
-:canBind true
-:point [0 50]
-:bindingId "820ef9f1-1900-11f1-a226-a7f101db9430"}}
-:decorations 
-{:end "arrow"}
-:parentId "69aa351a-2783-4ae3-9199-957dade29c43"
-:nonce 1772762539949
-:italic false}}
-:block/updated-at 1772762552225} 
-{:block/created-at 1772762552222
-:block/properties 
-{:ls-type :whiteboard-shape
-:logseq.tldraw.shape 
-{:children ["54a0ba30-1900-11f1-a226-a7f101db9430" "60741230-1900-11f1-a226-a7f101db9430" "64852da0-1900-11f1-a226-a7f101db9430" "698515e0-1900-11f1-a226-a7f101db9430" "7a63c7d0-1900-11f1-a226-a7f101db9430" "8047a772-1900-11f1-a226-a7f101db9430" "820ef9f2-1900-11f1-a226-a7f101db9430"]
-:index 0
-:scale [1 1]
-:type "group"
-:size [0 0]
-:id "87ae2f70-1900-11f1-a226-a7f101db9430"
-:point [112 48]
-:parentId "69aa351a-2783-4ae3-9199-957dade29c43"
-:nonce 1772762549281}}
-:block/updated-at 1772762552222})
+{:block/content "去重"
+:block/format :markdown
+:block/left 
+{:block/uuid #uuid "69aa356d-9f77-46b6-96be-d23ef94c33bf"}
+:block/parent 
+{:block/uuid #uuid "69aac38a-5aec-4cd7-a26b-c8df11ab92b3"}
+:block/uuid #uuid "69aa3577-f0e6-4a98-993d-158737dfc91e"})
 :pages (
-{:block/uuid #uuid "69aa351a-2783-4ae3-9199-957dade29c43"
+{:block/uuid #uuid "69aac38a-5aec-4cd7-a26b-c8df11ab92b3"
 :block/properties 
 {:ls-type :whiteboard-page
 :logseq.tldraw.page 
-{:id "69aa351a-2783-4ae3-9199-957dade29c43"
+{:id "69aac38a-5aec-4cd7-a26b-c8df11ab92b3"
 :name "rag后处理"
 :bindings 
 {:7a63a0c0-1900-11f1-a226-a7f101db9430 
@@ -320,7 +322,7 @@
 :nonce 1
 :assets []
 :shapes-index ("87ae2f70-1900-11f1-a226-a7f101db9430" "54a0ba30-1900-11f1-a226-a7f101db9430" "60741230-1900-11f1-a226-a7f101db9430" "64852da0-1900-11f1-a226-a7f101db9430" "698515e0-1900-11f1-a226-a7f101db9430" "7a63c7d0-1900-11f1-a226-a7f101db9430" "8047a772-1900-11f1-a226-a7f101db9430" "820ef9f2-1900-11f1-a226-a7f101db9430")}}
-:block/updated-at 1772762771614
+:block/updated-at 1772852087256
 :block/created-at 1772762394002
 :block/type "whiteboard"
 :block/name "rag后处理"

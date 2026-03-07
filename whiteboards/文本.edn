@@ -1,0 +1,53 @@
+{:blocks (
+{:block/content "文本"
+:block/format :markdown
+:block/left 
+{:block/uuid #uuid "69ab91d8-332b-4ea2-a310-9689018c8424"}
+:block/parent 
+{:block/uuid #uuid "69ab91d8-332b-4ea2-a310-9689018c8424"}
+:block/uuid #uuid "69ab91e0-1516-446e-bab4-5a5f7390dfd4"} 
+{:block/created-at 1772851683892
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "B"
+:stroke ""
+:rotation 0
+:collapsed false
+:borderRadius 8
+:index 0
+:scale [1 1]
+:pageId "69ab91e0-1516-446e-bab4-5a5f7390dfd4"
+:scaleLevel "md"
+:fill ""
+:compact true
+:isAutoResizing true
+:type "logseq-portal"
+:size [64 41]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "0c95ec80-19d0-11f1-891e-05d7b991e475"
+:noFill false
+:point [384 224]
+:parentId "69ab91d8-332b-4ea2-a310-9689018c8424"
+:collapsedHeight 0
+:nonce 1772851678075}}
+:block/updated-at 1772851683892})
+:pages (
+{:block/uuid #uuid "69ab91d8-332b-4ea2-a310-9689018c8424"
+:block/properties 
+{:ls-type :whiteboard-page
+:logseq.tldraw.page 
+{:id "69ab91d8-332b-4ea2-a310-9689018c8424"
+:name "文本"
+:bindings 
+{}
+:nonce 1
+:assets []
+:shapes-index ("0c95ec80-19d0-11f1-891e-05d7b991e475")}}
+:block/updated-at 1772851683892
+:block/created-at 1772851672421
+:block/type "whiteboard"
+:block/name "文本"
+:block/original-name "文本"})}

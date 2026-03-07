@@ -971,14 +971,14 @@
 :nonce 1772770226927
 :italic false}}
 :block/updated-at 1772770354451} 
-{:block/content "文档图文拆分（文本 + 图片）"
+{:block/content "文档图文拆分（文本 + 图片）\nid:: 69aa4ffd-4d68-4602-8da6-a420a4fd0451"
 :block/format :markdown
 :block/left 
 {:block/uuid #uuid "69aa4fd9-368e-4f63-9311-75ba061b2806"}
 :block/parent 
 {:block/uuid #uuid "69aa4738-402e-44d0-9990-ce4329b716c2"}
 :block/properties 
-{}
+{:id "69aa4ffd-4d68-4602-8da6-a420a4fd0451"}
 :block/uuid #uuid "69aa4ffd-4d68-4602-8da6-a420a4fd0451"} 
 {:block/created-at 1772770354451
 :block/properties 
@@ -1114,12 +1114,14 @@
 :block/parent 
 {:block/uuid #uuid "69aa4738-402e-44d0-9990-ce4329b716c2"}
 :block/uuid #uuid "69aa47fb-d746-4e7d-9c05-626611c525e7"} 
-{:block/content "图片"
+{:block/content "图片\nid:: 69aa47b5-27e0-4b03-bf81-2e4ce3266ab9"
 :block/format :markdown
 :block/left 
 {:block/uuid #uuid "69aa47a4-2320-4a7e-b0e3-3a5f03d29302"}
 :block/parent 
 {:block/uuid #uuid "69aa4738-402e-44d0-9990-ce4329b716c2"}
+:block/properties 
+{:id "69aa47b5-27e0-4b03-bf81-2e4ce3266ab9"}
 :block/uuid #uuid "69aa47b5-27e0-4b03-bf81-2e4ce3266ab9"} 
 {:block/content "按簇分 Collection / 知识库"
 :block/format :markdown
@@ -1486,7 +1488,7 @@
 :nonce 1
 :assets []
 :shapes-index ("9843ec50-1912-11f1-a226-a7f101db9430" "794951f0-1912-11f1-a226-a7f101db9430" "10380f00-190b-11f1-a226-a7f101db9430" "37797f40-190b-11f1-a226-a7f101db9430" "40dc2560-190b-11f1-a226-a7f101db9430" "1b2f93b0-1910-11f1-a226-a7f101db9430" "311e5a80-1910-11f1-a226-a7f101db9430" "4b9345b0-1910-11f1-a226-a7f101db9430" "61ccf830-1910-11f1-a226-a7f101db9430" "6eae64d0-1910-11f1-a226-a7f101db9430" "77e0fa40-1910-11f1-a226-a7f101db9430" "816cd340-1910-11f1-a226-a7f101db9430" "28bc3f00-1911-11f1-a226-a7f101db9430" "9fb6c5d0-1911-11f1-a226-a7f101db9430" "a9eaecc0-1911-11f1-a226-a7f101db9430" "de2410c0-1911-11f1-a226-a7f101db9430" "0acb7e10-1912-11f1-a226-a7f101db9430" "2e52a572-1912-11f1-a226-a7f101db9430" "3161e142-1912-11f1-a226-a7f101db9430" "33ea87f0-1912-11f1-a226-a7f101db9430" "3e4c0072-1912-11f1-a226-a7f101db9430" "41acdeb2-1912-11f1-a226-a7f101db9430" "451a4012-1912-11f1-a226-a7f101db9430" "49018c62-1912-11f1-a226-a7f101db9430" "4b05c0d2-1912-11f1-a226-a7f101db9430" "4d027b32-1912-11f1-a226-a7f101db9430" "54a8a442-1912-11f1-a226-a7f101db9430" "5754d880-1912-11f1-a226-a7f101db9430" "5b1dc762-1912-11f1-a226-a7f101db9430" "5d619ce2-1912-11f1-a226-a7f101db9430" "5f81e4d2-1912-11f1-a226-a7f101db9430" "67d4efb2-1912-11f1-a226-a7f101db9430" "6acd6f30-1912-11f1-a226-a7f101db9430" "6d259002-1912-11f1-a226-a7f101db9430")}}
-:block/updated-at 1772790941809
+:block/updated-at 1772852223091
 :block/created-at 1772767032330
 :block/type "whiteboard"
 :block/name "图文知识库"
