@@ -4,7 +4,6 @@ type:: 概念
 status:: 草稿 | 整理中 | 已掌握
 
 	- ## 🧠 一句话说清楚（费曼）
-	  collapsed:: true
 		- {{费曼法表述清楚}}
 	- ## 💘企业开发场景
 	  collapsed:: true
