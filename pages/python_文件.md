@@ -21,7 +21,7 @@
 	- ```python
 	  f = open('python.txt', 'w', encoding='utf-8')
 	  ```
-- 文件的读取操作
+- 文件的读取操作：open()
 	- ```python
 	  # 一、读取所有内容
 	  # 1、打开文件
@@ -68,3 +68,62 @@
 	  | ab | 以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。 |
 	  | a+ | 打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。 |
 	  | ab+ | 以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。 |
+	- > 虽然mode文件操作模式很多，但是我们只需要记住3个字符即可。r、w、a
+	- > r+、w+、a+，代加号，功能全，既能读，又能写（区别在于指针到底指向不同）
+	- > rb、wb、ab，代b的字符，代表以二进制的形式对其进行操作，适合读取文本或二进制格式文件，如图片、音频、视频等格式
+	- > rb+、wb+、ab+，代加号，功能全，既能读，又能写（区别在于指针到底指向不同）
+- with-open语句
+	- ```python
+	  格式:
+	    with open('路径', '模式', '码表') as 别名,  open('路径', '模式', '码表') as 别名:
+	      语句体
+	  
+	  特点:
+	    语句体执行结束后, with后边定义的变量, 会自动被释放.
+	  
+	  # 字节码
+	  with open(file="C:/AI授课实施/【南京】AI大模型试学入门课_智能聊天机器人/day06_Python文件与异常/视频/01-【作业】day04作业一说明.avi",mode='rb') as read_f,
+	  open(file="C:/AI授课实施/01-【作业】day04作业一说明.avi",mode='wb') as write_f:
+	      # 2- 执行相关操作:
+	      # 2.1 先读取文件
+	      while True:
+	          read_data = read_f.read(5242880)
+	          # 判断, 当read_data为空的时候, 说明读取完成了
+	          if not read_data:
+	              print("读取完成")
+	              break
+	  
+	          # 2.2 将数据写入到 目的地
+	          write_f.write(read_data)
+	  
+	  # 3- 关闭文件: with open 自动关闭
+	  # write_f.close()
+	  # read_f.close()
+	  
+	  
+	  
+	  # 文本
+	  with open(file='./data/a.txt',mode='r',encoding='UTF-8') as read_f, 
+	  open(file='./data/b.txt',mode='w',encoding='UTF-8') as write_f:
+	      # 2- 执行相关操作
+	      # 2.1 一行一行的读取文件
+	      while True:
+	          line = read_f.readline()
+	          # 如果读取不到了, 说明已经读完了, 需要退出循环
+	          if not line:
+	              print("读取完成")
+	              break
+	          # 2.2 去除每一行结尾的换行符
+	          line = line.replace('\n','')
+	  
+	          # 2.3  执行反转操作
+	          line = line[::-1]
+	  
+	          # 2.4 将数据写入到目的地
+	          write_f.write(line+'\n')
+	  
+	          
+	  # 仅打开1个文件（完全合法，也是最常见的用法）
+	  with open('test.txt', 'r', encoding='utf-8') as f:
+	      print(f.read())        
+	  ```

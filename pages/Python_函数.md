@@ -71,23 +71,19 @@
 	  print(type(result))  # <class 'tuple'>
 	  ```
 - 全局变量的修改：python中定义的全局变量（数值、字符串、布尔类型、元组类型）修改时需要加上`global`,`可变类型`(引用可变)可以不加global关键字。
+  id:: 69acc1ca-862a-44a6-b456-69a0947a7366
 	- ```python
-	  # 定义全局变量num = 10
 	  num = 10
-	  # 定义一个函数func
 	  def func():
-	      # 尝试在局部作用域中修改全局变量
 	      num = 20
-	  # 调用函数func
 	  func()
-	  # 尝试访问全局变量num
 	  print(num) # 输出：10
-	  
 	  
 	  def func():
 	      # 加上global才能修改全局变量
 	      global num
 	      num = 20
+	  print(num) # 输出：20
 	  ```
 - 函数缺省参数（默认值）：定义缺省参数要写在参数列表最后
 	- ```python
@@ -99,6 +95,7 @@
 	  user_info('婉儿', 18, '女')
 	  ```
 - 不定长元组（位置）参数
+  id:: 69acc1ca-0073-45d8-9c82-6a027c9e554a
 	- ```python
 	  def user_info(*args):
 	      # print(args)  # 元组类型数据，对传递参数有顺序要求
@@ -108,6 +105,7 @@
 	  user_info('Tom', 23, '美国纽约')
 	  ```
 - 不定长字典（关键字）参数
+  id:: 69acc1ca-6c1c-459a-8bc3-891c5586b438
 	- ```python
 	  def user_info(**kwargs):
 	      # print(kwargs)  # 字典类型数据，对传递参数没有顺序要求，格式要求key = value值

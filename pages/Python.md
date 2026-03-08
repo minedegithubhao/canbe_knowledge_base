@@ -14,3 +14,9 @@
 - [[python_lambda函数]]
 - [[python_文件]]
   id:: 69ac0e8f-281a-4bd8-af53-4fdd9497185f
+- [[Python_异常]]
+-
+- [[Python_Api调用]]
+- [[Python_类]]
+- [[Python_闭包]]
+- [[Python_装饰器]]
