@@ -38,7 +38,7 @@
 	  print(counter1.increment())  # 2
 	  print(counter2.increment())  # 1
 	  ```
-- `nonlocal`关键字和`global`关键字的区别 #card #Python/基础知识
+- `nonlocal`关键字和`global`关键字的区别
 	- nonlocal关键字（在函数内部修改函数外部的变量，这个变量非全局变量）
 		- ```python
 		  '''

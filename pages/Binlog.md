@@ -1,7 +1,8 @@
-- alias::
-  tags::
-  type:: 概念
-  status:: 草稿 | 整理中 | 已掌握
+alias::
+tags:: /大模型1/binlog/new
+type:: 概念
+status:: 整理中
+
 	- ## 🧠 一句话说清楚（费曼）
 		- Binlog是MySQL二进制日志，记录着Mysql所有数据新增/修改/删除操作，是 [[ES]] 同步的数据源；
 	- ## 💘企业开发场景
