@@ -9,7 +9,7 @@
 :borderRadius 8
 :index 1
 :scale [1 1]
-:pageId "Masked Self-Attention"
+:pageId "大模型/Transformer/Decoder/Masked Self-Attention"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -36,7 +36,7 @@
 :borderRadius 8
 :index 2
 :scale [1 1]
-:pageId "FFN"
+:pageId "大模型/Transformer/FFN"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -63,7 +63,7 @@
 :borderRadius 8
 :index 3
 :scale [1 1]
-:pageId "Cross-Attention"
+:pageId "大模型/Transformer/Decoder/Cross-Attention"
 :scaleLevel "md"
 :fill ""
 :compact false

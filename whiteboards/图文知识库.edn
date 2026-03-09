@@ -1,4 +1,13 @@
 {:blocks (
+{:block/content "文档图文拆分（文本 + 图片）\nid:: 69aa4ffd-4d68-4602-8da6-a420a4fd0451"
+:block/format :markdown
+:block/left 
+{:block/uuid #uuid "69aa4fd9-368e-4f63-9311-75ba061b2806"}
+:block/parent 
+{:block/uuid #uuid "69aa4738-402e-44d0-9990-ce4329b716c2"}
+:block/properties 
+{:id "69aa4ffd-4d68-4602-8da6-a420a4fd0451"}
+:block/uuid #uuid "69aa4ffd-4d68-4602-8da6-a420a4fd0451"} 
 {:block/created-at 1772770354451
 :block/properties 
 {:ls-type :whiteboard-shape
@@ -38,7 +47,7 @@
 :borderRadius 8
 :index 14
 :scale [1 1]
-:pageId "文档清洗"
+:pageId "大模型/RAG/文档清洗"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -462,7 +471,7 @@
 :borderRadius 8
 :index 13
 :scale [1 1]
-:pageId "文档聚类"
+:pageId "大模型/RAG/文档聚类"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -580,7 +589,7 @@
 :borderRadius 8
 :index 16
 :scale [1 1]
-:pageId "文档切分"
+:pageId "大模型/RAG/文档切分"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -971,15 +980,6 @@
 :nonce 1772770226927
 :italic false}}
 :block/updated-at 1772770354451} 
-{:block/content "文档图文拆分（文本 + 图片）\nid:: 69aa4ffd-4d68-4602-8da6-a420a4fd0451"
-:block/format :markdown
-:block/left 
-{:block/uuid #uuid "69aa4fd9-368e-4f63-9311-75ba061b2806"}
-:block/parent 
-{:block/uuid #uuid "69aa4738-402e-44d0-9990-ce4329b716c2"}
-:block/properties 
-{:id "69aa4ffd-4d68-4602-8da6-a420a4fd0451"}
-:block/uuid #uuid "69aa4ffd-4d68-4602-8da6-a420a4fd0451"} 
 {:block/created-at 1772770354451
 :block/properties 
 {:ls-type :whiteboard-shape
@@ -1027,7 +1027,7 @@
 :borderRadius 8
 :index 12
 :scale [1 1]
-:pageId "向量库"
+:pageId "大模型/RAG/向量库"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -1148,7 +1148,7 @@
 :borderRadius 8
 :index 15
 :scale [1 1]
-:pageId "ES库"
+:pageId "大模型/RAG/混合检索/ES"
 :scaleLevel "md"
 :fill ""
 :compact false

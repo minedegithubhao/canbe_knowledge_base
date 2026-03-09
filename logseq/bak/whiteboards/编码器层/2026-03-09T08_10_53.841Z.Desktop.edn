@@ -1,0 +1,140 @@
+{:blocks (
+{:block/created-at 1772798941200
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:collapsed true
+:borderRadius 8
+:index 1
+:scale [1 1]
+:pageId "Self-Attention"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing false
+:type "logseq-portal"
+:size [400 40]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "1e17f7f0-189f-11f1-b503-ff1d46509324"
+:noFill false
+:point [288 224]
+:parentId "69a99241-2b29-4892-b7e9-f8e8be0e7b6d"
+:collapsedHeight 206
+:nonce 1772720710990}}
+:block/updated-at 1772798941200} 
+{:block/created-at 1772798941201
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:collapsed true
+:borderRadius 8
+:index 2
+:scale [1 1]
+:pageId "FFN"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing false
+:type "logseq-portal"
+:size [400 40]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "4e9facb0-189f-11f1-b503-ff1d46509324"
+:noFill false
+:point [288 352]
+:parentId "69a99241-2b29-4892-b7e9-f8e8be0e7b6d"
+:collapsedHeight 175
+:nonce 1772720792397}}
+:block/updated-at 1772798941201} 
+{:block/created-at 1772798941201
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:stroke ""
+:index 3
+:scale [1 1]
+:scaleLevel "md"
+:fill ""
+:type "line"
+:strokeType "line"
+:strokeWidth 1
+:opacity 1
+:label ""
+:id "3e8d05a0-1955-11f1-b7ce-bdb5f8afc9bb"
+:fontWeight 400
+:noFill true
+:point [488 265]
+:fontSize 20
+:handles 
+{:start 
+{:id "start"
+:canBind true
+:point [0 0]
+:bindingId "3e8cde90-1955-11f1-b7ce-bdb5f8afc9bb"}
+:end 
+{:id "end"
+:canBind true
+:point [0 83]
+:bindingId "3e8cde91-1955-11f1-b7ce-bdb5f8afc9bb"}}
+:decorations 
+{:end "arrow"}
+:parentId "69aac38a-e114-4dd7-8f15-0959e357f027"
+:nonce 1772798933858
+:italic false}}
+:block/updated-at 1772798941201} 
+{:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:children ["1e17f7f0-189f-11f1-b503-ff1d46509324" "4e9facb0-189f-11f1-b503-ff1d46509324" "3e8d05a0-1955-11f1-b7ce-bdb5f8afc9bb"]
+:index 0
+:scale [1 1]
+:type "group"
+:size [0 0]
+:id "42fc94c0-1955-11f1-b7ce-bdb5f8afc9bb"
+:point [0 0]
+:parentId "69aac38a-e114-4dd7-8f15-0959e357f027"
+:nonce 1772798941196}}
+:block/updated-at 1772798941197})
+:pages (
+{:block/alias [
+{:db/id 226} 
+{:db/id 438}]
+:block/uuid #uuid "69aac38a-e114-4dd7-8f15-0959e357f027"
+:block/properties 
+{:ls-type :whiteboard-page
+:logseq.tldraw.page 
+{:id "69aac38a-e114-4dd7-8f15-0959e357f027"
+:name "编码器层"
+:bindings 
+{:3e8cde90-1955-11f1-b7ce-bdb5f8afc9bb 
+{:id "3e8cde90-1955-11f1-b7ce-bdb5f8afc9bb"
+:type "line"
+:fromId "3e8d05a0-1955-11f1-b7ce-bdb5f8afc9bb"
+:toId "1e17f7f0-189f-11f1-b503-ff1d46509324"
+:handleId "start"
+:point [0.5 0.5]
+:distance 4}
+:3e8cde91-1955-11f1-b7ce-bdb5f8afc9bb 
+{:id "3e8cde91-1955-11f1-b7ce-bdb5f8afc9bb"
+:type "line"
+:fromId "3e8d05a0-1955-11f1-b7ce-bdb5f8afc9bb"
+:toId "4e9facb0-189f-11f1-b503-ff1d46509324"
+:handleId "end"
+:point [0.5 0.5]
+:distance 4}}
+:nonce 1
+:assets []
+:shapes-index ("42fc94c0-1955-11f1-b7ce-bdb5f8afc9bb" "1e17f7f0-189f-11f1-b503-ff1d46509324" "4e9facb0-189f-11f1-b503-ff1d46509324" "3e8d05a0-1955-11f1-b7ce-bdb5f8afc9bb")}}
+:block/journal? false
+:block/updated-at 1772798941200
+:block/created-at 1772720705414
+:block/type "whiteboard"
+:block/name "编码器层"
+:block/original-name "编码器层"})}

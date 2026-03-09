@@ -1,0 +1,5 @@
+- Join
+	- ![image.png](../assets/image_1773015476592_0.png)
+- `union`：默认去重
+- `union all`：不去重
+-

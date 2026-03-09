@@ -1,0 +1,27 @@
+- `LOWER()`：转换为小写
+	- > SELECT LOWER('Hello World!');
+- `UPPER()`：转换为大写
+	- > SELECT UPPER('Hello World!');
+- `REVERSE()`：字符串反转
+	- > SELECT REVERSE('123456'); --输出： '654321'
+- `REPEAT()`：多个相同字符串拼接
+	- > SELECT REPEAT('象飞田', 3);  --输出：象飞田象飞田象飞田
+- `CONCAT()`：字符串拼接
+	- > SELECT CONCAT('马走日', '象飞田'); -- 输出：马走日象飞田
+	  SELECT CONCAT(10.15, '%'); -- 输出：10.15%
+- `CONCAT_WS()`：指定分隔符拼接字符串
+	- >SELECT CONCAT_WS('^_^', '马走日', '象飞田'); -- 输出：马走日^_^象飞田
+- `REPLACE()`：字符串替换
+	- > SELECT REPLACE('赢赢赢士角炮巡河车赢', '赢', '输') -- 输出：输输输士角炮巡河车输
+- `SUBSTR(str, n, m)`：从 str 字符串的第 n 个字符(注意：n不是下标)往后截取 m 个字符，返回子串；m可省略，表示截取到末尾。
+	- > SELECT SUBSTR('五七炮屏风马', 3, 1); -- 输出：炮
+- `SUBSTRING()`：等同`SUBSTR()`
+- `LEFT()`：从左截取n个字符
+	- > SELECT LEFT('仙人指路，急进中兵', 4); -- 输出：仙人指路
+- `RIGHT()`：从右截取n个字符
+	- >SELECT RIGHT('仙人指路，急进中兵', 4);  -- 输出： 急进中兵
+- `CHAR_LENGTH()`： 字符串长度
+	- > SELECT CHAR_LENGTH('仙人指路，急进中兵'); -- 输出：9
+- `LENGTH()`：存储长度，utf8编码格式一个中文占3个字节
+	- > SELECT LENGTH('仙人指路，急进中兵'); -- 输出：27
+	  SELECT LENGTH('仙人指路,急进中兵'); -- 输出：25，英文逗号和中文长度不一样

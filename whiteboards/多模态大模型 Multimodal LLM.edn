@@ -1,5 +1,5 @@
 {:blocks (
-{:block/created-at 1772725358589
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -16,7 +16,7 @@
 :id "35ee7b70-18a8-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill true
-:point [64 186]
+:point [72 186]
 :fontSize 20
 :handles 
 {:start 
@@ -32,10 +32,10 @@
 :decorations 
 {:end "arrow"}
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772724616519
+:nonce 1772724616529
 :italic false}}
-:block/updated-at 1772725358589} 
-{:block/created-at 1772725339107
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -58,12 +58,12 @@
 :opacity 1
 :id "68915130-186a-11f1-86d7-fd4f66a95d49"
 :noFill false
-:point [192 272]
+:point [200 272]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 1294.999875094523
-:nonce 1772698073099}}
-:block/updated-at 1772725339107} 
-{:block/created-at 1772725339107
+:nonce 1772698073109}}
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -80,7 +80,7 @@
 :id "3bfc5142-18a8-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill true
-:point [256 186]
+:point [264 186]
 :fontSize 20
 :handles 
 {:start 
@@ -96,9 +96,9 @@
 :decorations 
 {:end "arrow"}
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772724626639
+:nonce 1772724626649
 :italic false}}
-:block/updated-at 1772725339107} 
+:block/updated-at 1773042043596} 
 {:block/content "音频"
 :block/format :markdown
 :block/left 
@@ -106,7 +106,7 @@
 :block/parent 
 {:block/uuid #uuid "69a8286a-d993-4481-b9d2-200846609369"}
 :block/uuid #uuid "69a8288a-3583-4898-9cf6-c5f5f4c37c22"} 
-{:block/created-at 1772725339107
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -116,7 +116,7 @@
 :borderRadius 8
 :index 10
 :scale [1 1]
-:pageId "线性层"
+:pageId "大模型/Transformer/线性层"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -128,11 +128,11 @@
 :opacity 1
 :id "5b8c1080-17c8-11f1-b503-ff1d46509324"
 :noFill false
-:point [160 1104]
+:point [168 1104]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 107.00005738900292
-:nonce 1772628473353}}
-:block/updated-at 1772725339107} 
+:nonce 1772628473363}}
+:block/updated-at 1773042043596} 
 {:block/content "token序列"
 :block/format :markdown
 :block/left 
@@ -142,7 +142,7 @@
 :block/properties 
 {}
 :block/uuid #uuid "69a828e8-3d26-4128-99a4-d12dbffb0c14"} 
-{:block/created-at 1772725339108
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -165,11 +165,11 @@
 :opacity 1
 :id "8428c070-17c7-11f1-b503-ff1d46509324"
 :noFill false
-:point [576 144]
+:point [584 144]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 0
-:nonce 1772628111139}}
-:block/updated-at 1772725339108} 
+:nonce 1772628111149}}
+:block/updated-at 1773042043596} 
 {:block/content "视频"
 :block/format :markdown
 :block/left 
@@ -184,7 +184,7 @@
 :block/parent 
 {:block/uuid #uuid "69a8286a-d993-4481-b9d2-200846609369"}
 :block/uuid #uuid "69a82882-24c8-432d-ba11-407c6d5af73c"} 
-{:block/created-at 1772725339107
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -195,7 +195,7 @@
 :borderRadius 8
 :index 6
 :scale [1 1]
-:pageId "文本嵌入"
+:pageId "大模型/RAG/文本嵌入"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -207,12 +207,12 @@
 :opacity 1
 :id "8e44f290-17c7-11f1-b503-ff1d46509324"
 :noFill false
-:point [0 272]
+:point [8 272]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 139
-:nonce 1772628128328}}
-:block/updated-at 1772725339107} 
-{:block/created-at 1772725358553
+:nonce 1772628128338}}
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -235,11 +235,11 @@
 :opacity 1
 :id "72385060-17c7-11f1-b503-ff1d46509324"
 :noFill false
-:point [0 144]
+:point [8 144]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 0
-:nonce 1772628080886}}
-:block/updated-at 1772725358553} 
+:nonce 1772628080896}}
+:block/updated-at 1773042043596} 
 {:block/content "Token序列"
 :block/format :markdown
 :block/left 
@@ -249,7 +249,7 @@
 :block/properties 
 {}
 :block/uuid #uuid "69a9a36e-f268-4296-ae8b-99939ca046c8"} 
-{:block/created-at 1772725339107
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -272,12 +272,12 @@
 :opacity 1
 :id "79e3a990-17c7-11f1-b503-ff1d46509324"
 :noFill false
-:point [192 144]
+:point [200 144]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 0
-:nonce 1772628094417}}
-:block/updated-at 1772725339107} 
-{:block/created-at 1772758747738
+:nonce 1772628094427}}
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -294,7 +294,7 @@
 :id "d6741ef2-18a9-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill true
-:point [403.45 313]
+:point [411.45 313]
 :fontSize 20
 :handles 
 {:start 
@@ -310,10 +310,10 @@
 :decorations 
 {:end "arrow"}
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772725315263
+:nonce 1772725315273
 :italic false}}
-:block/updated-at 1772758747738} 
-{:block/created-at 1772725339106
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -335,12 +335,12 @@
 :opacity 1
 :id "73342010-17c8-11f1-b503-ff1d46509324"
 :noFill false
-:point [160 1232]
+:point [168 1232]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 107
-:nonce 1772628512968}}
-:block/updated-at 1772725339106} 
-{:block/created-at 1772725339108
+:nonce 1772628512978}}
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -363,12 +363,12 @@
 :opacity 1
 :id "7f779470-17c7-11f1-b503-ff1d46509324"
 :noFill false
-:point [384 144]
+:point [392 144]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 0
-:nonce 1772628103373}}
-:block/updated-at 1772725339108} 
-{:block/created-at 1772758743810
+:nonce 1772628103383}}
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -385,7 +385,7 @@
 :id "d0664921-18a9-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill true
-:point [81.34 313]
+:point [89.34 313]
 :fontSize 20
 :handles 
 {:start 
@@ -401,10 +401,10 @@
 :decorations 
 {:end "arrow"}
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772725305078
+:nonce 1772725305088
 :italic false}}
-:block/updated-at 1772758743810} 
-{:block/created-at 1772725339108
+:block/updated-at 1773042043596} 
+{:block/created-at 1773043312861
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -421,7 +421,7 @@
 :id "87054d42-18a8-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill true
-:point [360 875]
+:point [368 875]
 :fontSize 20
 :handles 
 {:start 
@@ -437,10 +437,10 @@
 :decorations 
 {:end "arrow"}
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772724752555
+:nonce 1772724752567
 :italic false}}
-:block/updated-at 1772725339108} 
-{:block/created-at 1772725339108
+:block/updated-at 1773043312861} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -462,12 +462,12 @@
 :opacity 1
 :id "4ba10d60-17c8-11f1-b503-ff1d46509324"
 :noFill false
-:point [160 976]
+:point [168 976]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 107.00005738900292
-:nonce 1772628446335}}
-:block/updated-at 1772725339108} 
-{:block/created-at 1772725339107
+:nonce 1772628446345}}
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -484,7 +484,7 @@
 :id "4e1b4b62-18a8-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill true
-:point [448 186]
+:point [456 186]
 :fontSize 20
 :handles 
 {:start 
@@ -500,10 +500,10 @@
 :decorations 
 {:end "arrow"}
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772724657153
+:nonce 1772724657163
 :italic false}}
-:block/updated-at 1772725339107} 
-{:block/created-at 1772725339107
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -525,12 +525,12 @@
 :opacity 1
 :id "bf46bda0-18a9-11f1-84f4-f96af76e506b"
 :noFill false
-:point [160 400]
+:point [168 400]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 160.99999444231867
-:nonce 1772725276461}}
-:block/updated-at 1772725339107} 
-{:block/created-at 1772725339107
+:nonce 1772725276471}}
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -541,7 +541,7 @@
 :borderRadius 8
 :index 8
 :scale [1 1]
-:pageId "视频编码器"
+:pageId "大模型/RAG/视频编码器"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -553,11 +553,11 @@
 :opacity 1
 :id "ab6cc8c0-17c7-11f1-b503-ff1d46509324"
 :noFill false
-:point [576 272]
+:point [584 272]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 107.00001181538295
-:nonce 1772628177074}}
-:block/updated-at 1772725339107} 
+:nonce 1772628177084}}
+:block/updated-at 1773042043596} 
 {:block/content "Token"
 :block/format :markdown
 :block/left 
@@ -565,7 +565,7 @@
 :block/parent 
 {:block/uuid #uuid "69a8286a-d993-4481-b9d2-200846609369"}
 :block/uuid #uuid "69a9a398-35d3-4471-a85c-e575a87e5a0c"} 
-{:block/created-at 1772725339107
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -582,7 +582,7 @@
 :id "52ab33c0-18a8-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill true
-:point [640 186]
+:point [648 186]
 :fontSize 20
 :handles 
 {:start 
@@ -598,10 +598,10 @@
 :decorations 
 {:end "arrow"}
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772724664740
+:nonce 1772724664750
 :italic false}}
-:block/updated-at 1772725339107} 
-{:block/created-at 1772725339107
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -618,7 +618,7 @@
 :id "ddc968e2-18a9-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill true
-:point [360 441]
+:point [368 441]
 :fontSize 20
 :handles 
 {:start 
@@ -634,9 +634,9 @@
 :decorations 
 {:end "arrow"}
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772725327576
+:nonce 1772725327586
 :italic false}}
-:block/updated-at 1772725339107} 
+:block/updated-at 1773042043596} 
 {:block/content "Self-Attention"
 :block/format :markdown
 :block/left 
@@ -644,7 +644,7 @@
 :block/parent 
 {:block/uuid #uuid "69a8286a-d993-4481-b9d2-200846609369"}
 :block/uuid #uuid "69a82972-d953-487c-9942-0b25306ca32d"} 
-{:block/created-at 1772725339108
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -661,7 +661,7 @@
 :id "89650f32-18a8-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill true
-:point [360 1017]
+:point [368 1017]
 :fontSize 20
 :handles 
 {:start 
@@ -677,10 +677,10 @@
 :decorations 
 {:end "arrow"}
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772724756535
+:nonce 1772724756545
 :italic false}}
-:block/updated-at 1772725339108} 
-{:block/created-at 1772725339107
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -691,7 +691,7 @@
 :borderRadius 8
 :index 7
 :scale [1 1]
-:pageId "音频编码器"
+:pageId "大模型/RAG/音频编码器"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -703,11 +703,11 @@
 :opacity 1
 :id "a42c8d70-17c7-11f1-b503-ff1d46509324"
 :noFill false
-:point [384 272]
+:point [392 272]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 107.00001181538295
-:nonce 1772628165097}}
-:block/updated-at 1772725339107} 
+:nonce 1772628165107}}
+:block/updated-at 1773042043596} 
 {:block/content "Soft"
 :block/format :markdown
 :block/left 
@@ -715,7 +715,7 @@
 :block/parent 
 {:block/uuid #uuid "69a8286a-d993-4481-b9d2-200846609369"}
 :block/uuid #uuid "69a82a09-da9a-4b18-a583-c71dbb379d53"} 
-{:block/created-at 1772725339108
+{:block/created-at 1773043312852
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -731,18 +731,18 @@
 :compact false
 :isAutoResizing true
 :type "logseq-portal"
-:size [400 346.0000031221657]
+:size [400 346.0000274424621]
 :strokeType "line"
 :strokeWidth 2
 :opacity 1
 :id "17adbb30-18a8-11f1-84f4-f96af76e506b"
 :noFill false
-:point [160 528]
+:point [168 528]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
 :collapsedHeight 0
-:nonce 1772724565647}}
-:block/updated-at 1772725339108} 
-{:block/created-at 1772725339107
+:nonce 1772724565661}}
+:block/updated-at 1773043312852} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -759,7 +759,7 @@
 :id "8c882122-18a8-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill true
-:point [360 1145]
+:point [368 1145]
 :fontSize 20
 :handles 
 {:start 
@@ -775,10 +775,10 @@
 :decorations 
 {:end "arrow"}
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772724761769
+:nonce 1772724761779
 :italic false}}
-:block/updated-at 1772725339107} 
-{:block/created-at 1772758740844
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -795,7 +795,7 @@
 :id "d41d84c0-18a9-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill true
-:point [256.22 313]
+:point [264.22 313]
 :fontSize 20
 :handles 
 {:start 
@@ -811,10 +811,10 @@
 :decorations 
 {:end "arrow"}
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772725311286
+:nonce 1772725311296
 :italic false}}
-:block/updated-at 1772758740844} 
-{:block/created-at 1772725339108
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -822,7 +822,7 @@
 :borderRadius 2
 :index 1
 :scale [1 1]
-:refs ["多模态大模型"]
+:refs ["大模型/Transformer/多模态"]
 :scaleLevel "md"
 :fill "green"
 :type "box"
@@ -834,13 +834,13 @@
 :id "9fb52fe0-18a8-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill false
-:point [-88 24]
+:point [-80 24]
 :fontSize 20
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772724793938
+:nonce 1772724793948
 :italic false}}
-:block/updated-at 1772725339108} 
-{:block/created-at 1772725339107
+:block/updated-at 1773042043596} 
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -850,10 +850,10 @@
 :type "group"
 :size [0 0]
 :id "e4b394f0-18a9-11f1-84f4-f96af76e506b"
-:point [0 0]
+:point [8 0]
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772725339071}}
-:block/updated-at 1772725339107} 
+:nonce 1772725339081}}
+:block/updated-at 1773042043596} 
 {:block/content "文本\nid:: 69a82878-b171-442d-bf0b-2939735a0040"
 :block/format :markdown
 :block/left 
@@ -863,7 +863,7 @@
 :block/properties 
 {:id "69a82878-b171-442d-bf0b-2939735a0040"}
 :block/uuid #uuid "69a82878-b171-442d-bf0b-2939735a0040"} 
-{:block/created-at 1772758753890
+{:block/created-at 1773042043596
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -880,7 +880,7 @@
 :id "d99275f0-18a9-11f1-84f4-f96af76e506b"
 :fontWeight 400
 :noFill true
-:point [492.79 313]
+:point [500.79 313]
 :fontSize 20
 :handles 
 {:start 
@@ -896,9 +896,9 @@
 :decorations 
 {:end "arrow"}
 :parentId "69a8286a-d993-4481-b9d2-200846609369"
-:nonce 1772725320519
+:nonce 1772725320529
 :italic false}}
-:block/updated-at 1772758753890})
+:block/updated-at 1773042043596})
 :pages (
 {:block/uuid #uuid "69a8286a-d993-4481-b9d2-200846609369"
 :block/properties 
@@ -1110,7 +1110,7 @@
 :nonce 1
 :assets []
 :shapes-index ("e4b394f0-18a9-11f1-84f4-f96af76e506b" "9fb52fe0-18a8-11f1-84f4-f96af76e506b" "72385060-17c7-11f1-b503-ff1d46509324" "79e3a990-17c7-11f1-b503-ff1d46509324" "7f779470-17c7-11f1-b503-ff1d46509324" "8428c070-17c7-11f1-b503-ff1d46509324" "8e44f290-17c7-11f1-b503-ff1d46509324" "a42c8d70-17c7-11f1-b503-ff1d46509324" "ab6cc8c0-17c7-11f1-b503-ff1d46509324" "4ba10d60-17c8-11f1-b503-ff1d46509324" "5b8c1080-17c8-11f1-b503-ff1d46509324" "73342010-17c8-11f1-b503-ff1d46509324" "68915130-186a-11f1-86d7-fd4f66a95d49" "17adbb30-18a8-11f1-84f4-f96af76e506b" "35ee7b70-18a8-11f1-84f4-f96af76e506b" "3bfc5142-18a8-11f1-84f4-f96af76e506b" "4e1b4b62-18a8-11f1-84f4-f96af76e506b" "52ab33c0-18a8-11f1-84f4-f96af76e506b" "87054d42-18a8-11f1-84f4-f96af76e506b" "89650f32-18a8-11f1-84f4-f96af76e506b" "8c882122-18a8-11f1-84f4-f96af76e506b" "bf46bda0-18a9-11f1-84f4-f96af76e506b" "d0664921-18a9-11f1-84f4-f96af76e506b" "d41d84c0-18a9-11f1-84f4-f96af76e506b" "d6741ef2-18a9-11f1-84f4-f96af76e506b" "d99275f0-18a9-11f1-84f4-f96af76e506b" "ddc968e2-18a9-11f1-84f4-f96af76e506b")}}
-:block/updated-at 1772851631110
+:block/updated-at 1773043377548
 :block/created-at 1772628074800
 :block/type "whiteboard"
 :block/name "多模态大模型 multimodal llm"

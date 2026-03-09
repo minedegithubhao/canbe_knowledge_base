@@ -9,7 +9,7 @@
 :borderRadius 8
 :index 1
 :scale [1 1]
-:pageId "Self-Attention"
+:pageId "大模型/Transformer/Self-Attention"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -36,7 +36,7 @@
 :borderRadius 8
 :index 2
 :scale [1 1]
-:pageId "FFN"
+:pageId "大模型/Transformer/FFN"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -105,8 +105,9 @@
 :pages (
 {:block/alias [
 {:db/id 226} 
-{:db/id 438}]
-:block/uuid #uuid "69aac38a-e114-4dd7-8f15-0959e357f027"
+{:db/id 438} 
+{:db/id 834}]
+:block/uuid #uuid "69ae7995-fed6-4807-8aaa-58c9fd8789a4"
 :block/properties 
 {:ls-type :whiteboard-page
 :logseq.tldraw.page 
