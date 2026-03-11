@@ -299,7 +299,7 @@
  ;;  :charge-range    600}   ; Default value: 600
 
  ;; Favorites to list on the left sidebar
- :favorites ["大纲" "多模态大模型 Multimodal LLM" "纯文本RAG流程图" "图文知识库" "图文RAG流程图"]
+ :favorites ["图文知识库流程图" "大纲" "多模态大模型 Multimodal LLM" "纯文本RAG流程图" "图文知识库" "图文RAG流程图"]
 
  ;; Set flashcards interval.
  ;; Expected value:

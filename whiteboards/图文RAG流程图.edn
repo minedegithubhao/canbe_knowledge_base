@@ -342,7 +342,7 @@
 :borderRadius 8
 :index 7
 :scale [1 1]
-:pageId "图文知识库"
+:pageId "图文知识库流程图"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -526,9 +526,9 @@
 {:block/content "图片"
 :block/format :markdown
 :block/left 
-{:block/uuid #uuid "69ae7996-b3e9-4145-b514-3b96a0510715"}
+{:block/uuid #uuid "69af63aa-951d-4045-aa5e-c1920ee5595e"}
 :block/parent 
-{:block/uuid #uuid "69ae7996-b3e9-4145-b514-3b96a0510715"}
+{:block/uuid #uuid "69af63aa-951d-4045-aa5e-c1920ee5595e"}
 :block/uuid #uuid "69ab9184-d493-43d6-9635-a29085672241"} 
 {:block/created-at 1772852355486
 :block/properties 
@@ -890,7 +890,7 @@
 :italic false}}
 :block/updated-at 1772852355486})
 :pages (
-{:block/uuid #uuid "69ae7996-b3e9-4145-b514-3b96a0510715"
+{:block/uuid #uuid "69af63aa-951d-4045-aa5e-c1920ee5595e"
 :block/properties 
 {:ls-type :whiteboard-page
 :logseq.tldraw.page 
