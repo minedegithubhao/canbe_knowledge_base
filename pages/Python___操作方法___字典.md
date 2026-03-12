@@ -5,6 +5,13 @@
 	      print(key)
 	      print(person[key])
 	  ```
+- 判断字典的key是否存在
+	- ```python
+	  person = {'name': 'Tom', 'age': 20, 'gender': '男'}
+	  # 判断age是否在字典person中，如果存在就获取，否在就返回0
+	  count = person['age'] if 'age' in person else 0
+	  
+	  ```
 - 删除
 	- ```python
 	  person = {'name': 'Tom', 'age': 20, 'gender': '男'}

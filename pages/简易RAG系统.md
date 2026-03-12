@@ -16,7 +16,6 @@ status:: 草稿
 		  ```
 	- 构建知识库， [[图文知识库流程图]]
 		- 加载并切分文档（核心步骤不变）
-		  collapsed:: true
 			- ```python
 			  def load_and_split_doc():
 			      # 加载test.txt
@@ -80,7 +79,6 @@ status:: 草稿
 			      return response.content
 			  ```
 		- 主函数（串联所有步骤）
-		  collapsed:: true
 			- ```python
 			  if __name__ == "__main__":
 			      # 前置检查：确保Ollama服务已启动（终端运行 ollama run qwen2:0.5b）
