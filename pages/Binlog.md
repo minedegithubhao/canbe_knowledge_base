@@ -1,5 +1,5 @@
 alias::
-tags:: /大模型/binlog/new
+tags:: Mysql
 type:: 概念
 status:: 整理中
 

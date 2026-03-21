@@ -1,10 +1,10 @@
 alias::
-tags:: 模型,嵌入模型
+tags:: 模型
 type:: 概念
 status:: 草稿
 
 	- ## 🧠 一句话说清楚（费曼）
-		- m3e-base基于 Chinese-RoBERTa-wwm-ext 架构，使用 WordPiece 分词算法 对中文的分词规则：绝大多数单字 = 1 个 toke，token 数 ≈ 汉字数（误差 ±5%）。
+		- m3e-base是一款**嵌入模型**，基于 Chinese-RoBERTa-wwm-ext 架构，使用 WordPiece 分词算法 对中文的分词规则：绝大多数单字 = 1 个 toke，token 数 ≈ 汉字数（误差 ±5%）。
 	- ## 💘企业开发场景
 	  collapsed:: true
 		- {{实际企业开发当中的场景，按常见度由高往低排序，低于10%的场景不记录}}
