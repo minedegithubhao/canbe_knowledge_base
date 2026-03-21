@@ -1,5 +1,5 @@
 alias::
-tags:: /大模型1/binlog/new
+tags:: /大模型/binlog/new
 type:: 概念
 status:: 整理中
 
