@@ -5,9 +5,10 @@ status:: 草稿
 id:: 69b0d9f7-7dd9-46b3-bc8b-1cf4c70ab8eb
 
 	- ## 🧠 一句话说清楚（费曼）
-		- ```
-		  P (Precision) - 检索精准度：问题 → 召回
+		- id:: 69b27383-8d3b-4b2f-ba07-a749438bc59f
+		  ```
 		  G (Groundedness) - 事实一致性：召回 → 回答
+		  P (Precision) - 检索精准度：问题 → 召回
 		  A (Answer Relevance) - 回答相关性：问题 → 回答
 		  A (Attribute Coverage)  - 全流程相关性：问题 → 召回 → 回答
 		  S (Succinctness) - 简洁性：只看回答
