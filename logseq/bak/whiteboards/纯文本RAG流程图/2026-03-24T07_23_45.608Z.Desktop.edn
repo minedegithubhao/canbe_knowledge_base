@@ -30,9 +30,9 @@
 {:block/content "用户输入\nid:: 69aa3358-4e70-4f24-8925-c4fda52a9c98"
 :block/format :markdown
 :block/left 
-{:block/uuid #uuid "69af63aa-c279-43c5-a00e-c06f88ee3033"}
+{:block/uuid #uuid "69ae7996-ce28-495a-8b58-c2e90c24cc57"}
 :block/parent 
-{:block/uuid #uuid "69af63aa-c279-43c5-a00e-c06f88ee3033"}
+{:block/uuid #uuid "69ae7996-ce28-495a-8b58-c2e90c24cc57"}
 :block/properties 
 {:id "69aa3358-4e70-4f24-8925-c4fda52a9c98"}
 :block/uuid #uuid "69aa3358-4e70-4f24-8925-c4fda52a9c98"} 
@@ -258,7 +258,7 @@
 :borderRadius 8
 :index 5
 :scale [1 1]
-:pageId "混合检索"
+:pageId "大模型/RAG/混合检索/ES"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -555,11 +555,11 @@
 :italic false}}
 :block/updated-at 1772765200268})
 :pages (
-{:block/uuid #uuid "69af63aa-c279-43c5-a00e-c06f88ee3033"
+{:block/uuid #uuid "69ae7996-ce28-495a-8b58-c2e90c24cc57"
 :block/properties 
 {:ls-type :whiteboard-page
 :logseq.tldraw.page 
-{:id "69af63aa-c279-43c5-a00e-c06f88ee3033"
+{:id "69aa333a-155a-46a8-94e4-9e309f198338"
 :name "纯文本rag流程图"
 :bindings 
 {:f251f2e1-18ff-11f1-a226-a7f101db9430 
@@ -678,7 +678,7 @@
 :assets []
 :shapes-index ("b2298640-1906-11f1-a226-a7f101db9430" "b8cbbb90-1900-11f1-a226-a7f101db9430" "1ba15100-18ff-11f1-a226-a7f101db9430" "75e783f0-18ff-11f1-a226-a7f101db9430" "a212bc60-18ff-11f1-a226-a7f101db9430" "c1427080-18ff-11f1-a226-a7f101db9430" "e78a3e80-18ff-11f1-a226-a7f101db9430" "ef4a5830-18ff-11f1-a226-a7f101db9430" "f251f2e2-18ff-11f1-a226-a7f101db9430" "f6faba70-18ff-11f1-a226-a7f101db9430" "fa3f5e22-18ff-11f1-a226-a7f101db9430" "fd0f1ff2-18ff-11f1-a226-a7f101db9430" "9256c310-1900-11f1-a226-a7f101db9430" "9a86b592-1900-11f1-a226-a7f101db9430" "9ea51770-1900-11f1-a226-a7f101db9430" "a7f287e2-1900-11f1-a226-a7f101db9430" "95fe1170-1906-11f1-a226-a7f101db9430" "a73df630-1906-11f1-a226-a7f101db9430")}}
 :block/journal? false
-:block/updated-at 1773965680931
+:block/updated-at 1772765200265
 :block/created-at 1772761914558
 :block/type "whiteboard"
 :block/name "纯文本rag流程图"

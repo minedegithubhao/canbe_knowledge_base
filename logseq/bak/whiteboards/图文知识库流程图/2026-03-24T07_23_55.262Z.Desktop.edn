@@ -135,7 +135,7 @@
 :block/parent 
 {:block/uuid #uuid "69aa4738-402e-44d0-9990-ce4329b716c2"}
 :block/uuid #uuid "69aa4f91-8773-4cd8-ae57-dbb9bb84ae0f"} 
-{:block/created-at 1773633114823
+{:block/created-at 1772770354451
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -152,7 +152,7 @@
 :id "5d619ce2-1912-11f1-a226-a7f101db9430"
 :fontWeight 400
 :noFill true
-:point [252.97 738]
+:point [252.8 738]
 :fontSize 20
 :handles 
 {:start 
@@ -163,14 +163,14 @@
 :end 
 {:id "end"
 :canBind true
-:point [79.12 50]
+:point [78.62 50]
 :bindingId "5d619ce1-1912-11f1-a226-a7f101db9430"}}
 :decorations 
 {:end "arrow"}
 :parentId "69aa4738-402e-44d0-9990-ce4329b716c2"
-:nonce 1772770209317
+:nonce 1772770209316
 :italic false}}
-:block/updated-at 1773633114823} 
+:block/updated-at 1772770354451} 
 {:block/created-at 1772770354451
 :block/properties 
 {:ls-type :whiteboard-shape
@@ -533,7 +533,7 @@
 :block/properties 
 {}
 :block/uuid #uuid "69aa5074-fcfc-4906-b69b-f9f88ecdbf9e"} 
-{:block/created-at 1773633114824
+{:block/created-at 1772770354451
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -550,13 +550,13 @@
 :id "6acd6f30-1912-11f1-a226-a7f101db9430"
 :fontWeight 400
 :noFill true
-:point [367.4 738]
+:point [368.08 738]
 :fontSize 20
 :handles 
 {:start 
 {:id "start"
 :canBind true
-:point [89.06 0]
+:point [88.56 0]
 :bindingId "6ee54161-1912-11f1-a226-a7f101db9430"}
 :end 
 {:id "end"
@@ -566,9 +566,9 @@
 :decorations 
 {:end "arrow"}
 :parentId "69aa4738-402e-44d0-9990-ce4329b716c2"
-:nonce 1772770231838
+:nonce 1772770231837
 :italic false}}
-:block/updated-at 1773633114824} 
+:block/updated-at 1772770354451} 
 {:block/content "同一张数据表"
 :block/format :markdown
 :block/left 
@@ -881,7 +881,7 @@
 :block/parent 
 {:block/uuid #uuid "69aa4738-402e-44d0-9990-ce4329b716c2"}
 :block/uuid #uuid "69aa5065-e664-4ac6-b9bb-119cf89771b6"} 
-{:block/created-at 1773633114807
+{:block/created-at 1772770354451
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -898,7 +898,7 @@
 :compact true
 :isAutoResizing true
 :type "logseq-portal"
-:size [128 40.011870387257886]
+:size [128 41]
 :strokeType "line"
 :strokeWidth 2
 :opacity 1
@@ -907,8 +907,8 @@
 :point [288 792]
 :parentId "69aa4738-402e-44d0-9990-ce4329b716c2"
 :collapsedHeight 0
-:nonce 1772769410800}}
-:block/updated-at 1773633114807} 
+:nonce 1772769410798}}
+:block/updated-at 1772770354451} 
 {:block/created-at 1772770354451
 :block/properties 
 {:ls-type :whiteboard-shape
@@ -1148,7 +1148,7 @@
 :borderRadius 8
 :index 15
 :scale [1 1]
-:pageId "混合检索"
+:pageId "大模型/RAG/混合检索/ES"
 :scaleLevel "md"
 :fill ""
 :compact false
@@ -1489,7 +1489,7 @@
 :assets []
 :shapes-index ("9843ec50-1912-11f1-a226-a7f101db9430" "794951f0-1912-11f1-a226-a7f101db9430" "10380f00-190b-11f1-a226-a7f101db9430" "37797f40-190b-11f1-a226-a7f101db9430" "40dc2560-190b-11f1-a226-a7f101db9430" "1b2f93b0-1910-11f1-a226-a7f101db9430" "311e5a80-1910-11f1-a226-a7f101db9430" "4b9345b0-1910-11f1-a226-a7f101db9430" "61ccf830-1910-11f1-a226-a7f101db9430" "6eae64d0-1910-11f1-a226-a7f101db9430" "77e0fa40-1910-11f1-a226-a7f101db9430" "816cd340-1910-11f1-a226-a7f101db9430" "28bc3f00-1911-11f1-a226-a7f101db9430" "9fb6c5d0-1911-11f1-a226-a7f101db9430" "a9eaecc0-1911-11f1-a226-a7f101db9430" "de2410c0-1911-11f1-a226-a7f101db9430" "0acb7e10-1912-11f1-a226-a7f101db9430" "2e52a572-1912-11f1-a226-a7f101db9430" "3161e142-1912-11f1-a226-a7f101db9430" "33ea87f0-1912-11f1-a226-a7f101db9430" "3e4c0072-1912-11f1-a226-a7f101db9430" "41acdeb2-1912-11f1-a226-a7f101db9430" "451a4012-1912-11f1-a226-a7f101db9430" "49018c62-1912-11f1-a226-a7f101db9430" "4b05c0d2-1912-11f1-a226-a7f101db9430" "4d027b32-1912-11f1-a226-a7f101db9430" "54a8a442-1912-11f1-a226-a7f101db9430" "5754d880-1912-11f1-a226-a7f101db9430" "5b1dc762-1912-11f1-a226-a7f101db9430" "5d619ce2-1912-11f1-a226-a7f101db9430" "5f81e4d2-1912-11f1-a226-a7f101db9430" "67d4efb2-1912-11f1-a226-a7f101db9430" "6acd6f30-1912-11f1-a226-a7f101db9430" "6d259002-1912-11f1-a226-a7f101db9430")}}
 :block/journal? false
-:block/updated-at 1773965523154
+:block/updated-at 1773196722434
 :block/created-at 1772767032330
 :block/type "whiteboard"
 :block/name "图文知识库流程图"
