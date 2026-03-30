@@ -20,3 +20,17 @@
    
    pip install jieba rank_bm25 transformers
   ```
+-
+- 删除沙箱
+	- ```bash
+	  conda remove -n python311 --all
+	  ```
+- 检查包版本
+	- ```bash
+	  pip show streamlit
+	  ```
+- 查看conda环境列表
+	- ```bash
+	  conda info --envs
+	  ```
+-
