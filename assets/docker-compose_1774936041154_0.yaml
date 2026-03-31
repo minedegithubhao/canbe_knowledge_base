@@ -1,0 +1,125 @@
+services:
+  # 关系型数据库
+  mysql:
+    image: mysql:8.0
+    container_name: rag-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: '123456'
+      MYSQL_DATABASE: 'resume_rag_db'
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - rag-net
+
+  # 文档数据库
+  mongodb:
+    image: mongo:5.0
+    container_name: rag-mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'admin'
+      MONGO_INITDB_ROOT_PASSWORD: '123456'
+      MONGO_INITDB_DATABASE: 'resume_db'
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - rag-net
+
+  # 全文搜索引擎
+  elasticsearch:
+    image: elasticsearch:7.16.2
+    container_name: rag-es
+    restart: always
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    networks:
+      - rag-net
+
+  # Milvus 依赖：etcd
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.5
+    container_name: rag-etcd
+    restart: always
+    volumes:
+      - milvus-etcd:/etcd
+    command: etcd -advertise-client-urls=http://etcd:2379 -listen-client-urls http://0.0.0.0:2379 --data-dir /etcd
+    networks:
+      - rag-net
+
+  # Milvus 依赖：MinIO
+  minio:
+    image: minio/minio:RELEASE.2023-03-20T20-16-18Z
+    container_name: rag-minio
+    restart: always
+    environment:
+      MINIO_ACCESS_KEY: 'minioadmin'
+      MINIO_SECRET_KEY: 'minioadmin'
+    volumes:
+      - milvus-minio:/minio_data
+    command: server /minio_data
+    ports:
+      - "9001:9000"
+    networks:
+      - rag-net
+
+  # 向量数据库 (更新为 v2.5.15)
+  milvus:
+    image: milvusdb/milvus:v2.5.15
+    container_name: rag-milvus
+    restart: always
+    command: ["milvus", "run", "standalone"]
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    depends_on:
+      - etcd
+      - minio
+    environment:
+      ETCD_ENDPOINTS: 'etcd:2379'
+      MINIO_ADDRESS: 'minio:9000'
+      COMMON_STORAGETYPE: local
+    volumes:
+      - milvus-data:/var/lib/milvus
+    networks:
+      - rag-net
+
+  # Milvus 图形化管理工具 (更新为兼容 v2.5.15 的版本)
+  attu:
+    image: zilliz/attu:v2.5.6
+    container_name: rag-attu
+    restart: always
+    depends_on:
+      - milvus
+    ports:
+      - "8000:3000"
+    environment:
+      MILVUS_URL: "milvus:19530"
+    networks:
+      - rag-net
+
+# 定义数据卷，用于持久化存储
+volumes:
+  mysql-data:
+  mongo-data:
+  es-data:
+  milvus-etcd:
+  milvus-minio:
+  milvus-data:
+
+# 定义网络，使所有容器可以互相通信
+networks:
+  rag-net:
+    driver: bridge

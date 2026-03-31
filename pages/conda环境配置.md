@@ -27,7 +27,7 @@
 	  ```
 - 检查包版本
 	- ```bash
-	  pip show streamlit
+	  pip show streamlit		
 	  ```
 - 查看conda环境列表
 	- ```bash

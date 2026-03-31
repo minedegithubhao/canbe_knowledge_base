@@ -22,7 +22,6 @@
 		- **Agents**：是一种基于大模型（LLM）的应用设计模式，利用 LLM 的自然语言理解和推理能力（LLM 作为大脑)），根据用户的需求自动调用外部系统、设备共同去完成任务，例如：用户输入 “明天请假一天”， 大模型（LLM）自动调用请假系统，发起一个请假申请。
 		- **模型记忆（memory）**：让大模型 (llm) 记住之前的对话内容，这种能力称为模型记忆（memory）。
 	- 安装命令
-	  collapsed:: true
 		- ```bash
 		  #langchain框架安装
 		  pip install langchain
@@ -129,6 +128,15 @@
 		  print(response.content)
 		  ```
 		- `.invoke()` 接收一个字典，如：`prompt.invoke({"变量名": 值})`
+	- LangChain中的角色
+	  collapsed:: true
+		- |LangChain角色|意思|对应 OpenAI|
+		  |--|--|--|
+		  |system|系统提示|system|
+		  |human|用户问题|user|
+		  |user|用户问题|user|
+		  |ai|AI 回答|assistant|
+		  |assistant|AI 回答|assistant|
 - Message的使用
 	- `SystemMessagePromptTemplate`,`HumanMessagePromptTemplate`,`AIMessagePromptTemplate`的使用
 	  collapsed:: true
@@ -516,6 +524,7 @@
 		  print(doc)
 		  ```
 	- `PyPDFLoader`
+	  collapsed:: true
 		- ```python
 		  from langchain_community.document_loaders import TextLoader,PyPDFLoader  # 使用新模块路径
 		  from config import config
@@ -540,3 +549,423 @@
 		  result = llm.invoke(f"总结以下内容：{content[:500]}")  # 取前500字符
 		  print("Document Loaders 示例结果:", result.content)
 		  ```
+	- `DirectoryLoader`
+	  collapsed:: true
+		- ```python
+		  from langchain_community.document_loaders import DirectoryLoader, TextLoader
+		  
+		  # 1. 指定包含多个 .txt 文件的目录路径
+		  directory_path = r"D:\LLM_Codes\Chapter3_RAG\rag_base_frame\data"
+		  
+		  # 2. 创建一个 DirectoryLoader 实例
+		  #    - 第一个参数是目录路径
+		  #    - glob="**/*.txt" 参数告诉加载器只加载所有以 .txt 结尾的文件
+		  #    - loader_cls=TextLoader 指定使用 TextLoader 来处理这些 .txt 文件
+		  #    - loader_kwargs={'encoding': 'utf-8'} 将参数传递给 TextLoader，确保使用正确的编码
+		  loader = DirectoryLoader(
+		      directory_path,
+		      glob="**/*.txt",
+		      loader_cls=TextLoader,
+		      loader_kwargs={'encoding': 'utf-8'}
+		  )
+		  
+		  # 3. 调用 load() 方法，批量加载所有匹配的文档
+		  documents = loader.load()
+		  
+		  print(f"成功批量加载了 {len(documents)} 个 .txt 文件。")
+		  
+		  # 您可以查看第一个加载的文档
+		  if documents:
+		      print("第一个文档的内容：")
+		      print(documents[0].page_content)
+		      print("第一个文档的元数据：")
+		      print(documents[0].metadata)
+		  ```
+		- 支持多种格式
+		- ```python
+		  from langchain_community.document_loaders import DirectoryLoader, TextLoader, PyPDFLoader, Docx2txtLoader
+		  import os
+		  
+		  # 1. 你的文件目录
+		  directory_path = r"D:\LLM_Codes\Chapter3_RAG\rag_base_frame\data"
+		  
+		  # 2. 支持的文件格式
+		  #    你可以自己增删：.txt, .md, .pdf, .docx, .csv 等
+		  SUPPORTED_FORMATS = ["**/*.txt", "**/*.md", "**/*.pdf", "**/*.docx"]
+		  
+		  documents = []
+		  
+		  # 3. 遍历所有格式，自动加载对应文件
+		  for fmt in SUPPORTED_FORMATS:
+		      try:
+		          # 根据后缀选择加载器
+		          if fmt.endswith(".pdf"):
+		              loader = DirectoryLoader(
+		                  directory_path,
+		                  glob=fmt,
+		                  loader_cls=PyPDFLoader
+		              )
+		          elif fmt.endswith(".docx"):
+		              loader = DirectoryLoader(
+		                  directory_path,
+		                  glob=fmt,
+		                  loader_cls=Docx2txtLoader
+		              )
+		          else:
+		              # 文本类：txt, md
+		              loader = DirectoryLoader(
+		                  directory_path,
+		                  glob=fmt,
+		                  loader_cls=TextLoader,
+		                  loader_kwargs={'encoding': 'utf-8'}
+		              )
+		  
+		          # 加载文档
+		          docs = loader.load()
+		          documents.extend(docs)
+		          print(f"加载 {fmt:<10} → {len(docs)} 个文件")
+		  
+		      except Exception as e:
+		          print(f"加载 {fmt} 失败: {e}")
+		  
+		  # 最终结果
+		  print(f"\n✅ 总共成功加载 {len(documents)} 个文件（支持txt/md/pdf/docx）")
+		  
+		  if documents:
+		      print("\n第一个文档内容预览：")
+		      print(documents[0].page_content[:200], "...")
+		      print("元数据：", documents[0].metadata)
+		  ```
+- Text Splitter
+	- 常见文本分割器
+	  collapsed:: true
+		- ![image.png](../assets/image_1774914130434_0.png)
+	- RecursiveCharacterTextSplitter(递归字符分割器)
+	  collapsed:: true
+		- **适用场景与数据特点：**
+			- **场景**: 通用文本处理，如 PDF、TXT、网页内容、非结构化报告等。
+			- **数据特点**: 这类数据通常是半结构化的，包含段落、换行和句子等自然边界，但没有像代码或 Markdown 那样严格的、可被机器解析的语法。该分割器的层级策略能很好地适应这种灵活性。
+		- **优势：**
+			- **通用性强**：对绝大多数文本类型都能取得良好效果。
+			- **语义保持好**：尽可能地在段落和句子层面进行分割，避免破坏语义。
+			- **灵活性高**：可以自定义分隔符列表以适应特定格式。
+		- **劣势：**
+			- 对于具有严格语法结构的数据（如代码、Markdown），效果可能不如专用的分割器。
+	- CharacterTextSplitter   (字符分割器)
+	  collapsed:: true
+		- **适用场景与数据特点：**
+			- **场景**: 简单字符串或以固定分隔符组织的数据，如 CSV 数据行、传感器日志。
+			- **数据特点**: 数据格式高度统一，每一行或由特定字符分隔的部分本身就是一个独立的、完整的记录。例如，日志文件中的每一行都是一条独立的事件记录。
+		- **优势：**
+			- **速度极快**：算法简单，计算开销小。
+			- **简单可控**：行为完全可预知。
+		- **劣势：**
+			- **破坏语义：**完全不关心文本的语义结构，可能在句子中间或单词中间进行切分。
+			- **适用性差**：对于复杂的自然语言文本，效果通常很差。
+	- TokenTextSplitter  (Token 分割器)
+	  collapsed:: true
+		- **适用场景与数据特点**
+			- **场景**: 需要严格控制输入长度的 LLM 应用，如处理 API 响应、优化长查询。
+			- **数据特点**: 任何文本都可以使用，但其核心优势在于处理那些长度接近模型极限的、需要精确控制成本和输入的场景。
+		- **优势：**
+			- **长度控制精确**：能确保每个块的 Token 数都在限制内。
+			- **与模型对齐**：分割单位与模型的处理单位一致。
+		- **劣势**:
+			- **可能破坏语义**：与 `CharacterTextSplitter` 类似，它可能在句子中间为了满足 Token 数量而切分。
+			- **依赖分词器**：需要额外的分词库（如 `tiktoken`），并且分词本身有一定计算开销。
+	- 结构化文本分割器：`MarkdownTextSplitter` / `HTMLSplitter` / `LatexTextSplitter`
+	  collapsed:: true
+		- **适用场景与数据特点**
+			- **场景**: 解析技术文档、API 手册、学术论文、网页抓取内容。
+			- **数据特点**: 数据本身包含丰富的元结构信息，如 Markdown 的标题层级、HTML 的 DOM 树结构。这些结构本身就定义了内容的边界。
+		- **优势：**
+			- **语义块质量高**：分割出的块通常对应一个完整的小节或段落，逻辑性强。
+			- **保留元信息**：可以从结构中提取有用的元数据（如标题）。
+		- **劣势：专用性强：只能处理特定格式的文档。**
+	- PythonCodeTextSplitter (代码分割器)
+	  collapsed:: true
+		- **适用场景与数据特点**
+			- **场景**: 源代码分析、代码库问答、脚本调试。
+			- **数据特点**: 具有严格、明确的编程语法，如 Python 的缩进和 `def`/`class` 关键字。
+		- **优势：**
+			- **代码块完整**：确保函数或类的定义不被切分。
+			- **提升代码理解**：为 LLM 提供结构完整的代码上下文。
+		- **劣势：**
+			- **语言特定**：通常需要为不同编程语言选择对应的分割器。
+	- NLP 语义分割器：`SentenceTextSplitter` / `SpacyTextSplitter` / `NLTKTextSplitter`
+	  collapsed:: true
+		- **适用场景与数据特点**
+			- **场景**: 处理自然语言文章、对话记录、法律合同等对句子完整性要求高的文本。
+			- **数据特点**: 文本由符合语法规则的句子构成。这类分割器对于处理复杂的长句或不规范的标点符号比简单的正则匹配更鲁棒。
+		- **优势：**
+			- **语义完整性高**：确保分割边界在句子层面。
+			- **处理复杂句子**：NLP 库能更好地处理各种标点和句子结构。
+		- **劣势：**
+			- **计算开销大**：需要加载 NLP 模型，比简单的字符分割慢。
+			- **依赖外部库**：需要安装和配置 NLTK, spaCy 等。
+			- **句子长度不一**：可能产生非常短或非常长的块（单个句子）。
+- Tools
+	- **工具调用目的：** #面试背诵汇总/大模型
+	  collapsed:: true
+		- **突破知识限制**：语言模型的知识是静态的，截止于其训练数据的最后日期。工具调用使其能够访问实时数据，回答“今天天气怎么样？”或“最近有什么关于 AI 的新闻？”这类问题。
+		- **执行实际动作**：模型本身无法改变世界，但工具可以。通过调用发送邮件的工具、操作数据库的工具，模型可以将它的“想法”转化为实际的行动。
+		- **提升任务处理能力**：对于一些精确计算或逻辑性极强的任务（如复杂的数学运算），语言模型有时会出错（“幻觉”）。将这些任务交给专业的工具（如计算器），可以保证结果的准确性。
+		- **构建更强大的应用**：工具调用是构建智能代理（Agent）和复杂应用（如自动化工作流）的核心。它让 LLM 从一个单纯的“聊天机器人”进化为可以解决实际问题的“智能助手”。
+	- 基础调用
+		- 定义工具
+		  collapsed:: true
+			- ```python
+			  from langchain_core.tools import tool
+			  
+			  # 使用 @tool 装饰器来定义一个工具
+			  # 任何函数都可以通过这个装饰器变成一个 LangChain 工具
+			  # 函数的文档字符串（docstring）非常重要，它会成为工具的描述，模型将依据这个描述来决定何时使用该工具。
+			  @tool
+			  def multiply(a: int, b: int) -> int:
+			      """用于计算两个整数的乘积。"""
+			      return a * b
+			  
+			  @tool
+			  def search_weather(city: str) -> str:
+			      """用于查询指定城市的实时天气。"""
+			      # 这里的实现是简化的，实际应用中你可能会调用一个真正的天气API
+			      if "北京" in city:
+			          return "北京今天是晴天，气温25摄氏度。"
+			      elif "上海" in city:
+			          return "上海今天是阴天，有小雨，气温22摄-氏度。"
+			      else:
+			          return f"抱歉，我没有'{city}'的天气信息。"
+			  
+			  # 将我们定义好的工具放入一个列表，以便后续使用
+			  tools = [multiply, search_weather]
+			  ```
+		- 绑定工具并发起调用
+		  collapsed:: true
+			- ```python
+			  # -*- coding: utf-8 -*-
+			  from langchain_openai import ChatOpenAI
+			  from langchain_core.tools import tool
+			  from langchain_core.messages import HumanMessage, AIMessage
+			  
+			  # --- DeepSeek API 配置 ---
+			  # 请替换为你的 DeepSeek API 密钥
+			  API_KEY = "sk-52e226ac3cac46838cb282b45b1a648e"
+			  API_URL = "https://api.deepseek.com/v1"
+			  MODEL = "deepseek-chat"
+			  
+			  # --- 步骤1: 初始化 ChatOpenAI ---
+			  # 虽然我们用的是DeepSeek，但它兼容OpenAI的API格式，所以可以使用ChatOpenAI类
+			  llm = ChatOpenAI(
+			      model=MODEL,
+			      api_key=API_KEY,
+			      base_url=API_URL,
+			      temperature=0.8,
+			      max_tokens=300
+			  )
+			  
+			  
+			  # --- 步骤2: 定义我们的工具 ---
+			  @tool
+			  def multiply(a: int, b: int) -> int:
+			      """用于计算两个整数的乘积。"""
+			      print(f"正在执行乘法: {a} * {b}")
+			      return a * b
+			  
+			  
+			  @tool
+			  def search_weather(city: str) -> str:
+			      """用于查询指定城市的实时天气。"""
+			      print(f"正在查询天气: {city}")
+			      if "北京" in city:
+			          return "北京今天是晴天，气温25摄氏度。"
+			      elif "上海" in city:
+			          return "上海今天是阴天，有小雨，气温22摄氏度。"
+			      else:
+			          return f"抱歉，我没有'{city}'的天气信息。"
+			  
+			  
+			  # 将工具列表放入一个变量
+			  tools = [multiply, search_weather]
+			  
+			  # --- 步骤3: 将工具绑定到LLM ---
+			  # .bind_tools() 方法会将工具的结构信息（名称、描述、参数）传递给模型
+			  # 这样模型在推理时就知道自己有哪些"超能力"了
+			  llm_with_tools = llm.bind_tools(tools)
+			  
+			  # --- 步骤4: 发起调用 ---
+			  # 第一次调用：让模型决定是否以及如何调用工具
+			  print("--- 第一次调用：模型生成工具调用指令 ---")
+			  query = "北京今天天气怎么样？另外请帮我计算一下 12乘以8 等于多少？"
+			  # invoke 方法会返回一个 AIMessage 对象
+			  # 如果模型决定调用工具，相关信息会储存在 .tool_calls 属性中
+			  ai_msg = llm_with_tools.invoke(query)
+			  
+			  print("模型返回的AIMessage:")
+			  print(ai_msg)
+			  print("\n解析出的工具调用请求:")
+			  print(ai_msg.tool_calls)
+			  
+			  # --- 步骤5: 执行工具调用 ---
+			  print("\n--- 执行工具调用 ---")
+			  tool_results = []
+			  for tool_call in ai_msg.tool_calls:
+			      # 根据工具名称找到对应的工具函数
+			      tool_name = tool_call["name"]
+			      tool_args = tool_call["args"]
+			  
+			      # 查找对应的工具
+			      selected_tool = None
+			      for t in tools:
+			          if t.name == tool_name:
+			              selected_tool = t
+			              break
+			  
+			      if selected_tool:
+			          print(f"执行工具: {tool_name}, 参数: {tool_args}")
+			          # 执行工具并获取结果
+			          result = selected_tool.invoke(tool_args)
+			          tool_results.append({
+			              "tool_call_id": tool_call["id"],
+			              "name": tool_name,
+			              "result": result
+			          })
+			          print(f"工具执行结果: {result}")
+			      else:
+			          print(f"未找到工具: {tool_name}")
+			  ```
+	- agent调用：**自主规划**、**决定**是否需要调用工具、调用哪个工具、以及如何组织调用顺序，直到最终完成任务
+	  collapsed:: true
+		- ```python
+		  # -*- coding: utf-8 -*-
+		  from langchain_openai import ChatOpenAI
+		  from langchain_core.tools import tool
+		  from langchain.agents import create_tool_calling_agent, AgentExecutor
+		  from langchain_core.prompts import ChatPromptTemplate
+		  from langchain_core.messages import HumanMessage, AIMessage
+		  
+		  # --- 复用之前的API配置和LLM、工具定义 ---
+		  API_KEY = "sk-52e226ac3cac46838cb282b45b1a648e"
+		  API_URL = "https://api.deepseek.com/v1"
+		  MODEL = "deepseek-chat"
+		  llm = ChatOpenAI(model=MODEL, api_key=API_KEY, base_url=API_URL, temperature=0)
+		  @tool
+		  def multiply(a: int, b: int) -> int:
+		      """用于计算两个整数的乘积。"""
+		      return a * b
+		  @tool
+		  def search_weather(city: str) -> str:
+		      """用于查询指定城市的实时天气。"""
+		      if "北京" in city:
+		          return "北京今天是晴天，气温25摄氏度。"
+		      elif "上海" in city:
+		          return "上海今天是阴天，有小雨，气温22摄氏度。"
+		      else:
+		          return f"抱歉，我没有'{city}'的天气信息。"
+		  tools = [multiply, search_weather]
+		  
+		  # --- 1. 创建Agent的提示模板 (Prompt) ---
+		  # 这是指导Agent如何思考和行动的“说明书”
+		  # 包含了系统指令、历史消息、用户输入和 agent_scratchpad
+		  # agent_scratchpad 是一个特殊占位符，用于存放Agent在思考过程中的中间步骤（工具调用和返回结果）
+		  prompt = ChatPromptTemplate.from_messages([
+		      ("system", "你是一个乐于助人的助手。"),
+		      ("human", "{input}"),
+		      # MessagesPlaceholder 会自动格式化和插入 agent_scratchpad 中的消息
+		      ("placeholder", "{agent_scratchpad}"),
+		  ])
+		  
+		  # --- 2. 创建工具调用Agent ---
+		  # create_tool_calling_agent 是一个便捷的函数，用于创建一个遵循特定工具调用逻辑的Agent
+		  # 它将LLM、工具和提示模板“组装”在一起
+		  agent = create_tool_calling_agent(llm, tools, prompt)
+		  
+		  # --- 3. 创建Agent执行器 (AgentExecutor) ---
+		  # AgentExecutor 是Agent的“执行引擎”，它负责循环运行Agent，直到得到最终答案
+		  # 它处理了调用Agent -> 解析工具调用 -> 执行工具 -> 将结果返回给Agent 的完整循环
+		  agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+		  # 设置 verbose=True 可以让我们看到Agent的完整思考过程，非常有助于调试
+		  
+		  # --- 4. 运行Agent ---
+		  print("--- 运行Agent处理单步任务 ---")
+		  response1 = agent_executor.invoke({"input": "上海今天天气怎么样?"})
+		  print("\n最终回答:")
+		  print(response1["output"])
+		  
+		  print("\n\n--- 运行Agent处理多步任务 ---")
+		  response2 = agent_executor.invoke({
+		      "input": "先帮我查一下北京的天气，然后计算 35 乘以 3 的结果是多少？"
+		  })
+		  print("\n最终回答:")
+		  print(response2["output"])
+		  ```
+- 记忆模块
+	- ConversationBufferMemory：全部记忆
+	  collapsed:: true
+		- `ConversationBufferMemory` 会将所有历史对话**原封不动地**完整保存下来。当进行新的对话时，它会将全部历史记录和新问题一起发送给 LLM。
+		- **优点**:
+			- **信息完整**: 保留了所有原始对话细节，没有任何信息丢失。
+			- **简单直观**: 实现和理解都非常容易。
+		- **缺点**:
+			- **成本高/Token消耗大**: 随着对话轮次增加，历史记录会变得非常长，导致 API 请求的 Token 数量急剧增加，不仅提高成本，还可能超出模型的上下文窗口限制而报错。
+		- **适用场景**:
+			- 短时、简短的对话。
+			- 用于学习和调试 LangChain 记忆功能的入门场景。
+		- ```python
+		  # -*- coding: utf-8 -*-
+		  from langchain_openai import ChatOpenAI
+		  from langchain.chains import ConversationChain
+		  from langchain.memory import ConversationBufferMemory
+		  
+		  # --- DeepSeek API 配置 ---
+		  # 请替换为你的 DeepSeek API 密钥
+		  API_KEY = "sk-52e226ac3cac46838cb282b45b1a648e"
+		  API_URL = "https://api.deepseek.com/v1"
+		  MODEL = "deepseek-chat"
+		  
+		  # 1. 初始化 LLM
+		  # 我们将使用 DeepSeek 模型作为对话的核心
+		  llm = ChatOpenAI(
+		      model=MODEL,
+		      api_key=API_KEY,
+		      base_url=API_URL,
+		      temperature=0.7 # 设置温度参数，让回答带一些创造性
+		  )
+		  
+		  # 2. 初始化 ConversationBufferMemory
+		  # 这是最简单的记忆类型，它会存储所有对话历史。
+		  # memory_key="history" 指定了在提示模板中，用 "history" 这个变量名来引用记忆内容。
+		  memory = ConversationBufferMemory(memory_key="history")
+		  
+		  # 3. 创建 ConversationChain
+		  # ConversationChain 是一个将 LLM 和 Memory 链接在一起的链。
+		  # verbose=True 会在控制台打印出完整的提示(Prompt)和模型的思考过程，非常有助于理解和调试。
+		  conversation_chain = ConversationChain(
+		      llm=llm,
+		      memory=memory,
+		      verbose=True
+		  )
+		  
+		  # --- 开始对话 ---
+		  print("--- 开始使用 ConversationBufferMemory ---")
+		  
+		  # 第一次对话
+		  response1 = conversation_chain.predict(input="你好，我叫小明。")
+		  print("AI:", response1)
+		  
+		  # 第二次对话
+		  # Memory 会自动将第一次的对话内容加入到 Prompt 中
+		  response2 = conversation_chain.predict(input="你还记得我叫什么名字吗？")
+		  print("AI:", response2)
+		  ```
+	- ConversationBufferWindowMemory：K轮部分记忆
+	  collapsed:: true
+		- `ConversationBufferWindowMemory` 只会保留**最近 K 轮**的对话历史。
+		- **优点**:
+			- **控制成本和Token**: 有效地将每次请求的 Token 数量限制在一个可控范围内，避免超出上下文限制。
+			- **性能均衡**: 在保留上下文和控制资源消耗之间取得了很好的平衡。
+		- **缺点**:
+			- **丢失早期信息**: 如果关键信息出现在很早以前（超出了窗口大小），那么这部分记忆将会丢失。
+		- **适用场景**:
+			- 绝大多数通用的聊天机器人应用。
+			- 对话的重点主要集中在最近的几次交互中。
+-
