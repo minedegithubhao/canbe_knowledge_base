@@ -621,4 +621,5 @@ status:: 草稿 | 整理中 | 已掌握
 		- 解决一个文本生成任务时应该如何去选择使用什么技术
 		- ![](file:///D:/AAA_CXD/heima/ShareFiles/03_%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/01-%E8%AE%B2%E4%B9%89/site/img/image-20251014021742607.png)
 - 提示词安全
+	- 提示词注入
 	-

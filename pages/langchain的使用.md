@@ -105,7 +105,6 @@
 			  ```
 - Prompt
 	- ChatPromptTemplate如何使用
-	  collapsed:: true
 		- 作用：**提示的逻辑（固定结构）与提示的数据（动态变量）彻底分离，从而实现代码的简洁、复用、安全和可维护性**
 		- ```python
 		  from langchain_core.prompts import ChatPromptTemplate
@@ -139,7 +138,6 @@
 		  |assistant|AI 回答|assistant|
 - Message的使用
 	- `SystemMessagePromptTemplate`,`HumanMessagePromptTemplate`,`AIMessagePromptTemplate`的使用
-	  collapsed:: true
 		- ```python
 		  from langchain_openai import ChatOpenAI
 		  
