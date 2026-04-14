@@ -1,9 +1,8 @@
-# .github/workflows/publish.yml - 修复 pages 目录识别问题
 name: Logseq Publish to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -20,79 +19,78 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 步骤 1: 准备配置文件并验证目录结构
-      - name: Prepare and verify directory structure
+      - name: Prepare publish graph
+        shell: pwsh
         run: |
-          echo "=== 当前目录结构 ==="
+          ./scripts/prepare-publish-graph.ps1
+
+      - name: Verify publish graph
+        run: |
+          echo "=== Current directory ==="
           pwd
           ls -la
-          
+
           echo ""
-          echo "=== 检查 logseq 子目录 ==="
-          ls -la logseq/
-          
+          echo "=== Publish graph structure ==="
+          ls -la .publish-graph/
+
           echo ""
-          echo "=== 检查 pages 目录 ==="
-          ls -la pages/
-          
+          echo "=== Publish pages ==="
+          ls -la .publish-graph/pages/
+
           echo ""
-          echo "=== 复制配置文件到根目录 ==="
-          if [ ! -f "config.edn" ] && [ -f "logseq/config.edn" ]; then
-            cp logseq/config.edn config.edn
-            echo "✅ 已复制 config.edn"
-          elif [ -f "config.edn" ]; then
-            echo "✅ config.edn 已存在"
+          echo "=== Copy config.edn to publish graph root ==="
+          if [ ! -f ".publish-graph/config.edn" ] && [ -f ".publish-graph/logseq/config.edn" ]; then
+            cp .publish-graph/logseq/config.edn .publish-graph/config.edn
+            echo "Copied config.edn"
+          elif [ -f ".publish-graph/config.edn" ]; then
+            echo "config.edn already exists"
           else
-            echo "❌ 未找到 config.edn"
+            echo "config.edn not found"
             exit 1
           fi
-          
+
           echo ""
-          echo "=== 验证 config.edn 中的 pages-directory 配置 ==="
-          if grep -q "pages-directory" config.edn; then
-            echo "找到 pages-directory 配置:"
-            grep "pages-directory" config.edn
+          echo "=== Validate pages-directory in config.edn ==="
+          if grep -q "pages-directory" .publish-graph/config.edn; then
+            grep "pages-directory" .publish-graph/config.edn
           else
-            echo "未找到 pages-directory 配置，使用默认值 'pages'"
+            echo "pages-directory not found, Logseq will use the default pages directory"
           fi
 
-      # 步骤 2: 使用 logseq/publish-spa@v0.3.1
       - name: Build with Logseq Publish SPA
         id: build
         uses: logseq/publish-spa@v0.3.1
         with:
-          graph-directory: .
+          graph-directory: .publish-graph
           output-directory: www
 
-      # 步骤 3: 详细调试输出
       - name: Debug build output
         run: |
           echo "========================================="
-          echo "=== 查找所有 JSON 文件 ==="
+          echo "=== JSON files in build output ==="
           echo "========================================="
           json_files=$(find www -name "*.json" -type f 2>/dev/null)
           if [ -n "$json_files" ]; then
-            echo "找到以下 JSON 文件:"
             echo "$json_files"
           else
-            echo "❌ 未找到任何 JSON 文件 - 这是问题所在!"
+            echo "No JSON files found in build output"
           fi
-          
+
           echo ""
           echo "========================================="
-          echo "=== 检查 index.html 完整内容 ==="
+          echo "=== index.html ==="
           echo "========================================="
           if [ -f "www/index.html" ]; then
             cat www/index.html
           else
-            echo "❌ index.html 不存在"
+            echo "index.html is missing"
+            exit 1
           fi
 
-      # 步骤 4: 添加 .nojekyll
       - name: Add .nojekyll
         run: touch www/.nojekyll
 
-      # 步骤 5: 部署
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
