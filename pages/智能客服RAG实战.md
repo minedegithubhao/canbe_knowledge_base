@@ -4,82 +4,69 @@ type:: 概念
 status:: 草稿
 
 - 评估案例Prompt
-  collapsed:: true
-	- ```text
-	  请为文档块生成 100 条评测案例，每条评测案例必须是合法 JSON 对象，最终输出一个 JSON 数组，每条数据之间用逗号分隔，最后一条不要加逗号。
-	  
-	  【JSON 格式示例】:
-	  {
-	    "case_id":"category_order_001_paraphrase_01",
-	    "question": "我买完的订单在哪看",
-	    "standard_question":"如何查看我的订单？",
-	    "standard_answer":{
-	      "id":"FAQ_订单相关_001",
-	      "context":"进入 “我的”→“我的订单”，可查看全部、待付款、待发货、待收货、售后订单。"
-	    },
-	    "expected_ids":["FAQ_订单相关_001"],
-	    "category":"订单相关",
-	    "expected_category":"订单相关",
-	    "must_include":["我的订单"],
-	    "should_include":["待付款", "待发货", "待收货", "售后订单"],
-	    "must_not_include":["编造路径", "文档外功能"],
-	    "expected_behavior": "answer_from_context",
-	    "reject_answer_allowed": false,
-	    "difficulty": "easy",
-	    "case_type": "paraphrase",
-	    "tags": ["retrieval", "rerank", "generation", "paraphrase"],
-	    "priority": "high"
-	  }
-	  
-	  【字段要求】:
-	  1. case_id: 唯一编号，自动生成，格式：faq_{category}_{数字}_{case_type}_{序号}
-	  2. question: 用户实际提出的问题
-	  3. standard_question: 原始 FAQ 问题，保证系统答对的底线
-	  4. standard_answer: 原始答案，包括 id 和 context
-	  5. expected_ids: 期望召回的 FAQ id
-	  6. category / expected_category: 样本所属类别和期望类别
-	  7. must_include: 核心必答点，严格必须包含
-	  8. should_include: 可选关键词，缺失影响完整性但不算错误
-	  9. must_not_include: 禁止出现的内容，严格检查
-	  10. expected_behavior: answer_from_context → 必须从文档回答，不允许编造
-	  11. reject_answer_allowed: false → 必须回答；true → 可拒答
-	  12. difficulty: 样本难度层次，easy / medium / hard
-	  13. case_type: golden / paraphrase / scene_based / incomplete / ambiguous / out_of_scope / safety / policy_boundary
-	  14. tags: 对应 case_type 的能力标签
-	      - golden → ["retrieval", "rerank", "generation"]
-	      - paraphrase → ["retrieval", "rerank", "generation", "paraphrase"]
-	      - scene_based → ["retrieval", "generation", "scene_based"]
-	      - incomplete → ["retrieval", "generation", "incomplete"]
-	      - ambiguous → ["retrieval", "generation", "ambiguous"]
-	      - out_of_scope → ["reject", "out_of_scope"]
-	      - safety / policy_boundary → ["safety", "policy_boundary"]
-	  15. priority: high / medium / low
-	  
-	  【生成比例建议】:
-	  - case_type 分布：
-	    - golden 10%
-	    - paraphrase 30%
-	    - scene_based 20%
-	    - incomplete 10%
-	    - ambiguous / contrastive 10%
-	    - out_of_scope 15%
-	    - safety / policy_boundary 5%
-	  - difficulty 分布：
-	    - easy 50%
-	    - medium 30%
-	    - hard 20%
-	  - 负样本和边界样本必须生成，out_of_scope + safety + policy_boundary 总量约占总样本 20%左右
-	  
-	  【约束】:
-	  1. paraphrase 问题必须口语化、同义改写或短句形式，避免与 standard_question 完全一致
-	  2. must_include / must_not_include 必须严格遵守，否则判为违规
-	  3. JSON 必须合法，可直接解析，不允许缺逗号、缺引号或语法错误
-	  
-	  【输出】:
-	  生成 100 条 JSON 样本，保证：
-	  - case_id 唯一
-	  - 包含所有指定字段
-	  - 遵守比例、难度、tags 和禁答规则
-	  - 最终输出 JSON 数组格式
-	  ```
+	- 系统 Prompt
+	  collapsed:: true
+		- ```text
+		  你是一名负责电商客服 FAQ RAG 评估集建设的资深算法工程师。
+		  
+		  你的任务不是写营销文案，而是基于给定 FAQ 数据，生成高质量、可用于离线评估的评测案例。
+		  
+		  你必须遵守以下规则：
+		  1. 所有案例必须严格来源于输入 FAQ，不能引入 FAQ 中不存在的业务事实。
+		  2. 每条案例都必须能回溯到一个或多个 source_faq_ids。
+		  3. 每条案例都必须给出 reference_answer、key_points、forbidden_points。
+		  4. question 必须尽量模拟真实用户提问，允许口语化、抱怨式、省略式表达。
+		  5. 生成的案例要覆盖：
+		     - 单 FAQ 语义等价
+		     - 条件约束
+		     - 类别混淆
+		     - 否定约束
+		     - 跨 FAQ 聚合
+		     - 拒答类（仅当输入 FAQ 明确无法回答时才可生成）
+		  6. 输出必须是 JSON 数组，不要输出任何解释性文字。
+		  ```
+	- 用户 Prompt
+	  collapsed:: true
+		- ```text
+		  下面给你一组 FAQ 数据，请基于这些 FAQ 生成评估案例。
+		  
+		  【FAQ 数据】
+		  {faq_json}
+		  
+		  【生成目标】
+		  请生成 {case_count} 条评估案例。
+		  
+		  【类别覆盖要求】
+		  {category_distribution}
+		  
+		  【输出字段要求】
+		  每条案例必须包含以下字段：
+		  - case_id
+		  - source_faq_ids
+		  - category
+		  - question
+		  - question_style
+		  - question_type
+		  - difficulty
+		  - expected_route_category
+		  - expected_retrieved_faq_ids
+		  - reference_answer
+		  - key_points
+		  - forbidden_points
+		  - must_refuse
+		  - notes
+		  
+		  【字段约束】
+		  1. source_faq_ids 必须来自输入 FAQ 中真实存在的 faq_id。
+		  2. expected_route_category 必须来自输入 FAQ 中真实存在的 category。
+		  3. reference_answer 必须忠实于 source_faq_ids 对应 FAQ 的答案。
+		  4. key_points 必须是评分时必查的业务点，建议 2-5 个。
+		  5. forbidden_points 必须是不允许模型说出的错误断言，建议 1-3 个。
+		  6. must_refuse 仅在 FAQ 无法支持该问题时为 true，否则必须为 false。
+		  7. notes 需要简短说明该案例主要考察什么能力。
+		  
+		  【输出格式】
+		  只输出 JSON 数组，不要加 Markdown，不要加解释。
+		  ```
+-
 -
