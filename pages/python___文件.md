@@ -1,3 +1,13 @@
+alias:: Python文件旧笔记, Python文件操作旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/Python文件操作]] 和 [[Concept/Python上下文管理器]]。
+	- 相关面试题已整理到 [[Question/Python with 上下文管理器解决什么问题]] 和 [[Question/Python 文件读写如何避免资源泄露]]。
+	- 后续请维护新页面；本页保留旧文件读写示例。
+
 - open函数打开文件
 	- ```python
 	  # 返回的结果是一个file文件对象
@@ -117,7 +127,7 @@
 	          line = line.replace('\n','')
 	  
 	          # 2.3  执行反转操作
-	          line = line[::-1]
+	          line = ''.join(reversed(line))
 	  
 	          # 2.4 将数据写入到目的地
 	          write_f.write(line+'\n')

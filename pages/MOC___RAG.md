@@ -1,0 +1,206 @@
+alias:: RAG地图, RAG导航, RAG学习路径
+type:: moc
+domain:: [[MOC/大模型]]
+status:: growing
+updated:: 2026-05-03
+
+- **这个地图解决什么问题**
+	- 把 RAG 知识从零散笔记重构为一条可学习、可复习、可面试、可项目复盘的主线。
+	- 本页只做导航和学习顺序，不承载长篇解释；具体解释放到 [[Concept/RAG]]、项目复盘放到 Project 页面、刷题放到 [[Review/RAG面试]]。
+
+- **学习路径**
+	- 入门主线
+		- [[Concept/RAG]]
+		- [[Concept/文档清洗]]
+		- [[Concept/文档切分]]
+		- [[Concept/动态锚点法]]
+		- [[Concept/文本嵌入]]
+		- [[Concept/m3e-base模型]]
+		- [[Concept/向量库]]
+		- [[MOC/向量检索]]
+		- [[Concept/混合检索]]
+		- [[Concept/RRF]]
+		- [[Concept/归一化权重]]
+		- [[Concept/重排序]]
+		- [[Concept/BGE Reranker]]
+		- [[Concept/检索后过滤]]
+		- [[Concept/Query Rewriting]]
+		- [[Concept/长尾查询]]
+		- [[Concept/信噪比]]
+	- 效果评估
+		- [[Concept/召回率]]
+		- [[Concept/准确率]]
+		- [[Concept/真实性]]
+		- [[Concept/相关性]]
+		- [[Concept/RAGAS]]
+		- [[Concept/PAGAS]]
+	- 项目实战
+		- [[Project/简易RAG系统]]
+		- [[Project/手册类RAG实战]]
+		- [[Project/智能客服RAG实战]]
+		- [[Project/小说RAG实战]]
+		- [[Project/图文知识库]]
+	- 面试复习
+		- [[Review/RAG面试]]
+		- [[Review/RAG项目面试]]
+
+- **核心概念**
+	- [[Concept/RAG]]
+		- 总览 RAG 解决什么问题、标准流程、常见误区。
+	- [[Concept/纯文本RAG]]
+		- 最常见的文本问答 RAG 形态。
+	- [[Concept/图文RAG]]
+		- 面向带图文档、说明书、报告、截图和流程图的 RAG 形态。
+	- [[Concept/CLIP]]
+		- 把文本和图片编码到同一向量空间，支撑图文检索。
+	- [[Concept/图片编码器]]
+		- 把图片转换成向量或视觉 token，是图文检索和多模态模型的基础组件。
+	- [[Concept/多模态RAG]]
+		- 面向文本、图片、音频、视频等多模态内容的扩展方向。
+	- [[Concept/文档清洗]]
+		- 解决知识入库前的噪声、格式、结构和业务语义保留问题。
+	- [[Concept/文档切分]]
+		- 解决 chunk 粒度、语义完整性、召回纯度之间的平衡问题。
+	- [[Concept/动态锚点法]]
+		- 在切分时结合结构锚点和语义锚点，减少语义割裂。
+	- [[Concept/文本嵌入]]
+		- 把文本转换为可检索向量，是向量检索的基础。
+	- [[Concept/m3e-base模型]]
+		- 中文 embedding 基线模型，可用于 RAG 和语义检索实验。
+	- [[Concept/向量库]]
+		- 存储 embedding 和 metadata，支撑向量召回。
+	- [[Concept/向量检索]]
+		- 用向量相似度召回语义相关候选，是 RAG 检索底座之一。
+	- [[Concept/Milvus]]
+		- 常见向量数据库，负责向量存储、索引和相似度搜索。
+	- [[Concept/HNSW]]
+		- 常见 ANN 图索引，适合低延迟高召回场景。
+	- [[Concept/IVF_FLAT]]
+		- 常见 ANN 聚类分桶索引，适合评估大规模向量检索的速度和召回平衡。
+	- [[Concept/倒排索引]]
+		- 支撑 BM25/关键词检索，是混合检索的另一条基础链路。
+	- [[Concept/混合检索]]
+		- 解决向量检索和关键词检索各自短板，常见组合是向量检索 + BM25。
+	- [[Concept/RRF]]
+		- 用倒数排名融合多路召回结果。
+	- [[Concept/归一化权重]]
+		- 用分数归一化和权重合并多路召回结果。
+	- [[Concept/自查询检索]]
+		- 从用户问题中提取 metadata 条件，用过滤缩小检索范围。
+	- [[Concept/重排序]]
+		- 解决召回结果多但不够准的问题，让最相关证据进入上下文。
+	- [[Concept/BGE Reranker]]
+		- 常见 Cross-Encoder 精排模型，用于提高候选证据相关性判断。
+	- [[Concept/检索后过滤]]
+		- 在生成前过滤低相关证据，必要时触发拒答或追问。
+	- [[Concept/Query Rewriting]]
+		- 解决口语、省略、指代、术语不匹配导致的检索偏移。
+	- [[Concept/长尾查询]]
+		- 低频但多样的真实问题，是 RAG 评估不能只看热门 FAQ 的原因之一。
+	- [[Concept/信噪比]]
+		- 衡量上下文中有效证据和噪声的比例，是 chunk、Top K、Rerank 和过滤的重要判断依据。
+	- [[Concept/相关性]]
+		- 评估回答或证据是否真正回应用户问题。
+	- [[Concept/RAGAS]]
+		- 从召回和生成两段评估 RAG。
+	- [[Concept/PAGAS]]
+		- 用更贴近业务验收的维度评估 RAG。
+	- [[Concept/文档聚类]]
+		- 用主题聚类做知识库分桶或 Collection 隔离。
+
+- **项目实战**
+	- [[Project/简易RAG系统]]
+		- 最小可运行的纯文本 RAG：加载、切分、embedding、向量库、检索、生成、评估。
+	- [[Project/手册类RAG实战]]
+		- 重点看评估驱动优化：Rerank、chunk size、metadata/self-query、Top K 的取舍。
+	- [[Project/智能客服RAG实战]]
+		- 重点看 FAQ 评估集构造和业务答案约束。
+	- [[Project/小说RAG实战]]
+		- 重点看长文本、时序、角色关系、专有名词和噪声控制。
+	- [[Project/图文知识库]]
+		- 图文、多模态、知识库产品化方向的项目入口。
+	- [[Review/RAG项目面试]]
+		- 项目复盘和项目追问刷题入口。
+
+- **面试主线**
+	- 先会讲 [[Concept/RAG]] 的标准流程。
+	- 再能解释 [[Concept/文档切分]]、[[Concept/混合检索]]、[[Concept/重排序]] 分别解决哪个环节的问题。
+	- 最后用 [[Project/手册类RAG实战]] 或 [[Project/智能客服RAG实战]] 讲清楚如何定位问题、如何调参、如何评估收益。
+	- 项目专场复习走 [[Review/RAG项目面试]]。
+
+- **复杂问题**
+	- [[Question/RAG 为什么还会幻觉]]
+	- [[Question/RAG 如何优化召回率]]
+	- [[Question/RRF 和 Rerank 有什么区别]]
+	- [[Question/为什么 RAG 需要 Rerank]]
+	- [[Question/混合检索为什么不能简单拼接结果]]
+	- [[Question/Query Rewriting 有什么风险]]
+	- [[Question/检索后过滤如何降低幻觉]]
+	- [[Question/BGE Reranker 在 RAG 中怎么用]]
+	- [[Concept/长尾查询]]
+	- [[Concept/信噪比]]
+	- [[Concept/相关性]]
+	- [[Question/向量数据库解决什么问题]]
+	- [[Question/HNSW 的核心思想是什么]]
+	- [[Question/IVF_FLAT 和 HNSW 有什么区别]]
+	- [[Question/向量检索为什么还需要召回和重排]]
+	- [[Question/RAG 中向量库怎么选型]]
+	- [[Question/RAG 如何讲手册类 RAG 项目]]
+	- [[Question/RAG 如何构造智能客服评估集]]
+	- [[Question/长篇小说 RAG 和普通文档 RAG 有什么不同]]
+	- [[Question/RAG 项目如何做评估驱动优化]]
+	- [[Question/图文知识库 RAG 项目怎么讲]]
+	- [[Question/小说 RAG 为什么会出现检索污染和重写漂移]]
+	- [[Question/简易 RAG 系统如何升级为生产可用]]
+
+- **旧页面迁移索引**
+	- 已吸收到新主线的旧页面
+		- [[大模型/RAG]]
+		- [[大模型/RAG/纯文本RAG]]
+		- [[大模型/RAG/多模态RAG]]
+		- [[大模型/RAG/图文RAG]]
+		- [[大模型/RAG/图文检索]]
+		- [[大模型/RAG/向量库]]
+		- [[Milvus]]
+		- [[HNSW]]
+		- [[IVF_FLAT]]
+		- [[大模型/RAG/ES/倒排索引]]
+		- [[大模型/RAG/文本嵌入]]
+		- [[Embedding使用]]
+		- [[文档清洗]]
+		- [[文档切分]]
+		- [[混合检索]]
+		- [[RRF]]
+		- [[Reranker]]
+		- [[BGE Reranker]]
+		- [[bge-reranker-v2-m3模型]]
+		- [[自查询检索]]
+		- [[重排序]]
+		- [[检索后过滤]]
+		- [[大模型/RAG/Query Rewriting]]
+		- [[召回率]]
+		- [[准确率]]
+		- [[真实性]]
+		- [[RAGAS]]
+		- [[PAGAS]]
+		- [[大模型/RAG/文档聚类]]
+		- [[简易RAG系统]]
+		- [[智能客服RAG实战]]
+		- [[小说RAG实战]]
+		- [[手册类RAG实战]]
+		- [[项目实战]]
+		- [[评估案例Prompt]]
+		- [[小说RAG实战数据分析报告]]
+	- 暂作为深挖来源保留的旧页面
+		- [[大模型/RAG/图文RAG/CLIP]]
+		- [[大模型/RAG/Image Encoder]]
+		- [[大模型/RAG/视频编码器]]
+		- [[大模型/RAG/音频编码器]]
+		- [[大模型/RAG/文本聚类/算法/无监督聚类算法]]
+
+- **最近更新**
+	- 2026-05-02
+		- 将 RAG 主线重构为 MOC、Concept、Project、Review 四类页面。
+		- 补齐 RAG 形态、检索底座、评估指标和项目入口。
+	- 2026-05-03
+		- 补齐 RAG 检索优化后半段：RRF、Rerank、BGE Reranker、检索后过滤和 Query Rewriting 的复习入口。

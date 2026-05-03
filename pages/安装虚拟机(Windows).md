@@ -1,13 +1,15 @@
-alias::
-tags:: 虚拟机
-type:: 概念
-status:: 草稿
+alias:: Windows虚拟机安装旧笔记, WSL旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页是旧 Windows 虚拟机和 WSL 安装笔记，暂不作为当前知识库重构主线维护。
+	- 本页保留为历史资料；涉及本地路径的示例已改为占位路径，发布前仍建议复查。
 
 - 安装WSL 2
 	- 自动化安装
-	  collapsed:: true
 		- 以 **管理员身份** 打开 PowerShell，然后运行
-		  id:: 69cb3c65-0edf-4ebb-aa01-6166af1d8d60
 		- ```cmd
 		  wsl --install
 		  ```
@@ -15,8 +17,6 @@ status:: 草稿
 		- ![image.png](../assets/image_1774927027592_0.png)
 		- ![image.png](../assets/image_1774929504245_0.png)
 	- 手动导入本地Ubuntu
-	  id:: 69cb4619-d96c-4124-8105-3421ae3642dc
-	  collapsed:: true
 		- 开启WSL功能：下载并安装WSL 内核
 			- ```CMD
 			  wsl --install --no-distribution
@@ -24,7 +24,7 @@ status:: 草稿
 			- `--no-distribution`：只开启 WSL 功能，**不自动下载 Ubuntu**
 		- 导入本地Ubuntu
 			- ```cmd
-			  wsl --import Ubuntu-22.04 D:\WSL\Ubuntu-22.04 D:\Downloads\ubuntu-22.04.5-wsl-amd64.wsl
+			  wsl --import Ubuntu-22.04 <WSL安装目录> <Ubuntu镜像文件路径>
 			  ```
 		- 启动Ubuntu
 			- ```cmd

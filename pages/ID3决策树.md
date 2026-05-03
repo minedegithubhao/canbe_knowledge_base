@@ -1,6 +1,12 @@
-alias::
-tags:: 决策树
-type:: 概念
-status:: 草稿
+alias:: ID3
+type:: concept
+status:: archived
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/决策树]]、[[Question/ID3、C4.5、CART 有什么区别]] 和 [[Question/决策树如何选择划分特征]]。
+	- 后续请维护新页面；本页仅保留旧笔记和反向链接。
+
+- **旧笔记**
+	- ID3 是决策树算法之一，通常使用信息增益选择划分特征。
 
 -

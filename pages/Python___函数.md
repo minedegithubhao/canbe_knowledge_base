@@ -1,3 +1,12 @@
+alias:: Python函数旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/Python函数]]、[[Concept/Python可变对象]] 和 [[Question/Python 函数参数有哪些类型]]。
+	- 后续请维护新页面；本页保留旧函数语法和代码示例。
+
 - 容器拆包
 	- ```python
 	  # 把元组中的数据拆解出来
@@ -71,7 +80,6 @@
 	  print(type(result))  # <class 'tuple'>
 	  ```
 - 全局变量的修改：python中定义的全局变量（数值、字符串、布尔类型、元组类型）修改时需要加上`global`,`可变类型`(引用可变)可以不加global关键字。
-  id:: 69acc1ca-862a-44a6-b456-69a0947a7366
 	- ```python
 	  num = 10
 	  def func():
@@ -95,7 +103,6 @@
 	  user_info('婉儿', 18, '女')
 	  ```
 - 不定长元组（位置）参数
-  id:: 69acc1ca-0073-45d8-9c82-6a027c9e554a
 	- ```python
 	  def user_info(*args):
 	      # print(args)  # 元组类型数据，对传递参数有顺序要求
@@ -105,7 +112,6 @@
 	  user_info('Tom', 23, '美国纽约')
 	  ```
 - 不定长字典（关键字）参数
-  id:: 69acc1ca-6c1c-459a-8bc3-891c5586b438
 	- ```python
 	  def user_info(**kwargs):
 	      # print(kwargs)  # 字典类型数据，对传递参数没有顺序要求，格式要求key = value值

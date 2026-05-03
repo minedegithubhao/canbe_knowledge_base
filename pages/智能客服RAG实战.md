@@ -1,11 +1,13 @@
 alias::
-tags:: 项目实战
-type:: 概念
-status:: 草稿
+type:: concept
+status:: archived
+
+- **迁移说明**
+	- 这页是旧智能客服 RAG 项目笔记，稳定内容已整理到 [[Project/智能客服RAG实战]] 和 [[Review/RAG面试]]。
+	- 后续学习和复习优先使用新页面；本页保留为原始资料和历史上下文。
 
 - 评估案例Prompt
 	- 系统 Prompt
-	  collapsed:: true
 		- ```text
 		  你是一名负责电商客服 FAQ RAG 评估集建设的资深算法工程师。
 		  
@@ -26,7 +28,6 @@ status:: 草稿
 		  6. 输出必须是 JSON 数组，不要输出任何解释性文字。
 		  ```
 	- 用户 Prompt
-	  collapsed:: true
 		- ```text
 		  下面给你一组 FAQ 数据，请基于这些 FAQ 生成评估案例。
 		  

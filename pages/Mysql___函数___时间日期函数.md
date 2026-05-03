@@ -1,3 +1,12 @@
+alias:: Mysql/函数/时间日期函数
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页是旧 MySQL 时间日期函数笔记，稳定内容已整理到 [[Concept/MySQL 常用函数]]。
+	- 后续学习和复习优先维护新页面；本页保留为原始资料和历史上下文。
+
 - `NOW()`：获取当前datetime类型的时间
 	- ```sql
 	  SELECT NOW(); -- 输出：2026-03-09 08:50:37

@@ -1,3 +1,12 @@
+alias:: Python常用函数旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页是旧 Python 常用函数笔记，稳定内容已整理到 [[Concept/Python函数]]、[[Concept/Python字符串]] 和 [[Concept/Python类型转换]]。
+	- 后续学习和复习优先维护新页面；本页保留为原始资料和历史上下文。
+
 - 常用函数
 	- 一次打印输出多个变量
 		- ```python

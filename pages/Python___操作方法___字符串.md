@@ -1,3 +1,12 @@
+alias:: Python字符串旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/Python字符串]]。
+	- 后续请维护新页面；本页保留旧操作示例。
+
 - 字符串查找
 	- ```python
 	  # 定义一个字符串

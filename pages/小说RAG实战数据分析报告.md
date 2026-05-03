@@ -1,3 +1,38 @@
+alias:: 小说RAG数据分析报告, 凡人修仙传RAG评估报告
+type:: source
+status:: compiled
+updated:: 2026-05-02
+
+- **迁移说明**
+	- 本页面是旧小说 RAG 评估分析资料，稳定结论已整理到 [[Project/小说RAG实战]] 和 [[Question/小说 RAG 为什么会出现检索污染和重写漂移]]。
+	- 后续项目复盘优先维护新页面；本页保留为评估报告来源。
+
+- **原始信息**
+	- 长篇小说 RAG 实验评估截图和问题分析。
+	- 主题包括检索污染、Query Rewriting 漂移、事实一致性、上下文噪声和检索后过滤。
+
+- **核心观点**
+	- 混合检索不能简单拼接结果，否则低质量 BM25 结果可能挤掉高质量向量结果。
+	- 强模型负责 Query Rewriting 不一定更好，过度推理或文学化表达可能导致检索漂移。
+	- 检索不准时，生成模型越强，越可能写出逻辑自洽但脱离证据的幻觉。
+	- 检索后过滤可以作为低置信度问题的止损策略。
+
+- **可沉淀的概念**
+	- [[Concept/混合检索]]
+	- [[Concept/RRF]]
+	- [[Concept/Query Rewriting]]
+	- [[Concept/检索后过滤]]
+	- [[Concept/归一化权重]]
+
+- **已更新页面**
+	- [[Project/小说RAG实战]]
+	- [[Question/小说 RAG 为什么会出现检索污染和重写漂移]]
+	- [[Question/混合检索为什么不能简单拼接结果]]
+	- [[Concept/归一化权重]]
+
+- **待追问问题**
+	- 小说 RAG 中什么时候应该使用 GraphRAG，而不是继续堆 Query Rewriting 和 Rerank？
+
 - ![image.png](../assets/image_1774059724799_0.png)
 - ![image.png](../assets/image_1774059793007_0.png)
 - 检索污染：

@@ -1,3 +1,12 @@
+alias:: Mysql/函数/开窗函数
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页是旧 MySQL 开窗函数笔记，稳定内容已整理到 [[Concept/MySQL 窗口函数]]。
+	- 后续学习和复习优先维护新页面；本页保留为原始资料和历史上下文。
+
 - 基本语法
 	- ```text
 	  基本语法：<ranking function> OVER (ORDER BY 列名, ...)

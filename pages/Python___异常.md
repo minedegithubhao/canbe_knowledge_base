@@ -1,3 +1,12 @@
+alias:: Python异常旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/Python异常]] 和 [[Question/Python 异常处理怎么写]]。
+	- 后续请维护新页面；本页保留旧异常处理示例。
+
 - 异常捕获
 	- ```python
 	  try:

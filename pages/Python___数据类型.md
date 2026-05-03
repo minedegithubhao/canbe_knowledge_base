@@ -1,3 +1,12 @@
+alias:: Python数据类型旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/Python数据类型]] 和 [[Concept/Python可变对象]]。
+	- 后续请维护新页面；本页保留旧课堂笔记和代码示例。
+
 - 数值类型
 	- 整数类型：python中不再区分`int`和`long`
 		- ```python

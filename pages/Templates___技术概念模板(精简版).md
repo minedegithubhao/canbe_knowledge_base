@@ -1,6 +1,8 @@
-- alias::
-  tags::
-  type:: 概念
-  status:: 草稿
-  template:: 技术概念模板(精简版)
--
+alias::
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面是旧技术概念精简模板，后续请使用 [[Templates/Concept]]。
+	- 本页不再作为新页面模板使用。

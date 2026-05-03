@@ -1,15 +1,15 @@
 alias:: 分词
-tags:: 
-type:: 概念
-status:: 整理中
+type:: concept
+status:: archived
 
-	- ## 🧠 一句话说清楚（费曼）
+- **迁移说明**
+	- 本页面内容已迁移到 [[Concept/分词]]。
+	- 后续请维护 [[Concept/分词]]；本页仅保留旧笔记和反向链接。
+	- **一句话说清楚（费曼）**
 		- 分词 = 文字 → 切成 [[Token]] → 再转成 [[Token ID]] 的过程
-			- ((69af63aa-ec9b-4e1c-8670-b458372bff9f))
 		- 标准分词过程：文本 → **分词** → [[Token序列]] → 查[[词表]] → [[Token ID序列]]
-	- ## 🔁核心原理/流程（极简版）
-		- 分词代码示例
-		  id:: 69af63aa-ec9b-4e1c-8670-b458372bff9f
+			- **核心原理/流程（极简版）**
+				- 分词代码示例
 			- ```python
 			  from transformers import AutoTokenizer
 			  
@@ -19,10 +19,10 @@ status:: 整理中
 			  # 处理输入文本 → 生成enc字典
 			  texts = ["大模型RAG检索", "ES关键字检索"]
 			  enc = tokenizer(
-			      texts,                # 输入文本
-			      padding=True,         # 补全长度
-			      truncation=True,      # 截断超长文本
-			      return_tensors="pt"   # 返回PyTorch张量（关键！）
+			     texts,                # 输入文本
+			     padding=True,         # 补全长度
+			     truncation=True,      # 截断超长文本
+			     return_tensors="pt"   # 返回PyTorch张量（关键！）
 			  )
 			  
 			  # 打印enc的结构（企业里看到的真实样子）
@@ -43,13 +43,12 @@ status:: 整理中
 			- [[注意力掩码]]
 			- [101, 5678, 4567, 826, 656, 102, 0, 0]就是 [[Token ID序列]]
 			- 分词器返回结果（字典）：`enc`
-			  id:: 69b01727-de90-45fb-9c9d-359e12e04e8a
-				- | 字段名 | 类型 | 作用（企业实战） | 是不是张量？ |
-				  | ---- | ---- | ---- |
-				  | `input_ids` | Tensor | token 的数字编号（模型核心输入） | 是 |
-				  | `attention_mask` | Tensor | 标记有效 token（1）和补全 padding（0） | 是 |
-				  | `token_type_ids` | Tensor | 区分多句文本（单句全为 0） | 是 |
-				  | `overflow_to_sample_mapping` | List | 超长文本截断后的映射（可选） | 否 |
-				  | `offset_mapping` | List | token 对应原文的位置（可选） | 否 |
+			- | 字段名 | 类型 | 作用（企业实战） | 是不是张量？ |
+			  | ---- | ---- | ---- |
+			  | `input_ids` | Tensor | token 的数字编号（模型核心输入） | 是 |
+			  | `attention_mask` | Tensor | 标记有效 token（1）和补全 padding（0） | 是 |
+			  | `token_type_ids` | Tensor | 区分多句文本（单句全为 0） | 是 |
+			  | `overflow_to_sample_mapping` | List | 超长文本截断后的映射（可选） | 否 |
+			  | `offset_mapping` | List | token 对应原文的位置（可选） | 否 |
 			-
 			- <!--EndFragment-->

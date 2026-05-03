@@ -1,3 +1,12 @@
+alias:: Python lambda旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/Python函数]] 和 [[Question/Python 函数参数有哪些类型]]。
+	- 后续请维护新页面；本页保留旧 lambda 示例。
+
 - 基本语法
 	- ```python
 	  变量 = lambda 函数参数:表达式（函数代码 + return返回值）

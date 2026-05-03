@@ -5,7 +5,7 @@ services:
     container_name: rag-mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: '123456'
+      MYSQL_ROOT_PASSWORD: '<change-me>'
       MYSQL_DATABASE: 'resume_rag_db'
     ports:
       - "3306:3306"
@@ -21,7 +21,7 @@ services:
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: 'admin'
-      MONGO_INITDB_ROOT_PASSWORD: '123456'
+      MONGO_INITDB_ROOT_PASSWORD: '<change-me>'
       MONGO_INITDB_DATABASE: 'resume_db'
     ports:
       - "27017:27017"
@@ -65,8 +65,8 @@ services:
     container_name: rag-minio
     restart: always
     environment:
-      MINIO_ACCESS_KEY: 'minioadmin'
-      MINIO_SECRET_KEY: 'minioadmin'
+      MINIO_ACCESS_KEY: '<change-me>'
+      MINIO_SECRET_KEY: '<change-me>'
     volumes:
       - milvus-minio:/minio_data
     command: server /minio_data

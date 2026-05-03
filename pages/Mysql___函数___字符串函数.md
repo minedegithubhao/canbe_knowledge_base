@@ -1,5 +1,13 @@
+alias:: Mysql/函数/字符串函数
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页是旧 MySQL 字符串函数笔记，稳定内容已整理到 [[Concept/MySQL 常用函数]]。
+	- 后续学习和复习优先维护新页面；本页保留为原始资料和历史上下文。
+
 - `LOWER()`：转换为小写
-  collapsed:: true
 	- > SELECT LOWER('Hello World!');
 - `UPPER()`：转换为大写
 	- ```sql

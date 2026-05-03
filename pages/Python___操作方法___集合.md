@@ -1,3 +1,12 @@
+alias:: Python集合旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/Python集合]]。
+	- 后续请维护新页面；本页保留旧操作示例。
+
 - 增
 	- ```python
 	  set1 = {'张三', '李四', '王五', '张三', '王五', '赵六'}

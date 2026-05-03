@@ -1,7 +1,12 @@
-- alias::
-  tags::
-  type:: 概念
-  status:: 草稿 | 整理中 | 已掌握
+alias:: Chunk旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/文档切分]]。
+	- 后续请维护新页面；本页保留旧 chunk 解释和示例。
+
 - Chunk 的目的： #面试背诵汇总/大模型/RAG
 	- Chunk 是长文本被分割后的小片段，每个 chunk 是一个独立的文本单元（通常 100-1000 字符），在 LangChain 中以 Document 对象形式存储。Chunk 的主要目的包括：
 		- **便于 LLM 处理**：LLM（如 ChatOpenAI、DeepSeekLLM）有输入长度限制（如 4096 tokens），长文本无法一次性输入。Chunk 将大文档分成小块，确保每个块适合 LLM 处理。

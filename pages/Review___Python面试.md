@@ -1,0 +1,91 @@
+alias:: Python面试, Python刷题, Python基础面试
+type:: review
+domain:: [[MOC/Python]]
+status:: active
+updated:: 2026-05-03
+
+- **怎么刷**
+	- 第一轮刷对象和数据类型：可变对象、不可变对象、列表、元组、字典、集合、字符串。
+	- 第二轮刷函数机制：参数、返回值、作用域、lambda、闭包和装饰器。
+	- 第三轮刷面向对象：类、self、封装、继承、多态、方法类型。
+	- 第四轮刷工程基础：异常处理、文件读写、资源释放、迭代器和生成器。
+	- 第五轮刷外部系统连接：MySQL、Redis、API 调用、conda 环境管理。
+	- 每道题都要能说出“机制、使用场景、坑点”，不要只背语法。
+
+- **高频必会**
+	- Python 列表和元组有什么区别？ #card
+		- 列表是可变序列，适合频繁增删改；元组是不可变序列，适合表达固定结构和不可变记录。面试时要补充：元组不可变指元素引用不可变，如果元组里放了可变对象，该对象内部仍可能变化。
+	- Python 字典为什么查询快？ #card
+		- 字典基于哈希表，通过 key 的哈希值定位存储位置，平均查询、插入、删除接近常数时间。前提是 key 必须可哈希，并且哈希冲突会影响性能。
+	- 可变对象和不可变对象有什么区别？ #card
+		- 可变对象能在原对象上修改内容，常见有 list、dict、set；不可变对象创建后值不能原地改变，常见有 int、float、bool、str、tuple。这个差异会影响函数传参、默认参数和哈希能力。
+	- Python 函数参数有哪些类型？ #card
+		- 常见有位置参数、关键字参数、默认参数、不定长位置参数和不定长关键字参数。答题时要补充默认参数不要用可变对象，传参解包用一个星号展开序列、两个星号展开字典。
+	- Python 闭包是什么？ #card
+		- 闭包是内部函数引用外部函数作用域变量，并在外部函数返回后仍能访问这些变量的结构。它常用于保存状态、构造装饰器和延迟执行。
+	- Python 装饰器是什么？ #card
+		- 装饰器是在不修改原函数代码的前提下，为函数增加额外行为的机制，本质通常是接收函数并返回新函数的闭包。常见用途有鉴权、日志、计时、缓存和事务控制。
+	- Python 异常处理怎么写？ #card
+		- 基本结构是 try 捕获可能失败的代码，except 处理异常，else 放无异常时执行的逻辑，finally 放一定要执行的清理逻辑。工程里要避免裸 except，并优先用上下文管理器释放资源。
+	- Python 面向对象三大特性是什么？ #card
+		- 封装把状态和行为组织在对象内部，继承让子类复用和扩展父类能力，多态让不同对象通过同一接口表现出不同行为。Python 中多态更常体现为鸭子类型。
+	- 实例方法、类方法、静态方法有什么区别？ #card
+		- 实例方法接收 self，操作实例状态；类方法接收 cls，操作类状态或构造类对象；静态方法不自动接收 self 或 cls，只是放在类命名空间下的普通函数。
+	- with 上下文管理器解决什么问题？ #card
+		- 它解决资源释放容易遗漏的问题。进入 with 时获取资源，离开 with 时自动清理资源，即使中间抛异常也会执行退出逻辑，典型例子是自动关闭文件。
+	- 迭代器和生成器有什么区别？ #card
+		- 迭代器是按需返回下一个元素的对象，通常需要维护遍历状态；生成器是更简洁的迭代器写法，会自动保存局部变量和执行状态，适合惰性处理。
+	- Python 操作 MySQL 要注意什么？ #card
+		- 要注意连接管理、参数化 SQL、防注入、事务提交回滚、异常处理、连接池和资源释放。面试时不要只停留在增删改查。
+	- Python 操作 Redis 常见数据结构怎么选？ #card
+		- 单值和计数用字符串，对象字段用哈希，顺序队列用列表，去重关系用集合，排行榜和带权排序用有序集合；缓存类 key 要设置 TTL。
+	- Python API 调用如何做稳定性处理？ #card
+		- 要设置超时、异常分类、有限重试、响应校验、日志和降级。调用 LLM API 时还要管理 prompt、上下文长度和输出格式。
+	- conda 环境管理解决什么问题？ #card
+		- 它解决依赖隔离和环境复现问题。不同项目可以使用独立 Python 和包版本，避免全局环境污染，也方便冲突排查和重建。
+
+- **复杂题入口**
+	- [[Question/Python 列表和元组有什么区别]]
+	- [[Question/Python 字典为什么查询快]]
+	- [[Question/Python 可变对象和不可变对象有什么区别]]
+	- [[Question/Python 函数参数有哪些类型]]
+	- [[Question/Python 闭包是什么]]
+	- [[Question/Python 装饰器是什么]]
+	- [[Question/Python 异常处理怎么写]]
+	- [[Question/Python 面向对象三大特性是什么]]
+	- [[Question/Python 实例方法、类方法、静态方法有什么区别]]
+	- [[Question/Python 继承和多态怎么理解]]
+	- [[Question/Python with 上下文管理器解决什么问题]]
+	- [[Question/Python 文件读写如何避免资源泄露]]
+	- [[Question/Python 迭代器和生成器有什么区别]]
+	- [[Question/Python 操作 MySQL 要注意什么]]
+	- [[Question/Python 操作 Redis 常见数据结构怎么选]]
+	- [[Question/Python API 调用如何做稳定性处理]]
+	- [[Question/conda 环境管理解决什么问题]]
+
+- **关联概念**
+	- [[Concept/Python]]
+	- [[Concept/Python数据类型]]
+	- [[Concept/Python可变对象]]
+	- [[Concept/Python列表]]
+	- [[Concept/Python元组]]
+	- [[Concept/Python字典]]
+	- [[Concept/Python集合]]
+	- [[Concept/Python字符串]]
+	- [[Concept/Python函数]]
+	- [[Concept/Python异常]]
+	- [[Concept/Python闭包]]
+	- [[Concept/Python装饰器]]
+	- [[Concept/Python面向对象]]
+	- [[Concept/Python类]]
+	- [[Concept/Python继承]]
+	- [[Concept/Python多态]]
+	- [[Concept/Python方法类型]]
+	- [[Concept/Python文件操作]]
+	- [[Concept/Python上下文管理器]]
+	- [[Concept/Python迭代器]]
+	- [[Concept/Python生成器]]
+	- [[Concept/Python操作MySQL]]
+	- [[Concept/Python操作Redis]]
+	- [[Concept/Python API调用]]
+	- [[Concept/conda环境管理]]

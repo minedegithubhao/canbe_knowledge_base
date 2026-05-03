@@ -1,5 +1,14 @@
+alias:: Python类旧笔记, Python面向对象旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/Python类]]、[[Concept/Python面向对象]]、[[Concept/Python继承]]、[[Concept/Python多态]]、[[Concept/Python方法类型]]。
+	- 相关面试题已整理到 [[Question/Python 面向对象三大特性是什么]]、[[Question/Python 实例方法、类方法、静态方法有什么区别]] 和 [[Question/Python 继承和多态怎么理解]]。
+	- 后续请维护新页面；本页保留旧代码示例。
+
 - 定义
-  id:: 69ace2ec-7be0-4add-929e-33c91a0f3c0d
 	- ```python
 	  class Person(object):
 	      # 属性
@@ -120,7 +129,6 @@
 			  del p1
 			  ```
 - 公/私有属性和公/私有方法
-  id:: 69ace5ed-3091-4b28-9566-903a1be3e3da
 	- 属性名和方法名 前面 加上两个下划线 `__`，**使用方法和Java一样**
 	- ```python
 	  class Girl():
@@ -272,7 +280,6 @@
 	  p2 = Person('Harry', 26)
 	  ```
 - 类方法
-  id:: 69aceb82-9488-454b-8c77-efec7e45ea59
 	- ```python
 	  class Tool(object):
 	      # 定义一个类属性count
@@ -290,7 +297,6 @@
 	  Tool.get_count()
 	  ```
 - 静态方法
-  id:: 69acebbc-35f2-4776-9790-5cfc0b259f24
 	- 操作类属性或类中的其他方法。
 	- ```python
 	  # 开发一款游戏
@@ -306,4 +312,4 @@
 	  # 开始游戏、打印菜单
 	  Game.menu()
 	  ```
-	- 重点对比 ((69ace5ed-3091-4b28-9566-903a1be3e3da))和 ((69aceb82-9488-454b-8c77-efec7e45ea59)) 以及 ((69acebbc-35f2-4776-9790-5cfc0b259f24))的区别
+	- 重点对比公私有属性、类方法、静态方法的区别。

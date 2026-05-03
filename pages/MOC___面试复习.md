@@ -1,0 +1,92 @@
+alias:: 面试复习地图, 面试刷题, 复习地图
+type:: moc
+status:: growing
+updated:: 2026-05-03
+
+- **刷题入口**
+	- 大模型基础
+		- [[Review/Transformer面试]]
+		- [[Review/RAG面试]]
+		- [[Review/RAG项目面试]]
+		- [[Review/向量检索面试]]
+		- [[Review/大模型应用面试]]
+		- [[Review/大模型应用工程面试]]
+	- 数据和机器学习
+		- [[Review/机器学习面试]]
+		- [[Review/推荐系统面试]]
+		- [[Review/数据库与数据同步面试]]
+	- 编程和工程
+		- [[Review/Python面试]]
+
+- **高频题组**
+	- RAG 和向量检索
+		- [[Question/RAG 为什么还会幻觉]]
+		- [[Question/RAG 如何优化召回率]]
+		- [[Question/RRF 和 Rerank 有什么区别]]
+		- [[Question/为什么 RAG 需要 Rerank]]
+		- [[Question/混合检索为什么不能简单拼接结果]]
+		- [[Question/Query Rewriting 有什么风险]]
+		- [[Question/检索后过滤如何降低幻觉]]
+		- [[Question/BGE Reranker 在 RAG 中怎么用]]
+		- [[Question/向量数据库解决什么问题]]
+		- [[Question/HNSW 的核心思想是什么]]
+		- [[Question/IVF_FLAT 和 HNSW 有什么区别]]
+		- [[Question/向量检索为什么还需要召回和重排]]
+	- RAG 项目
+		- [[Question/RAG 如何讲手册类 RAG 项目]]
+		- [[Question/RAG 如何构造智能客服评估集]]
+		- [[Question/长篇小说 RAG 和普通文档 RAG 有什么不同]]
+		- [[Question/RAG 项目如何做评估驱动优化]]
+		- [[Question/图文知识库 RAG 项目怎么讲]]
+		- [[Question/小说 RAG 为什么会出现检索污染和重写漂移]]
+		- [[Question/简易 RAG 系统如何升级为生产可用]]
+	- Transformer 和大模型应用
+		- [[Question/Only-Encoder、Only-Decoder、Encoder-Decoder 有什么区别]]
+		- [[Question/Self-Attention 和 Masked Self-Attention 有什么区别]]
+		- [[Question/Token、Token ID、词表、嵌入表是什么关系]]
+		- [[Question/Transformer Encoder 一层包含什么]]
+		- [[Question/为什么 Transformer 适合大模型]]
+		- [[Question/Prompt Engineering 的核心原则是什么]]
+		- [[Question/上下文工程和 Prompt Engineering 有什么区别]]
+		- [[Question/Agent 和普通 LLM 调用有什么区别]]
+		- [[Question/Prompt Chaining 适合什么场景]]
+		- [[Question/Routing 在 Agent 中解决什么问题]]
+		- [[Question/Reflection 有什么作用和风险]]
+	- 机器学习
+		- [[Question/机器学习项目完整流程是什么]]
+		- [[Question/模型评估为什么不能只看准确率]]
+		- [[Question/为什么要做交叉验证]]
+		- [[Question/过拟合和欠拟合怎么判断和处理]]
+		- [[Question/线性回归和逻辑回归有什么区别]]
+		- [[Question/GBDT 和 XGBoost 有什么区别]]
+		- [[Question/模型调参的完整流程是什么]]
+		- [[Question/机器学习项目如何从训练走到上线]]
+		- [[Question/离线指标好但线上效果差怎么排查]]
+	- 推荐系统
+		- [[Question/推荐系统完整链路是什么]]
+		- [[Question/召回和排序有什么区别]]
+		- [[Question/协同过滤的核心思想是什么]]
+		- [[Question/双塔模型为什么适合召回]]
+		- [[Question/Embedding 召回怎么训练和评估]]
+		- [[Question/CTR 预估为什么要用曝光日志]]
+		- [[Question/推荐排序为什么离线 AUC 高线上不一定好]]
+		- [[Question/推荐系统特征工程要注意什么]]
+		- [[Question/推荐系统如何做 A_B 测试]]
+		- [[Question/推荐系统冷启动怎么处理]]
+	- Python 和数据同步
+		- [[Question/Python 列表和元组有什么区别]]
+		- [[Question/Python 字典为什么查询快]]
+		- [[Question/Python 可变对象和不可变对象有什么区别]]
+		- [[Question/Python 装饰器是什么]]
+		- [[Question/Python 面向对象三大特性是什么]]
+		- [[Question/Python 迭代器和生成器有什么区别]]
+		- [[Question/Python 操作 MySQL 要注意什么]]
+		- [[Question/Python 操作 Redis 常见数据结构怎么选]]
+		- [[Question/Python API 调用如何做稳定性处理]]
+		- [[Question/Binlog 在数据同步中解决什么问题]]
+		- [[Question/Canal 如何保证 MySQL 到 ES 的同步]]
+
+- **复习规则**
+	- 优先刷 #card 问答。
+	- 每个高频题都要能从概念页回到项目页。
+	- 项目题必须说清楚问题、定位、方案、指标和结果。

@@ -1,7 +1,10 @@
 alias:: 纯文本RAG代码
-tags:: 项目实战, 代码
-type:: 概念
-status:: 草稿
+type:: concept
+status:: archived
+
+- **迁移说明**
+	- 这页是旧简易 RAG 系统笔记，稳定内容已整理到 [[Project/简易RAG系统]] 和 [[Concept/纯文本RAG]]。
+	- 后续学习和复习优先使用新页面；本页保留为原始资料和历史上下文。
 
 - 旨在构建可运行的简易纯文本RAG 系统
 - 简易[[纯文本RAG]]系统， [[纯文本RAG流程图]]
@@ -27,7 +30,6 @@ status:: 草稿
 			      return split_docs
 			  ```
 		- 文本嵌入 & 持久化
-		  collapsed:: true
 			- ```python
 			  # 加载本地嵌入模型
 			      embeddings = HuggingFaceEmbeddings(
@@ -41,15 +43,13 @@ status:: 草稿
 			  ```
 	- RAG检索， [[纯文本RAG流程图]]
 		- 基础配置
-		  collapsed:: true
 			- ```python
 			  # 基础配置
 			  MODEL_PATH = "../modules/m3e-base"  # 你的本地m3e路径
 			  OLLAMA_MODEL = "qwen2:0.5b"  # 你的Ollama模型名
-			  OLLAMA_URL = "http://localhost:11434"
+			  OLLAMA_URL = "<本地 Ollama 服务地址>"
 			  ```
 		- [[向量检索]]相似 [[chunk]]
-		  collapsed:: true
 			- ```python
 			  # 检索Top3相似chunk
 			  similar_docs = db.similarity_search(query, k=3)
@@ -58,7 +58,6 @@ status:: 草稿
 			  return context, similar_docs
 			  ```
 		- 调用本地大模型生成回答
-		  collapsed:: true
 			- ```python
 			  def generate_answer(query, context):
 			      # 初始化本地Ollama模型
@@ -155,7 +154,7 @@ status:: 草稿
 	  # 2、基础配置
 	  MODEL_PATH = "../modules/m3e-base"  # 你的本地m3e路径
 	  OLLAMA_MODEL = "qwen2:0.5b"  # 你的Ollama模型名
-	  OLLAMA_URL = "http://localhost:11434"
+	  OLLAMA_URL = "<本地 Ollama 服务地址>"
 	  
 	  # 3、加载文档并切分（你自己建一个 test.txt，随便写几句话）
 	  def load_and_split_doc():

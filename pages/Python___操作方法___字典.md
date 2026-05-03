@@ -1,3 +1,12 @@
+alias:: Python字典旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/Python字典]] 和 [[Question/Python 字典为什么查询快]]。
+	- 后续请维护新页面；本页保留旧操作示例。
+
 - 遍历
 	- ```python
 	  # 遍历操作

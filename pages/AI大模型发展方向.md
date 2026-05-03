@@ -1,7 +1,11 @@
 alias::
-tags:: 就业方向
-type:: 概念
-status:: 草稿
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面是旧就业方向碎片笔记，暂作为来源保留。
+	- 后续如需维护职业路径，应单独整理到 Project 或 Source 页面，不混入 [[MOC/大模型]] 主线概念。
 
 - 未来主流方向：
 	- 大模型推理工程师

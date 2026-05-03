@@ -1,11 +1,16 @@
-alias::
-tags:: 向量数据库
-type:: 概念
-status:: 草稿
-id:: 6b9f0292-6085-4fef-8598-5c2b09f7461e
+alias:: Milvus旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/Milvus]]、[[Concept/向量库]]、[[Concept/向量检索]]、[[Concept/HNSW]] 和 [[Concept/IVF_FLAT]]。
+	- 相关面试题已整理到 [[Review/向量检索面试]]。
+	- 原页面中的本地 file 图片引用没有迁移；后续如需保留图片，应放入 assets 后再引用。
+	- 原页面中的示例连接地址和凭据已脱敏，避免发布到 GitHub Pages 时暴露环境信息。
+	- 后续请维护新页面；本页保留旧代码和课程笔记。
 
 - 数据模型
-  collapsed:: true
 	- | 概念名称  | 核心定义 | 类比 SQL | 关键作用 / 特性 |
 	  | ---- | ---- | ---- |
 	  | **集合(Collection)**  | 向量数据与标量元数据的**逻辑分组**，是 Milvus 中数据管理的基本单位 | **表 (Table)** | 用于组织同一类业务数据，必须包含主键和向量字段 |
@@ -15,8 +20,7 @@ id:: 6b9f0292-6085-4fef-8598-5c2b09f7461e
 	  | **主键字段(Primary Key) **| 用于**唯一标识**一个实体的字段 | **主键 (Primary Key)** | 必须唯一且非空，支持 INT64 或 VARCHAR 类型，用于定位单条数据 |
 	  | **向量字段(Vector Field) **| 存储向量化后的文本 / 图像特征数据的字段 | - | 核心检索字段，支持**稠密向量 (FLOAT_VECTOR)** 或**稀疏向量 (SPARSE_FLOAT_VECTOR)** |
 	  | **标量字段(Scalar Field) **| 存储元数据（如类别、时间戳、ID 等）的字段 | **普通列 (Column)** | 用于**过滤查询**，支持 INT32/64、FLOAT、BOOL、VARCHAR 等类型 |
-	- ![](file:///D:/AAA_CXD/heima/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/05-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%BB%BC%E5%90%88%E9%A1%B9%E7%9B%AE/2.%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%BB%BC%E5%90%88%E9%A1%B9%E7%9B%AE2-%E7%AE%80%E5%8E%86%E6%8E%A8%E8%8D%90RAG%E7%B3%BB%E7%BB%9F/v3.0/01-%E8%AE%B2%E4%B9%89/%E2%91%A1%20%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6/assets/58d5b950c18e83232f78bf51f6107fd0_image-20250808133557742.png){:height 308, :width 748}
-	- ![](file:///D:/AAA_CXD/heima/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/05-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%BB%BC%E5%90%88%E9%A1%B9%E7%9B%AE/2.%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%BB%BC%E5%90%88%E9%A1%B9%E7%9B%AE2-%E7%AE%80%E5%8E%86%E6%8E%A8%E8%8D%90RAG%E7%B3%BB%E7%BB%9F/v3.0/01-%E8%AE%B2%E4%B9%89/%E2%91%A1%20%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6/assets/3ce11c358d8e439d9474e263c1234b89_image-20250808133859731.png)
+	- 原笔记曾引用本地课程图片，因路径不可发布，已不保留图片引用。
 - 向量相似度度量
 	- [[欧氏距离]] (Euclidean Distance, L2)，Milvus 对应度量类型：`metric_type="L2"`
 	- [[内积]] (Inner Product, IP)，Milvus 对应度量类型：`metric_type="COSINE"`
@@ -26,7 +30,7 @@ id:: 6b9f0292-6085-4fef-8598-5c2b09f7461e
 - 索引
 	- 两种搜索方式：精确搜索和 [[ANN]] 近似搜索
 	- **FLAT**， 精确搜索，100% 准确,暴力穷举，无压缩
-	- **[[IVF_FLAT]]**，ANN 近似搜索，聚类 + 倒排文件，分桶检索, ((69d70d9c-5088-4385-b470-2c7b82be26ba))
+	- **[[IVF_FLAT]]**，ANN 近似搜索，聚类 + 倒排文件，分桶检索。
 	- **[[HNSW]]**，ANN 近似搜索，多层有向图（高速公路 + 普通公路）
 	- **SPARSE_INVERTED_INDEX** ，ANN 近似搜索，稀疏向量专用倒排索引
 	- | 索引类型 | 核心思想 | 搜索类型 | 核心特点 | 优点 | 缺点 | 适用场景 | 关键参数 |
@@ -47,8 +51,7 @@ id:: 6b9f0292-6085-4fef-8598-5c2b09f7461e
 		  from pymilvus import MilvusClient
 		  # 连接数据库
 		  client = MilvusClient(
-		      uri="http://192.168.1.100:19530",
-		      token="root:Milvus",
+		      uri="<milvus-endpoint>",
 		    	db_name="milvus_demo"
 		  )
 		  # 查看所有数据库
@@ -68,7 +71,7 @@ id:: 6b9f0292-6085-4fef-8598-5c2b09f7461e
 		  from pymilvus import MilvusClient, DataType
 		  
 		  # --- 1. 配置信息 ---
-		  MILVUS_ENDPOINT = "http://82.1511:19530"  # Milvus 服务器地址
+		  MILVUS_ENDPOINT = "<milvus-endpoint>"  # Milvus 服务器地址
 		  COLLECTION_NAME = "chinese_movie"  # 集合名称
 		  DIMENSION = 8  # 假设电影嵌入向量的维度为8
 		  

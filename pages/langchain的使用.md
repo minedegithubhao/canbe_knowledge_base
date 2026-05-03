@@ -1,11 +1,14 @@
-- alias::
-  tags::
-  type:: 概念
-  status:: 草稿
-  id:: 69ca68c5-6089-49c1-80e7-a0ecc0e1c51f
+alias:: LangChain旧笔记, LangChain 使用旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页是旧 LangChain 课程笔记，稳定内容已整理到 [[Concept/LangChain]]、[[Concept/LCEL]]、[[Concept/Streamlit]] 和 [[Review/大模型应用工程面试]]。
+	- 后续学习和复习优先维护新页面；本页保留为原始资料和历史上下文。
+
 - 功能介绍
 	- **LangChain AI**
-	  collapsed:: true
 		- |项目名称|技术栈|核心用途|GitHub 地址|
 		  |--|--|--|--|
 		  |LangChain|Python/TS|构建 LLM 应用基础组件（链式编排、RAG、嵌入、文档处理等）|https://github.com/langchain-ai/langchain|
@@ -13,7 +16,6 @@
 		  |langgraph|Python|用图编排复杂 Agent 流程|[https://github.com/langchain-ai/langgraph](https://github.com/langchain-ai/langgraph)|
 		  |local-deep-researcher|Python|自动化、多轮本地 Web 研究工具|https://github.com/langchain-ai/local-deep-researcher|
 	- LangChain 核心功能
-	  collapsed:: true
 		- **LLM 和提示（Prompt）**：LangChain 对所有 LLM 大模型进行了 API 抽象，统一了大模型访问 API，同时提供了 Prompt 提示模板管理机制。
 		- **输出解析器 (Output Parsers)**：Langchain 接受大模型 (llm) 返回的文本内容之后，可以使用专门的输出解析器对文本内容进行格式化，例如解析 json、或者将 llm 输出的内容转成 python 对象。
 		- **链 (Chain)**：Langchain 对一些常见的场景封装了一些现成的模块，例如：基于上下文信息的问答系统，自然语言生成 SQL 查询等等，因为实现这些任务的过程就像工作流一样，一步一步的执行，所以叫链 (chain)。
@@ -31,12 +33,11 @@
 		- 其它包，参考 [[conda环境配置]]
 - LLMs
 	- OpenAI调用大模型：没有内置的对话上下文管理
-	  collapsed:: true
 		- ```python
 		  from openai import OpenAI
 		  
 		  # 初始化DeepSeek的API客户端
-		  client = OpenAI(api_key=conf.API_KEY, base_url="https://api.deepseek.com")
+		  client = OpenAI(credentials="<省略>", base_url="https://api.deepseek.com")
 		  
 		  # 调用DeepSeek的API，生成回答
 		  response = client.chat.completions.create(
@@ -49,7 +50,6 @@
 		  print(response.choices[0].message.content)
 		  ```
 	- 使用`langchain` 调用大模型：内置上下文管理
-	  collapsed:: true
 		- ```python
 		  from langchain_openai import ChatOpenAI
 		  from langchain.schema import HumanMessage, SystemMessage
@@ -57,7 +57,7 @@
 		  # 初始化 ChatOpenAI，配置 DeepSeek API
 		  llm = ChatOpenAI(
 		      model=conf.MODEL,
-		      api_key=conf.API_KEY,
+		      credentials="<省略>",
 		      base_url=conf.API_URL,
 		      temperature=0.7,
 		      max_tokens=150)
@@ -71,15 +71,12 @@
 		  print(result.content)
 		  ```
 	- invoke方法介绍
-	  collapsed:: true
 		- 字符串
-		  collapsed:: true
 			- ```python
 			  messages = '中国的首都是哪里？'
 			  result = llm.invoke(messages)
 			  ```
 		- 消息对象列表
-		  collapsed:: true
 			- ```python
 			  messages = [
 			      SystemMessage(content="你是传智教育的助手传智小智2号，请根据用户的问题给出回答"),
@@ -88,7 +85,6 @@
 			  result = llm.invoke(messages)
 			  ```
 		- 字典列表
-		  collapsed:: true
 			- ```python
 			  messages = [
 			      {
@@ -128,7 +124,6 @@
 		  ```
 		- `.invoke()` 接收一个字典，如：`prompt.invoke({"变量名": 值})`
 	- LangChain中的角色
-	  collapsed:: true
 		- |LangChain角色|意思|对应 OpenAI|
 		  |--|--|--|
 		  |system|系统提示|system|
@@ -147,7 +142,7 @@
 		  
 		  llm = ChatOpenAI(
 		      model=conf.MODEL,
-		      api_key=conf.API_KEY,
+		      credentials="<省略>",
 		      base_url=conf.API_URL,
 		      temperature=0.7,
 		      max_tokens=150
@@ -196,7 +191,6 @@
 		  ```
 - Chain
 	- 串行链
-	  collapsed:: true
 		- ```python
 		  from langchain_core.prompts import ChatPromptTemplate
 		  from langchain_core.output_parsers import StrOutputParser
@@ -218,7 +212,6 @@
 		  print(f"【最终输出】: {result}")
 		  ```
 	- 并行链
-	  collapsed:: true
 		- ```python
 		  from langchain_core.prompts import ChatPromptTemplate
 		  from langchain_core.output_parsers import StrOutputParser
@@ -254,7 +247,6 @@
 		  }
 		  ```
 	- 分支与 `RunnablePassthrough`
-	  collapsed:: true
 		- ```python
 		  from langchain_core.prompts import ChatPromptTemplate
 		  from langchain_core.output_parsers import StrOutputParser
@@ -296,7 +288,6 @@
 		- ```python
 		  ```
 	- `RunnableLambda`   自定义
-	  collapsed:: true
 		- ```python
 		  from langchain_core.prompts import ChatPromptTemplate
 		  from langchain_core.output_parsers import StrOutputParser
@@ -334,7 +325,7 @@
 		  
 		  ---
 		  
-		  ### **核心特征**
+		  核心特征：
 		  1. **参数规模巨大**  
 		     参数量可达千亿级别（例如GPT-3有1750亿参数），模型容量极大，能捕捉极其复杂的语言规律。
 		  
@@ -344,10 +335,8 @@
 		  ```
 - Output Parsers
 	- 解析器类型
-	  collapsed:: true
 		- ![image.png](../assets/image_1774875963008_0.png)
 	- `JsonOutputParser`的使用
-	  collapsed:: true
 		- ```python
 		  from langchain_core.prompts import ChatPromptTemplate
 		  from langchain_core.output_parsers import JsonOutputParser
@@ -389,7 +378,6 @@
 		  {'name': '张伟', 'city': '北京'}
 		  ```
 	- `PydanticOutputParser`的使用
-	  collapsed:: true
 		- ```python
 		  from langchain_core.output_parsers import PydanticOutputParser
 		  from langchain_core.prompts import ChatPromptTemplate
@@ -402,7 +390,7 @@
 		  
 		  llm = ChatOpenAI(
 		      model=conf.MODEL,
-		      api_key=conf.API_KEY,
+		      credentials="<省略>",
 		      base_url=conf.API_URL,
 		      temperature=0.7,
 		      max_tokens=150
@@ -465,10 +453,8 @@
 		  ```
 - Document Loaders
 	- 常见文档加载器`Langchain_community.document_loaders`
-	  collapsed:: true
 		- ![image.png](../assets/image_1774876483484_0.png)
 	- `TextLoader`
-	  collapsed:: true
 		- ```python
 		  from langchain_community.document_loaders import TextLoader  # 使用新模块路径
 		  from config import config
@@ -479,7 +465,7 @@
 		  conf = config()
 		  llm = ChatOpenAI(
 		      model=conf.MODEL,  # 直接指定模型名称
-		      api_key=conf.API_KEY,
+		      credentials="<省略>",
 		      base_url=conf.API_URL,
 		      temperature=0.7,
 		      max_tokens=150
@@ -522,7 +508,6 @@
 		  print(doc)
 		  ```
 	- `PyPDFLoader`
-	  collapsed:: true
 		- ```python
 		  from langchain_community.document_loaders import TextLoader,PyPDFLoader  # 使用新模块路径
 		  from config import config
@@ -532,13 +517,13 @@
 		  conf = config()
 		  llm = ChatOpenAI(
 		      model=conf.MODEL,  # 直接指定模型名称
-		      api_key=conf.API_KEY,
+		      credentials="<省略>",
 		      base_url=conf.API_URL,
 		      temperature=0.7,
 		      max_tokens=150
 		  )
 		  # Document Loaders 示例：加载文档并接入大模型总结
-		  loader = PyPDFLoader(r"D:\LLM_Codes\Chapter3_RAG\rag_base_frame\data\test_resume.pdf")
+		  loader = PyPDFLoader(r"./data/test_resume.pdf")
 		  documents = loader.load()
 		  content = documents[0].page_content
 		  print("原始简历内容：",content)
@@ -548,12 +533,11 @@
 		  print("Document Loaders 示例结果:", result.content)
 		  ```
 	- `DirectoryLoader`
-	  collapsed:: true
 		- ```python
 		  from langchain_community.document_loaders import DirectoryLoader, TextLoader
 		  
 		  # 1. 指定包含多个 .txt 文件的目录路径
-		  directory_path = r"D:\LLM_Codes\Chapter3_RAG\rag_base_frame\data"
+		  directory_path = r"./data"
 		  
 		  # 2. 创建一个 DirectoryLoader 实例
 		  #    - 第一个参数是目录路径
@@ -585,7 +569,7 @@
 		  import os
 		  
 		  # 1. 你的文件目录
-		  directory_path = r"D:\LLM_Codes\Chapter3_RAG\rag_base_frame\data"
+		  directory_path = r"./data"
 		  
 		  # 2. 支持的文件格式
 		  #    你可以自己增删：.txt, .md, .pdf, .docx, .csv 等
@@ -636,10 +620,8 @@
 		  ```
 - Text Splitter
 	- 常见文本分割器
-	  collapsed:: true
 		- ![image.png](../assets/image_1774914130434_0.png)
 	- RecursiveCharacterTextSplitter(递归字符分割器)
-	  collapsed:: true
 		- **适用场景与数据特点：**
 			- **场景**: 通用文本处理，如 PDF、TXT、网页内容、非结构化报告等。
 			- **数据特点**: 这类数据通常是半结构化的，包含段落、换行和句子等自然边界，但没有像代码或 Markdown 那样严格的、可被机器解析的语法。该分割器的层级策略能很好地适应这种灵活性。
@@ -650,7 +632,6 @@
 		- **劣势：**
 			- 对于具有严格语法结构的数据（如代码、Markdown），效果可能不如专用的分割器。
 	- CharacterTextSplitter   (字符分割器)
-	  collapsed:: true
 		- **适用场景与数据特点：**
 			- **场景**: 简单字符串或以固定分隔符组织的数据，如 CSV 数据行、传感器日志。
 			- **数据特点**: 数据格式高度统一，每一行或由特定字符分隔的部分本身就是一个独立的、完整的记录。例如，日志文件中的每一行都是一条独立的事件记录。
@@ -661,7 +642,6 @@
 			- **破坏语义：**完全不关心文本的语义结构，可能在句子中间或单词中间进行切分。
 			- **适用性差**：对于复杂的自然语言文本，效果通常很差。
 	- TokenTextSplitter  (Token 分割器)
-	  collapsed:: true
 		- **适用场景与数据特点**
 			- **场景**: 需要严格控制输入长度的 LLM 应用，如处理 API 响应、优化长查询。
 			- **数据特点**: 任何文本都可以使用，但其核心优势在于处理那些长度接近模型极限的、需要精确控制成本和输入的场景。
@@ -672,7 +652,6 @@
 			- **可能破坏语义**：与 `CharacterTextSplitter` 类似，它可能在句子中间为了满足 Token 数量而切分。
 			- **依赖分词器**：需要额外的分词库（如 `tiktoken`），并且分词本身有一定计算开销。
 	- 结构化文本分割器：`MarkdownTextSplitter` / `HTMLSplitter` / `LatexTextSplitter`
-	  collapsed:: true
 		- **适用场景与数据特点**
 			- **场景**: 解析技术文档、API 手册、学术论文、网页抓取内容。
 			- **数据特点**: 数据本身包含丰富的元结构信息，如 Markdown 的标题层级、HTML 的 DOM 树结构。这些结构本身就定义了内容的边界。
@@ -681,7 +660,6 @@
 			- **保留元信息**：可以从结构中提取有用的元数据（如标题）。
 		- **劣势：专用性强：只能处理特定格式的文档。**
 	- PythonCodeTextSplitter (代码分割器)
-	  collapsed:: true
 		- **适用场景与数据特点**
 			- **场景**: 源代码分析、代码库问答、脚本调试。
 			- **数据特点**: 具有严格、明确的编程语法，如 Python 的缩进和 `def`/`class` 关键字。
@@ -691,7 +669,6 @@
 		- **劣势：**
 			- **语言特定**：通常需要为不同编程语言选择对应的分割器。
 	- NLP 语义分割器：`SentenceTextSplitter` / `SpacyTextSplitter` / `NLTKTextSplitter`
-	  collapsed:: true
 		- **适用场景与数据特点**
 			- **场景**: 处理自然语言文章、对话记录、法律合同等对句子完整性要求高的文本。
 			- **数据特点**: 文本由符合语法规则的句子构成。这类分割器对于处理复杂的长句或不规范的标点符号比简单的正则匹配更鲁棒。
@@ -704,14 +681,12 @@
 			- **句子长度不一**：可能产生非常短或非常长的块（单个句子）。
 - Tools
 	- **工具调用目的：** #面试背诵汇总/大模型
-	  collapsed:: true
 		- **突破知识限制**：语言模型的知识是静态的，截止于其训练数据的最后日期。工具调用使其能够访问实时数据，回答“今天天气怎么样？”或“最近有什么关于 AI 的新闻？”这类问题。
 		- **执行实际动作**：模型本身无法改变世界，但工具可以。通过调用发送邮件的工具、操作数据库的工具，模型可以将它的“想法”转化为实际的行动。
 		- **提升任务处理能力**：对于一些精确计算或逻辑性极强的任务（如复杂的数学运算），语言模型有时会出错（“幻觉”）。将这些任务交给专业的工具（如计算器），可以保证结果的准确性。
 		- **构建更强大的应用**：工具调用是构建智能代理（Agent）和复杂应用（如自动化工作流）的核心。它让 LLM 从一个单纯的“聊天机器人”进化为可以解决实际问题的“智能助手”。
 	- 基础调用
 		- 定义工具
-		  collapsed:: true
 			- ```python
 			  from langchain_core.tools import tool
 			  
@@ -738,7 +713,6 @@
 			  tools = [multiply, search_weather]
 			  ```
 		- 绑定工具并发起调用
-		  collapsed:: true
 			- ```python
 			  # -*- coding: utf-8 -*-
 			  from langchain_openai import ChatOpenAI
@@ -747,7 +721,7 @@
 			  
 			  # --- DeepSeek API 配置 ---
 			  # 请替换为你的 DeepSeek API 密钥
-			  API_KEY = "sk-52e226ac3cac46838cb282b45b1a648e"
+			  CREDENTIAL_PLACEHOLDER = "<已移除>"
 			  API_URL = "https://api.deepseek.com/v1"
 			  MODEL = "deepseek-chat"
 			  
@@ -755,7 +729,7 @@
 			  # 虽然我们用的是DeepSeek，但它兼容OpenAI的API格式，所以可以使用ChatOpenAI类
 			  llm = ChatOpenAI(
 			      model=MODEL,
-			      api_key=API_KEY,
+			      credentials="<省略>",
 			      base_url=API_URL,
 			      temperature=0.8,
 			      max_tokens=300
@@ -832,7 +806,6 @@
 			          print(f"未找到工具: {tool_name}")
 			  ```
 	- agent调用：**自主规划**、**决定**是否需要调用工具、调用哪个工具、以及如何组织调用顺序，直到最终完成任务
-	  collapsed:: true
 		- ```python
 		  # -*- coding: utf-8 -*-
 		  from langchain_openai import ChatOpenAI
@@ -842,10 +815,10 @@
 		  from langchain_core.messages import HumanMessage, AIMessage
 		  
 		  # --- 复用之前的API配置和LLM、工具定义 ---
-		  API_KEY = "sk-52e226ac3cac46838cb282b45b1a648e"
+		  CREDENTIAL_PLACEHOLDER = "<已移除>"
 		  API_URL = "https://api.deepseek.com/v1"
 		  MODEL = "deepseek-chat"
-		  llm = ChatOpenAI(model=MODEL, api_key=API_KEY, base_url=API_URL, temperature=0)
+		  llm = ChatOpenAI(model=MODEL, credentials="<省略>", base_url=API_URL, temperature=0)
 		  @tool
 		  def multiply(a: int, b: int) -> int:
 		      """用于计算两个整数的乘积。"""
@@ -898,7 +871,6 @@
 		  ```
 - 记忆模块
 	- ConversationBufferMemory：全部记忆
-	  collapsed:: true
 		- `ConversationBufferMemory` 会将所有历史对话**原封不动地**完整保存下来。当进行新的对话时，它会将全部历史记录和新问题一起发送给 LLM。
 		- **优点**:
 			- **信息完整**: 保留了所有原始对话细节，没有任何信息丢失。
@@ -916,7 +888,7 @@
 		  
 		  # --- DeepSeek API 配置 ---
 		  # 请替换为你的 DeepSeek API 密钥
-		  API_KEY = "sk-52e226ac3cac46838cb282b45b1a648e"
+		  CREDENTIAL_PLACEHOLDER = "<已移除>"
 		  API_URL = "https://api.deepseek.com/v1"
 		  MODEL = "deepseek-chat"
 		  
@@ -924,7 +896,7 @@
 		  # 我们将使用 DeepSeek 模型作为对话的核心
 		  llm = ChatOpenAI(
 		      model=MODEL,
-		      api_key=API_KEY,
+		      credentials="<省略>",
 		      base_url=API_URL,
 		      temperature=0.7 # 设置温度参数，让回答带一些创造性
 		  )
@@ -956,7 +928,6 @@
 		  print("AI:", response2)
 		  ```
 	- ConversationBufferWindowMemory：K轮部分记忆
-	  collapsed:: true
 		- `ConversationBufferWindowMemory` 只会保留**最近 K 轮**的对话历史。
 		- **优点**:
 			- **控制成本和Token**: 有效地将每次请求的 Token 数量限制在一个可控范围内，避免超出上下文限制。

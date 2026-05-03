@@ -1,3 +1,13 @@
+alias:: Python for循环旧笔记, Python迭代旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/Python迭代器]] 和 [[Concept/Python生成器]]。
+	- 相关面试题已整理到 [[Question/Python 迭代器和生成器有什么区别]]。
+	- 后续请维护新页面；本页保留旧 for 循环和推导式示例。
+
 - 字符串遍历
 	- ```python
 	  # 需求: 遍历一个字符串 :  itheima 

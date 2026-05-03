@@ -1,8 +1,11 @@
-alias:: Reciprocal Rank Fusion, 倒数排名融合
-tags:: 混合检索
-type:: 概念
-status:: 草稿
-id:: 69be0d00-9b18-4df9-a7b8-c5f1cf36bb8f
+alias:: RRF旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 这页是旧 RRF 笔记，稳定内容已整理到 [[Concept/RRF]] 和 [[Concept/混合检索]]。
+	- 后续学习和复习优先使用新页面；本页保留为原始资料和历史上下文。
 
 - RRF的作用：把**多路召回**的结果融合起来，不让任何一路的好结果被漏掉，且**数据集数量比较大**时才能突出它的价值。
 - RRF的使用场景：  ![image.png](../assets/image_1774398735662_0.png)

@@ -1,9 +1,35 @@
-- alias::
-  tags::
-  type:: 概念
-  status:: 草稿
-- 提示词
-  id:: 69c1fbff-f191-402f-9be5-5948810524dc
+alias:: 评估案例Prompt, Golden Dataset Prompt
+type:: source
+status:: compiled
+updated:: 2026-05-02
+
+- **迁移说明**
+	- 本页面是旧评估案例生成 Prompt，稳定方法已整理到 [[Question/RAG 项目如何做评估驱动优化]]、[[Project/手册类RAG实战]] 和 [[Project/智能客服RAG实战]]。
+	- 后续复习优先维护新页面；本页保留为原始 Prompt 资料。
+
+- **原始信息**
+	- RAG 评估案例生成 Prompt，用于从手册或文档中构造 Golden Dataset。
+
+- **核心观点**
+	- 评估集要覆盖直接事实、多跳推理、总结概括和边界抗扰。
+	- 每个 case 要绑定目标组件，例如 ChunkSize、Hybrid Search、Query Rewrite、Rerank、Circuit Break、Top-K Sensitivity。
+	- 参考答案和证据片段必须严格来自原文，不能引入文档外知识。
+
+- **可沉淀的概念**
+	- [[Concept/RAGAS]]
+	- [[Concept/PAGAS]]
+	- [[Concept/模型评估]]
+	- [[Concept/Prompt Engineering]]
+
+- **已更新页面**
+	- [[Project/手册类RAG实战]]
+	- [[Project/智能客服RAG实战]]
+	- [[Question/RAG 项目如何做评估驱动优化]]
+
+- **待追问问题**
+	- 如何把评估 case 自动分层为 smoke test、regression test 和 stress test？
+
+- **提示词**
 	- ```text
 	  角色设定(Role)：
 	  你是一位资深的 RAG (检索增强生成) 系统测评专家，擅长通过构建高质量、具有压力测试性质的黄金数据集 (Golden Dataset) 来探测系统在检索、重排及生成阶段的性能瓶颈。
@@ -39,9 +65,8 @@
 	  资料(Input Files):
 	  【请根据附件 Markdown 内容开始生成】
 	  ```
-- 评估案例
-  id:: 69c1fa16-8e0c-42f1-9dfa-dbdcb1efafd8
-	- id:: 69c1fa25-f2bc-401c-bb2a-2ef8f5fad694
+
+- **评估案例**
 	  ```json
 	  [
 	    {

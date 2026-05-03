@@ -1,0 +1,233 @@
+alias:: 机器学习地图, ML地图, 机器学习学习路径
+type:: moc
+status:: growing
+updated:: 2026-05-03
+
+- **这个地图解决什么问题**
+	- 把机器学习基础从零散概念整理成可学习、可复习、可面试的主线。
+	- 本页只做导航和学习顺序，具体解释放到 Concept 页面，复杂题放到 Question 页面，刷题入口放到 [[Review/机器学习面试]]。
+
+- **学习路径**
+	- 总览
+		- [[Concept/机器学习]]
+		- [[Concept/有监督学习]]
+		- [[Concept/无监督学习]]
+		- [[Concept/标签]]
+	- 数据和特征
+		- [[Concept/数据清洗]]
+		- [[Concept/特征工程]]
+		- [[Concept/缺失值处理]]
+		- [[Concept/异常值处理]]
+		- [[Concept/类别特征编码]]
+		- [[Concept/独热编码]]
+		- [[Concept/特征选择]]
+		- [[Concept/特征缩放]]
+		- [[Concept/数据泄漏]]
+	- 任务类型
+		- [[Concept/回归]]
+		- [[Concept/分类]]
+	- 无监督学习
+		- [[Concept/聚类]]
+		- [[Concept/KMeans]]
+		- [[Concept/DBSCAN]]
+		- [[Concept/聚类评估]]
+		- [[Concept/轮廓系数]]
+		- [[Concept/肘部法]]
+		- [[Concept/降维]]
+		- [[Concept/PCA]]
+		- [[Concept/异常检测]]
+	- 训练和评估
+		- [[Concept/神经网络]]
+		- [[Concept/线性层]]
+		- [[Concept/激活函数]]
+		- [[Concept/反向传播]]
+		- [[Concept/梯度消失]]
+		- [[Concept/梯度爆炸]]
+		- [[Concept/BatchNorm]]
+		- [[Concept/Dropout]]
+		- [[Concept/损失函数]]
+		- [[Concept/交叉熵]]
+		- [[Concept/正则化]]
+		- [[Concept/L1正则化]]
+		- [[Concept/L2正则化]]
+		- [[Concept/学习曲线]]
+		- [[Concept/优化器]]
+		- [[Concept/SGD]]
+		- [[Concept/Momentum]]
+		- [[Concept/Adam]]
+		- [[Concept/模型评估]]
+		- [[Concept/混淆矩阵]]
+		- [[Concept/分类准确率]]
+		- [[Concept/精确率]]
+		- [[Concept/分类召回率]]
+		- [[Concept/F1]]
+		- [[Concept/ROC-AUC]]
+		- [[Concept/回归误差指标]]
+		- [[Concept/交叉验证]]
+		- [[Concept/过拟合]]
+		- [[Concept/超参数调优]]
+		- [[Concept/网格搜索]]
+		- [[Concept/贝叶斯优化]]
+		- [[Concept/早停]]
+		- [[Concept/数据泄漏]]
+	- 经典算法
+		- [[Concept/线性回归]]
+		- [[Concept/逻辑回归]]
+		- [[Concept/决策树]]
+		- [[Concept/KNN]]
+		- [[Concept/聚类]]
+		- [[Concept/KMeans]]
+	- 集成和强模型
+		- [[Concept/集成学习]]
+		- [[Concept/随机森林]]
+		- [[Concept/GBDT]]
+		- [[Concept/XGBoost]]
+		- [[Concept/SVM]]
+	- 特征和优化
+		- [[Concept/距离度量]]
+		- [[Concept/梯度下降]]
+	- 工程落地
+		- [[Concept/数据集划分]]
+		- [[Concept/训练集验证集测试集]]
+		- [[Concept/Baseline]]
+		- [[Concept/误差分析]]
+		- [[Concept/模型上线]]
+		- [[Concept/模型监控]]
+		- [[Concept/A_B测试]]
+		- [[Concept/灰度发布]]
+	- 推荐和排序
+		- [[MOC/推荐系统]]
+		- [[Concept/推荐系统]]
+		- [[Concept/推荐召回]]
+		- [[Concept/推荐排序]]
+		- [[Concept/协同过滤]]
+		- [[Concept/Embedding召回]]
+		- [[Concept/双塔模型]]
+		- [[Concept/CTR预估]]
+		- [[Concept/冷启动]]
+
+- **面试重点**
+	- [[Review/机器学习面试]]
+	- [[Question/机器学习项目完整流程是什么]]
+	- [[Question/有监督学习和无监督学习有什么区别]]
+	- [[Question/回归和分类有什么区别]]
+	- [[Question/模型评估为什么不能只看准确率]]
+	- [[Question/为什么要做交叉验证]]
+	- [[Question/过拟合和欠拟合怎么判断和处理]]
+	- [[Question/线性回归和逻辑回归有什么区别]]
+	- [[Question/决策树为什么容易过拟合]]
+	- [[Question/KNN 为什么需要特征缩放]]
+	- [[Question/KMeans 的 K 怎么选]]
+	- [[Question/KMeans 和 DBSCAN 有什么区别]]
+	- [[Question/PCA降维的核心思想是什么]]
+	- [[Question/聚类效果怎么评估]]
+	- [[Question/无监督异常检测怎么做]]
+	- [[Question/降维会不会丢失信息]]
+	- [[Question/归一化和标准化有什么区别]]
+	- [[Question/梯度下降为什么需要学习率]]
+	- [[Question/ID3、C4.5、CART 有什么区别]]
+	- [[Question/决策树如何选择划分特征]]
+	- [[Question/欧氏距离、曼哈顿距离、闵可夫斯基距离有什么区别]]
+	- [[Question/随机森林为什么能缓解决策树过拟合]]
+	- [[Question/Bagging 和 Boosting 有什么区别]]
+	- [[Question/GBDT 和 XGBoost 有什么区别]]
+	- [[Question/SVM 的核心思想是什么]]
+	- [[Question/模型调参的完整流程是什么]]
+	- [[Question/网格搜索和贝叶斯优化有什么区别]]
+	- [[Question/早停为什么能缓解过拟合]]
+	- [[Question/如何避免调参导致测试集泄漏]]
+	- [[Question/机器学习项目中特征工程怎么做]]
+	- [[Question/缺失值应该怎么处理]]
+	- [[Question/类别特征怎么编码]]
+	- [[Question/特征选择有哪些方法]]
+	- [[Question/特征工程如何避免数据泄漏]]
+	- [[Question/精确率和召回率怎么权衡]]
+	- [[Question/F1 和 AUC 有什么区别]]
+	- [[Question/MAE、MSE、RMSE 有什么区别]]
+	- [[Question/训练集、验证集、测试集有什么区别]]
+	- [[Question/机器学习项目如何从训练走到上线]]
+	- [[Question/模型上线后如何监控]]
+	- [[Question/离线指标好但线上效果差怎么排查]]
+	- [[Question/模型效果衰减怎么办]]
+	- [[Question/损失函数和评估指标有什么区别]]
+	- [[Question/交叉熵为什么适合分类]]
+	- [[Question/L1 和 L2 正则化有什么区别]]
+	- [[Question/怎么用学习曲线判断过拟合和欠拟合]]
+	- [[Question/SGD、Momentum、Adam 有什么区别]]
+	- [[Question/神经网络的训练过程是什么]]
+	- [[Question/反向传播的核心思想是什么]]
+	- [[Question/为什么会出现梯度消失和梯度爆炸]]
+	- [[Question/BatchNorm 和 Dropout 有什么作用]]
+	- [[Review/推荐系统面试]]
+	- [[Question/推荐系统完整链路是什么]]
+	- [[Question/召回和排序有什么区别]]
+	- [[Question/协同过滤的核心思想是什么]]
+	- [[Question/双塔模型为什么适合召回]]
+	- [[Question/推荐系统冷启动怎么处理]]
+
+- **旧页面迁移索引**
+	- 已归档旧页面
+		- [[机器学习]]
+		- [[有监督学习]]
+		- [[无监督学习]]
+		- [[回归]]
+		- [[机器学习分类模型评估方法]]
+		- [[交叉验证]]
+		- [[决策树]]
+		- [[KNN]]
+		- [[K近邻]]
+		- [[聚类算法]]
+		- [[线性回归]]
+		- [[逻辑回归]]
+		- [[归一化]]
+		- [[标准化]]
+		- [[梯度下降]]
+		- [[大模型/NLP/文本聚类/算法/KMeans]]
+		- [[ID3决策树]]
+		- [[C4.5决策树]]
+		- [[CART决策树]]
+		- [[回归决策树]]
+		- [[欧氏距离]]
+		- [[曼哈顿距离]]
+		- [[闵可夫斯基距离]]
+		- [[切比雪夫距离]]
+		- [[集成学习]]
+		- [[并行集成]]
+		- [[串行集成]]
+		- [[堆叠集成]]
+		- [[随机森林]]
+		- [[支持向量机]]
+		- [[网格搜索]]
+		- [[贝叶斯优化]]
+		- [[标签]]
+		- [[DBSCAN]]
+		- [[平均绝对误差]]
+		- [[均方误差]]
+		- [[均方根误差]]
+	- 暂不处理
+
+- **最近更新**
+	- 2026-05-03
+		- 新增推荐系统入口，关联推荐召回、推荐排序、CTR 预估和冷启动主线。
+	- 2026-05-03
+		- 补充深度学习前置训练机制：神经网络、反向传播、激活函数、梯度消失/爆炸、BatchNorm 和 Dropout。
+	- 2026-05-03
+		- 补充无监督学习细分：DBSCAN、降维/PCA、聚类评估、轮廓系数、肘部法和异常检测。
+	- 2026-05-03
+		- 补充训练机制线：损失函数、交叉熵、正则化、学习曲线、优化器、SGD、Momentum 和 Adam。
+	- 2026-05-03
+		- 补充机器学习工程落地线：数据集划分、baseline、误差分析、模型上线、模型监控、A/B 测试和灰度发布。
+	- 2026-05-03
+		- 补充模型评估指标线：分类准确率、精确率、召回率、F1、ROC-AUC、混淆矩阵和回归误差指标。
+	- 2026-05-03
+		- 补充数据处理与特征工程线：数据清洗、缺失值、异常值、类别编码、独热编码和特征选择。
+	- 2026-05-03
+		- 补充调参、早停、数据泄漏和工程评估边界。
+	- 2026-05-03
+		- 补充集成学习与强模型线：随机森林、GBDT、XGBoost 和 SVM。
+	- 2026-05-03
+		- 补充决策树细分和距离度量细分，归档 ID3、C4.5、CART、回归树和常见距离旧页。
+	- 2026-05-03
+		- 补充机器学习算法线：线性回归、逻辑回归、决策树、KNN、聚类、KMeans、特征缩放、距离度量和梯度下降。
+	- 2026-05-03
+		- 建立机器学习核心主线，先整理总览、监督/无监督、回归/分类、评估、交叉验证和过拟合。

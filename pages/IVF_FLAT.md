@@ -1,5 +1,13 @@
+alias:: IVF_FLAT旧笔记
+type:: concept
+status:: archived
+updated:: 2026-05-03
+
+- **迁移说明**
+	- 本页面内容已整理到 [[Concept/IVF_FLAT]] 和 [[Question/IVF_FLAT 和 HNSW 有什么区别]]。
+	- 后续请维护新页面；本页保留旧参数笔记。
+
 - HNSW和IVF_FLAT如何选择
-  id:: 69d70d9c-5088-4385-b470-2c7b82be26ba
 	- **HNSW：小数据、速度快、精度高 → RAG / 客服首选**
 	- **IVF_FLAT：大数据、省内存、精度一般 → 海量检索用**
 	- | 维度 | **HNSW** | **IVF_FLAT** |

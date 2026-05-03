@@ -1,0 +1,463 @@
+alias:: Logseq知识库重构, 知识库治理, LLM-Wiki重构
+type:: project
+status:: done
+created:: 2026-05-03
+updated:: 2026-05-03
+
+- **项目目标**
+	- 将现有 Logseq 知识库重构为符合 Karpathy LLM-Wiki 思路的长期知识系统。
+	- 目标状态：
+		- 人可以从 [[首页]] 和各主题 MOC 快速进入学习路径。
+		- LLM 可以根据 [[知识库维护规则]] 和仓库根目录的 AGENTS.md 持续维护。
+		- 面试复习可以从 [[MOC/面试复习]] 进入 Review、Question、Concept 和 Project。
+		- 原始旧页保留可追溯性，不直接删除。
+		- 发布到 GitHub Pages 前可以控制 private 内容、备份目录和附件风险。
+
+- **背景资料**
+	- 现有知识库早期没有统一规则，页面中混合了概念、项目、面试题、旧 namespace、课程笔记和实验记录。
+	- 当前维护目标不是清空旧页，而是把旧页整理成可追溯来源，再沉淀出稳定的 MOC、Concept、Project、Question 和 Review。
+	- [[知识库维护规则]] 是人类阅读版规则；仓库根目录的 AGENTS.md 是 LLM 执行时的规则来源。
+
+- **系统架构**
+	- [[首页]] 是全库入口，只保留主要 MOC、项目和维护规则入口。
+	- MOC 层负责学习路径和主题索引。
+	- Concept 层负责稳定知识。
+	- Project 层负责项目背景、方案、问题和经验。
+	- Question 层负责复杂面试题和项目追问。
+	- Review 层负责刷题入口和短卡片。
+	- 旧页面作为来源或归档页保留，通过迁移说明链接到新页面。
+
+- **当前结构盘点**
+	- 已建立新结构页面：
+		- MOC 页面约 11 个。
+		- Concept 页面约 188 个。
+		- Project 页面约 6 个。
+		- Question 页面约 106 个。
+		- Review 页面约 10 个。
+	- 仍需治理的旧结构：
+		- 当前可处理的旧 namespace 和孤立页面已基本归档或接入新结构。
+		- 旧页面仍会保留文件名和反向链接，用于来源追溯，不以删除旧页作为目标。
+		- 此前跳过的推荐系统第二批和 Python 第三批已恢复处理，后续旧格式检查以新增结果为准。
+
+- **核心流程**
+	- 每次只处理一个明确主题或一组强相关页面。
+	- 每批执行顺序：
+		- 读取 AGENTS.md 和本项目页。
+		- 搜索目标主题、别名、旧 namespace 和现有 alias。
+		- 判断页面类型：Concept、Project、Question、Review、Source-like 或 archive-only。
+		- 创建或更新对应 MOC、Concept、Project、Question、Review。
+		- 给旧页面添加迁移说明，不直接删除。
+		- 更新 [[首页]]、相关 MOC 和 [[MOC/面试复习]]。
+		- 跑 Logseq 语法、属性、隐私和发布风险检查。
+
+- **关键模块**
+	- 规则模块：
+		- [[知识库维护规则]]
+		- AGENTS.md
+	- 导航模块：
+		- [[首页]]
+		- [[MOC/面试复习]]
+	- 主题模块：
+		- [[MOC/RAG]]
+		- [[MOC/Transformer]]
+		- [[MOC/大模型]]
+		- [[MOC/机器学习]]
+		- [[MOC/推荐系统]]
+		- [[MOC/Python]]
+		- [[MOC/向量检索]]
+	- 复习模块：
+		- Review 页面和 Question 页面。
+	- 发布模块：
+		- scripts/prepare-publish-graph.ps1
+
+- **问题记录**
+	- 旧页面仍然较多，但多数已作为来源或归档页保留，不需要为了消除文件名而删除。
+	- 发布风险关键词检查当前无命中；后续新增内容仍需每批检查本地路径、实验地址、凭据和私有附件。
+	- 已重构主题中仍有 `growing` 状态页面，后续需要根据复习和项目使用情况继续沉淀。
+	- 推荐系统第二批和 Python 第三批已恢复并完成，后续从全库旧格式检查和新主题优先级继续推进。
+	- 本项目状态已标记为 done，表示这轮结构性重构和最终收口阶段完成；后续新增资料仍按 AGENTS.md 和 [[知识库维护规则]] 日常维护。
+	- 2026-05-03 全库收口盘点结论：
+		- 当前 `pages/` 下 Markdown 页面约 534 个。
+		- 标准 namespace 或核心入口页面约 350 个。
+		- 旧命名或非标准命名页面约 184 个，其中大多数已经有迁移说明，可作为来源或归档页保留。
+		- 必须处理项：
+			- 旧入口或汇总页缺少迁移说明：[[alias]]、[[contents]]、[[使用手册]]、[[大模型英语速记]]、[[大纲]]、[[概念类汇总]]、[[错题汇总]]、[[面试背诵汇总]]。
+			- `pages/聚类算法.assets/image_1772781200422_0.png` 是放在 `pages/` 下的二进制附件，需要移动到 `assets/` 或确认不再引用。
+			- [[知识库维护规则]] 原先使用了非标准类型值，需要改为允许类型。
+		- 建议处理项：
+			- 旧模板页已经有迁移说明，可在批次二确认是否只保留为归档参考。
+			- 项目类旧页已大多归档，但批次三仍要检查 Project 页面是否足够支撑项目面试。
+		- 可保留观察项：
+			- 大量旧概念页虽然仍是旧文件名，但已有迁移说明和新页面承接，不以删除为目标。
+			- [[excalidraw-library-items-storage]] 是 Excalidraw 插件数据页，保留原样，不改成普通 Source 页面。
+			- [[知识库维护规则]] 中出现的禁用语法示例属于规则说明，不视为旧格式问题。
+
+- **经验沉淀**
+	- 每批重构要先盘点再迁移，避免重复创建同义页面。
+	- 旧页不删除，使用迁移说明承接旧链接和搜索入口。
+	- Review 页面保持短，复杂回答放到 Question，知识解释放到 Concept。
+	- 发布风险要在每批结束时检查，不等到最后一次性处理。
+	- 结构收口完成后，维护重点从“批量重构”转为“使用验收和小步维护”。
+	- 首页要像总入口，面试复习页要像题单目录，主题 MOC 要像学习路径，不要互相混用。
+
+- **已完成主线**
+	- [[MOC/RAG]]
+		- 已建立 RAG 概念、项目、评估、面试和项目复习入口。
+		- 已补强 Reranker、RRF、Query Rewriting、混合检索、BGE Reranker 和检索后过滤。
+	- [[MOC/Transformer]]
+		- 已建立 Transformer 基础概念和面试问题。
+		- 旧 Transformer namespace 页面大多已归档或接入新概念页。
+	- [[MOC/大模型]]
+		- 已接入 RAG、Transformer、向量检索、大模型应用和项目入口。
+		- 已补 Prompt、Agent、上下文工程、Prompt Chaining、Routing、Reflection 等主题。
+	- [[MOC/机器学习]]
+		- 已建立机器学习、模型评估、调参、特征工程、基础算法和神经网络主线。
+		- 后续需要处理剩余零散算法页和工程实践页。
+	- [[MOC/推荐系统]]
+		- 已完成推荐系统第一批：完整链路、召回、排序、协同过滤、双塔模型、冷启动。
+		- 已完成推荐系统第二批：CTR 样本构造、Embedding 召回训练评估、推荐排序离线线上差异、A/B 测试和推荐特征工程。
+	- [[MOC/Python]]
+		- 已完成 Python 基础、数据类型、函数、面向对象、文件 IO、异常、迭代器和生成器。
+		- 已完成 Python 第三批工程化与外部系统连接：MySQL、Redis、API 调用和 conda 环境管理。
+		- Python 基础补漏已完成：[[Concept/Python类型转换]]、[[Concept/Python运算符]]。
+	- [[MOC/向量检索]]
+		- 已建立向量检索、向量库、Milvus、HNSW、IVF_FLAT 和面试复习入口。
+	- [[MOC/大模型应用工程]]
+		- 已建立 LangChain、LCEL、Streamlit 的工程化学习和面试复习入口。
+	- [[MOC/数据库与数据同步]]
+		- 已建立 MySQL、Binlog、Canal、表关联、窗口函数和常用函数主线。
+
+- **待处理批次**
+	- RAG 检索优化后半段：
+		- 已完成。
+		- 新增和更新页面：[[Concept/BGE Reranker]]、[[Concept/检索后过滤]]、[[Question/RRF 和 Rerank 有什么区别]]、[[Question/为什么 RAG 需要 Rerank]]、[[Question/混合检索为什么不能简单拼接结果]]、[[Question/Query Rewriting 有什么风险]]、[[Question/检索后过滤如何降低幻觉]]、[[Question/BGE Reranker 在 RAG 中怎么用]]。
+		- 已归档旧页：[[Reranker]]、[[BGE Reranker]]、[[RRF]]、[[混合检索]]、[[大模型/RAG/Query Rewriting]]、[[检索后过滤]]、[[重排序]]、[[大模型/RAG/双路检索]]、[[bge-reranker-v2-m3模型]]。
+	- 推荐系统第二批：
+		- 已完成。
+		- 新增和更新页面：[[Concept/CTR预估]]、[[Concept/Embedding召回]]、[[Concept/推荐排序]]、[[Concept/冷启动]]、[[Question/CTR 预估为什么要用曝光日志]]、[[Question/Embedding 召回怎么训练和评估]]、[[Question/推荐排序为什么离线 AUC 高线上不一定好]]、[[Question/推荐系统特征工程要注意什么]]、[[Question/推荐系统如何做 A_B 测试]]、[[Review/推荐系统面试]]、[[MOC/推荐系统]]。
+	- Python 第三批：
+		- 已完成。
+		- 新增和更新页面：[[Concept/Python操作MySQL]]、[[Concept/Python操作Redis]]、[[Concept/Python API调用]]、[[Concept/conda环境管理]]、[[Question/Python 操作 MySQL 要注意什么]]、[[Question/Python 操作 Redis 常见数据结构怎么选]]、[[Question/Python API 调用如何做稳定性处理]]、[[Question/conda 环境管理解决什么问题]]、[[MOC/Python]]、[[Concept/Python]]、[[Review/Python面试]]。
+		- 已归档旧页：[[Python操作Mysql]]、[[Python操作Redis]]、[[Python/Api调用]]、[[conda环境配置]]。
+	- 大模型扩展主题：
+		- 已完成。
+		- 新增和更新页面：[[MOC/大模型应用]]、[[Concept/Prompt Engineering]]、[[Concept/上下文工程]]、[[Concept/Agent]]、[[Concept/Prompt Chaining]]、[[Concept/Routing]]、[[Concept/Reflection]]、[[Concept/Chain-of-Thought]]、[[Review/大模型应用面试]]。
+		- 已归档旧页：[[Prompt]]、[[Agent]]、[[上下文工程]]、[[Prompt Chaining]]、[[Reflection]]、[[Routing]]、[[Chain‑of‑Thought]]。
+	- 数据库和工程主题：
+		- 已完成。
+		- 新增和更新页面：[[MOC/数据库与数据同步]]、[[MOC/大模型应用工程]]、[[Concept/MySQL]]、[[Concept/Binlog]]、[[Concept/Canal]]、[[Concept/MySQL 表关联]]、[[Concept/MySQL 窗口函数]]、[[Concept/MySQL 常用函数]]、[[Concept/LangChain]]、[[Concept/LCEL]]、[[Concept/Streamlit]]、[[Review/数据库与数据同步面试]]、[[Review/大模型应用工程面试]]。
+		- 已归档旧页：[[Mysql]]、[[Binlog]]、[[Canal]]、[[LCEL]]、[[langchain的使用]]、[[Streamlit]]、[[Mysql/函数/字符串函数]]、[[Mysql/函数/数值函数]]、[[Mysql/函数/时间日期函数]]、[[Mysql/函数/开窗函数]]、[[Mysql/条件判断]]、[[Mysql/表关联]]。
+		- 已处理发布风险：旧 [[langchain的使用]] 中的硬编码模型服务密钥示例、本地 Windows 文件路径和旧折叠属性。
+	- 旧 namespace 和孤立页面治理：
+		- 当前可处理部分已完成。
+		- 已完成第一批孤立概念：[[Concept/内积]]、[[Concept/余弦相似度]]、[[Concept/长尾查询]]、[[Concept/信噪比]]、[[Concept/相关性]]。
+		- 已归档旧页：[[内积]]、[[长尾查询]]、[[信噪比]]、[[相关性]]。
+		- 已完成第二批旧 RAG namespace 多模态编码器：[[Concept/CLIP]]、[[Concept/图片编码器]]。
+		- 已归档旧页：[[大模型/RAG/Image Encoder]]、[[大模型/RAG/图文RAG/CLIP]]、[[大模型/RAG/音频编码器]]、[[大模型/RAG/视频编码器]]。
+		- 已归档旧页：[[大模型/RAG/文本聚类/算法/无监督聚类算法]]，稳定内容接入 [[Concept/无监督学习]] 和 [[Concept/聚类]]。
+		- 已标准化旧 RAG namespace 页面属性和 Logseq 标题格式，清理旧属性、旧块标识和 Markdown 标题残留。
+		- 已完成旧 NLP/Transformer namespace 标准化，新增 [[Concept/池化]]，归档池化、平均池化、CLS 池化、Max 池化旧页，并清理 Transformer 旧页格式残留。
+		- 已标准化旧大模型基础 namespace：[[大模型/基础概念/维度数]]、[[大模型/基础概念/滑动窗口]]。
+		- 已完成旧 namespace 收口：补齐 [[大模型/NLP]] 和 [[大模型/RAG/图文检索]] 迁移说明，清理 [[大模型/Transformer/分词]] 的旧块引用和内部块属性。
+		- [[Python/Api调用]] 已在 Python 第三批中归档。
+		- 已完成 RAG 与大模型应用孤立旧页收口：新增 [[Concept/动态锚点法]]、[[Concept/归一化权重]]、[[Concept/m3e-base模型]]、[[Concept/Parallelization]]。
+		- 已归档旧页：[[Chunk]]、[[RecursiveCharacterTextSplitter]]、[[动态锚点法]]、[[归一化权重]]、[[m3e-base模型]]、[[Parallelization]]、[[近似最近邻]]、[[字符串前缀]]、[[PyTorch]]、[[AI大模型发展方向]]、[[简易聊天机器人]]。
+		- 已标准化剩余可处理旧页：[[NLP]]、[[DBSCAN]]、[[交叉验证]]、[[PAGAS]]、[[张量]]、[[自查询检索]]、[[评估案例Prompt]]、[[大模型分类]]、[[token序列]]、[[均方误差]]、[[均方根误差]]、[[平均绝对误差]]、[[机器学习分类模型评估方法]]、[[大模型]]、[[正则表达式]]、[[项目实战]]。
+		- Python 第三批已恢复处理；[[知识库维护规则]] 中的禁用语法示例属于规则说明，不视为页面格式问题。
+
+- **质量标准**
+	- MOC 页面只做导航、学习路径和索引，不承载大段解释。
+	- Concept 页面要有定义、机制、误区、面试表达、相关概念和来源。
+	- Project 页面要能支持项目面试表达，包括目标、背景、流程、问题和沉淀。
+	- Question 页面要有题目、标准回答、回答结构、项目追问、关联知识、易错点和来源。
+	- Review 页面只做刷题入口和短卡片，不写长篇知识正文。
+	- 旧页面保留为来源或归档页，顶部必须有迁移说明。
+
+- **发布风险检查**
+	- 不主动复制 private 页面内容到公开页面。
+	- 公开页面不链接 private 页面。
+	- 每批检查本地路径、内网地址、访问凭据、账号密码和不可发布附件。
+	- `logseq/bak`、`journals`、`whiteboards` 不作为主动维护对象。
+	- 白板文件只读参考，除非用户明确要求，不修改 `whiteboards/`。
+
+- **后续质量提升任务**
+	- 当前状态
+		- 结构性重构已经阶段性完成，后续任务不再是补救性大重构，而是压测、补漏、项目强化和发布检查。
+		- 每次任务仍然遵循 AGENTS.md 和 [[知识库维护规则]]，完成后记录到本页 `- **批次记录**`。
+	- 任务一：Python 链路压测（完成）
+		- 路径：[[首页]] -> [[MOC/Python]] -> [[Concept/Python]] -> [[Review/Python面试]]。
+		- 抽查 [[Question/Python 列表和元组有什么区别]]、[[Question/Python 字典为什么查询快]]、[[Question/Python 装饰器是什么]]、[[Question/Python 迭代器和生成器有什么区别]]、[[Question/Python API 调用如何做稳定性处理]]。
+		- 检查目标：能不能快速复习基础语法、讲清机制、回答工程场景追问。
+	- 任务二：推荐系统链路压测（完成）
+		- 路径：[[首页]] -> [[MOC/推荐系统]] -> [[Concept/推荐系统]] -> [[Review/推荐系统面试]]。
+		- 抽查 [[Question/推荐系统完整链路是什么]]、[[Question/召回和排序有什么区别]]、[[Question/Embedding 召回怎么训练和评估]]、[[Question/推荐排序为什么离线 AUC 高线上不一定好]]、[[Question/推荐系统如何做 A_B 测试]]。
+		- 检查目标：能不能从完整链路讲到召回、排序、评估、线上实验和业务取舍。
+	- 任务三：机器学习链路压测（完成）
+		- 路径：[[首页]] -> [[MOC/机器学习]] -> [[Review/机器学习面试]]。
+		- 抽查模型评估、过拟合、交叉验证、特征工程、模型上线和监控相关 Question。
+		- 检查目标：概念是否能串成项目流程，而不是只背算法定义。
+	- 任务四：大模型应用和工程链路压测（完成）
+		- 路径：[[首页]] -> [[MOC/大模型应用]]、[[MOC/大模型应用工程]] -> 对应 Review。
+		- 抽查 Prompt、上下文工程、Agent、LangChain、LCEL、Streamlit 相关 Question。
+		- 检查目标：能不能讲清应用模式、工程框架和项目边界。
+	- 任务五：项目页强化（完成）
+		- 重点检查 [[Project/图文知识库]]、[[Project/简易RAG系统]]、[[Project/智能客服RAG实战]]、[[Project/小说RAG实战]]。
+		- 每个项目都要能回答背景、架构、流程、问题、指标、经验。
+		- 项目中稳定技术点回流到 Concept，常见项目追问回流到 Question。
+	- 任务六：面试题质量提升（完成）
+		- 抽查每个 Review 的高频题。
+		- 只适合背诵、不适合面试表达的题，补充 Question 或项目追问。
+		- 易混淆内容可以沉淀到 Mistake，例如 RRF/Rerank、召回/排序、准确率/召回率。
+	- 任务七：发布前检查流程跑通（完成）
+		- 检查 private 标记、公开页面是否链接 private 页面、本地路径、内网地址、账号密码、API key。
+		- 检查 `pages/` 下是否误放附件。
+		- 条件允许时运行 `scripts/prepare-publish-graph.ps1`。
+		- PowerShell 不可用时，继续使用等价 shell 检查并记录限制。
+	- 建议执行顺序
+		- 先做 Python 链路压测。
+		- 再做推荐系统链路压测。
+		- 再做机器学习链路压测。
+		- 然后强化项目页。
+		- 最后跑一次发布前检查流程。
+
+- **最终收口执行计划**
+	- 批次一：全库收口盘点
+		- 目标
+			- 找出剩余孤立页、重复页、旧 namespace、旧属性、未接入 MOC 或 Review 的页面。
+			- 不做大规模内容重写，只形成可执行清单和优先级。
+		- 操作步骤
+			- 读取 AGENTS.md、[[知识库维护规则]] 和本项目页，确认当前规则。
+			- 使用 `rg --files pages` 统计页面，并按 namespace、页面类型和主题分组。
+			- 搜索旧格式残留：传统 Markdown 标题、旧属性、草稿状态、内部块属性、异常 property。
+			- 搜索旧 namespace 和孤立页面，重点关注没有被 MOC、Review、Project 引用的页面。
+			- 搜索可能重复的概念页，比较页面名、alias 和双链引用。
+			- 搜索 private、附件、本地路径、凭据和发布风险关键词。
+			- 将问题按“必须处理、建议处理、可保留观察”三类记录到本项目页。
+		- 完成标准
+			- 得到一份剩余问题清单。
+			- 每个问题都有建议归属：Concept、Question、Project、Source、Review、归档或保留。
+			- 不误修改 `journals`、`whiteboards`、`logseq/bak`。
+	- 批次二：剩余旧页治理
+		- 目标
+			- 处理批次一发现的旧页、重复页和孤立页。
+			- 保留旧资料可追溯性，不直接删除旧页。
+		- 操作步骤
+			- 对每组旧页先查重：页面名、中文名、英文名、alias、旧 namespace。
+			- 有稳定知识的旧页，沉淀到对应 [[Concept/...]]。
+			- 复杂面试问题，沉淀到对应 [[Question/...]]。
+			- 项目经验、架构、踩坑和方案，沉淀到对应 [[Project/...]]。
+			- 原始资料、文章、课程、视频、截图或论文，整理到 [[Source/...]] 或保留为来源页。
+			- 旧页顶部添加 `- **迁移说明**`，指向新页面，并设置为归档状态。
+			- 更新相关 MOC、Review、首页和 [[MOC/面试复习]]。
+		- 完成标准
+			- 旧页都有清晰迁移说明或保留理由。
+			- 新页面不重复创建同义概念。
+			- MOC 只做导航，Review 只做刷题入口，长解释放 Concept 或 Question。
+	- 批次三：项目与 Source 强化
+		- 目标
+			- 让知识库能支撑项目面试表达和资料追溯。
+			- 把“概念会了”推进到“项目能讲清楚”。
+		- 操作步骤
+			- 盘点项目实战、系统设计、实验记录、部署记录和踩坑页。
+			- 将项目背景、目标、架构、核心流程、关键模块、问题记录、经验沉淀整理到 [[Project/...]]。
+			- 将重要文章、课程、论文、视频、截图和附件整理为 [[Source/...]] 或规范旧 Source-like 页面。
+			- 在 Concept、Question 和 Project 中补 `- **来源**`，保证重要结论能追溯。
+			- 为项目面试补充 Question 页面，例如“这个项目的难点是什么”“如何排查线上问题”“指标如何验证”。
+			- 更新 [[MOC/面试复习]]，让项目题能从 Review 进入 Project 和 Question。
+		- 完成标准
+			- 关键项目页能支持面试叙述：背景、方案、流程、问题、指标和沉淀。
+			- 重要资料有来源链路，不把原始资料直接混进 Concept。
+			- Source 页面状态能表达 raw、summarized、compiled 或 archived。
+	- 批次四：最终质量检查
+		- 目标
+			- 确认知识库达到可长期维护、可阅读、可复习、可发布的阶段完成状态。
+		- 操作步骤
+			- 跑全库 Logseq 语法检查：禁用标题、旧属性、异常 property、内部块属性残留。
+			- 跑入口检查：首页、MOC、Review、Question、Project 是否互相连通。
+			- 跑重复命名和 alias 检查，避免同一概念多个主页面。
+			- 跑 private 和 GitHub Pages 发布风险检查：私有标记、本地路径、凭据、内网地址、附件引用。
+			- 检查 `assets`、`journals`、`whiteboards`、`logseq/bak` 是否符合发布规则。
+			- 将本项目页状态从 active 评估是否改为 done，或保留 active 并记录后续维护节奏。
+		- 完成标准
+			- 全库检查无高风险问题。
+			- 首页、主题 MOC 和面试复习入口可用。
+			- 旧页可追溯，新页结构稳定，LLM 后续可按 AGENTS.md 继续维护。
+			- GitHub Pages 发布前的 private、附件和备份目录风险可控。
+
+- **最终收口执行原则**
+	- 每批都遵循：盘点、重构、旧页归档、入口更新、项目页记录、质量检查。
+	- 每批完成后都在本页 `- **批次记录**` 中写明新增页面、更新页面、归档页面和检查结果。
+	- 不为了减少文件数量删除旧页；只有用户明确要求时才删除。
+	- 不主动编辑 `journals`、`whiteboards`、`logseq/bak`。
+	- 遇到 private 页面或敏感附件，优先保留隐私标记，不复制到公开页面。
+	- 如果发现规则本身不够清晰，先更新 AGENTS.md，再同步更新 [[知识库维护规则]]。
+
+- **批次记录**
+	- 2026-05-03
+		- 完成后续质量提升任务一：Python 链路压测。
+		- 压测路径：[[首页]] -> [[MOC/Python]] -> [[Concept/Python]] -> [[Review/Python面试]]。
+		- 抽查题目：[[Question/Python 列表和元组有什么区别]]、[[Question/Python 字典为什么查询快]]、[[Question/Python 装饰器是什么]]、[[Question/Python 迭代器和生成器有什么区别]]、[[Question/Python API 调用如何做稳定性处理]]。
+		- 验收结论：Python 主线可以支持基础语法复习、机制解释和工程场景追问。
+		- 修补结果：未发现必须修补项，本轮不修改 Python 页面内容。
+	- 2026-05-03
+		- 完成后续质量提升任务二：推荐系统链路压测。
+		- 压测路径：[[首页]] -> [[MOC/推荐系统]] -> [[Concept/推荐系统]] -> [[Review/推荐系统面试]]。
+		- 抽查题目：[[Question/推荐系统完整链路是什么]]、[[Question/召回和排序有什么区别]]、[[Question/Embedding 召回怎么训练和评估]]、[[Question/推荐排序为什么离线 AUC 高线上不一定好]]、[[Question/推荐系统如何做 A_B 测试]]。
+		- 验收结论：推荐系统主线可以从完整链路讲到召回、排序、离线线上差异、A/B 测试和业务取舍。
+		- 修补结果：未发现必须修补项，本轮不修改推荐系统页面内容。
+	- 2026-05-03
+		- 完成后续质量提升任务三：机器学习链路压测。
+		- 压测路径：[[首页]] -> [[MOC/机器学习]] -> [[Review/机器学习面试]]。
+		- 抽查题目：[[Question/机器学习项目完整流程是什么]]、[[Question/机器学习项目如何从训练走到上线]]、[[Question/模型评估为什么不能只看准确率]]、[[Question/特征工程如何避免数据泄漏]]、[[Question/模型上线后如何监控]]、[[Question/模型效果衰减怎么办]]。
+		- 验收结论：机器学习主线可以把算法概念、评估指标、特征工程和工程上线串成项目流程。
+		- 修补结果：未发现必须修补项，本轮不修改机器学习页面内容。
+	- 2026-05-03
+		- 完成后续质量提升任务四：大模型应用和工程链路压测。
+		- 压测路径：[[首页]] -> [[MOC/大模型应用]]、[[MOC/大模型应用工程]] -> [[Review/大模型应用面试]]、[[Review/大模型应用工程面试]]。
+		- 抽查题目：[[Question/Prompt Engineering 的核心原则是什么]]、[[Question/Agent 和普通 LLM 调用有什么区别]]、[[Question/LCEL 解决什么问题]]、[[Question/LangChain 工具调用和 Agent 有什么区别]]。
+		- 验收结论：大模型应用主线可以讲清 Prompt、上下文工程、Agent、编排和工程框架边界。
+		- 修补结果：为 [[Review/大模型应用工程面试]] 补充项目入口，接入 [[Project/简易RAG系统]]、[[Project/智能客服RAG实战]]、[[Project/图文知识库]] 和 [[简易聊天机器人]]。
+	- 2026-05-03
+		- 完成后续质量提升任务五：项目页强化。
+		- 检查项目：[[Project/图文知识库]]、[[Project/简易RAG系统]]、[[Project/智能客服RAG实战]]、[[Project/小说RAG实战]]。
+		- 验收结论：四个项目均已有目标、背景、架构、流程、问题和经验。
+		- 修补结果：为四个项目补充 `- **指标和验收**` 区块，让项目面试能讲清评价指标、验收口径和业务风险。
+	- 2026-05-03
+		- 完成后续质量提升任务六：面试题质量提升。
+		- 抽查范围：各 Review 高频题、复杂题入口和易错点字段。
+		- 验收结论：现有 Question 基本能覆盖机制、场景、项目追问和易错点。
+		- 修补结果：新增 [[Mistake/RRF 和 Rerank 混淆]]、[[Mistake/召回和排序混淆]]、[[Mistake/精确率和召回率混淆]]，并接入 [[Review/RAG面试]]、[[Review/推荐系统面试]] 和 [[Review/机器学习面试]]。
+	- 2026-05-03
+		- 完成后续质量提升任务七：发布前检查流程跑通。
+		- PowerShell 在当前环境不可用，未实际运行 `scripts/prepare-publish-graph.ps1`。
+		- 已执行等价 shell 检查：private 标记、公开页面 private 链接、本地路径、内网地址、凭据、`pages/` 下附件、assets 中敏感文件。
+		- 检查结果：`pages/` 下无二进制附件；未发现 private 页面泄漏；未发现真实访问凭据。
+		- 剩余命中：SQL 和 Python 示例数字、docker-compose 附件中的 `<change-me>` 占位符，均不视为真实发布风险。
+	- 2026-05-03
+		- 完成后续质量提升任务总收口。
+		- 七项任务全部完成：Python 链路压测、推荐系统链路压测、机器学习链路压测、大模型应用和工程链路压测、项目页强化、面试题质量提升、发布前检查流程跑通。
+		- 本轮新增 Mistake 页面 3 个，补强项目指标区块 4 个，补充大模型应用工程 Review 的项目入口。
+		- 自检结果：本轮修改页未命中禁用标题写法、非法页面类型、正文属性误写或敏感发布关键词。
+		- 后续维护方式：新增资料、项目经验、面试题和错题继续按 AGENTS.md 与 [[知识库维护规则]] 小步维护，不再进入本轮批量重构流程。
+	- 2026-05-03
+		- 完成 RAG 学习链路和 RAG 项目面试链路压测。
+		- 压测路径：[[首页]] -> [[MOC/RAG]] -> [[Concept/RAG]] -> [[Project/手册类RAG实战]] -> [[Review/RAG面试]] -> [[Review/RAG项目面试]]。
+		- 抽查题目：[[Question/RAG 如何讲手册类 RAG 项目]]、[[Question/RAG 项目如何做评估驱动优化]]、[[Question/检索后过滤如何降低幻觉]]。
+		- 验收结论：RAG 主线可以完成学习概念、查看项目、刷面试题和回到来源的闭环。
+		- 发现问题：[[Review/RAG项目面试]] 没有把检索后过滤、拒答和熔断作为复杂项目追问入口。
+		- 修补结果：更新 [[Review/RAG项目面试]]，补入 [[Question/检索后过滤如何降低幻觉]] 和 [[Concept/检索后过滤]]。
+		- 新增资料维护链路压测：现有 AGENTS.md 和 [[知识库维护规则]] 已能指导 Source、Concept、Project、Question、Review 的流转，本轮不新增规则。
+	- 2026-05-03
+		- 完成使用验收第一轮。
+		- 抽查链路：[[首页]] 到 [[MOC/RAG]]、[[Review/RAG面试]]、[[Review/RAG项目面试]]；[[首页]] 到 [[MOC/Python]]、[[Review/Python面试]]；[[首页]] 到 [[MOC/推荐系统]]、[[Review/推荐系统面试]]。
+		- 验收结论：主题 MOC 和 Review 基本可用，能支持学习新知识、复习旧知识和面试刷题。
+		- 优化入口：将 [[首页]] 的“待整理”改为“整理状态”和“后续维护”，避免已完成事项被误读为待办。
+		- 优化题单：将 [[MOC/面试复习]] 从长平铺列表改为按大模型、RAG 项目、机器学习、推荐系统、Python 和数据同步分组。
+		- 补充维护机制：同步更新 AGENTS.md 和 [[知识库维护规则]] 的日常维护流程，明确新增资料、项目经验、面试题、错题和发布前检查的处理路径。
+	- 2026-05-03
+		- 完成 RAG 检索优化后半段。
+		- 补齐 BGE Reranker、检索后过滤、RRF/Rerank 区分、混合检索融合风险、Query Rewriting 风险等复习入口。
+		- 规范归档 Reranker、BGE Reranker、RRF、混合检索、Query Rewriting、检索后过滤、重排序、双路检索和 bge-reranker-v2-m3 旧页。
+	- 2026-05-03
+		- 完成大模型扩展主题第一批。
+		- 建立 [[MOC/大模型应用]]、[[Review/大模型应用面试]]，补齐 Prompt Engineering、上下文工程、Agent、Prompt Chaining、Routing、Reflection 和 Chain-of-Thought 概念与面试题。
+	- 2026-05-03
+		- 完成数据库和工程主题第一批。
+		- 建立 [[MOC/数据库与数据同步]]、[[MOC/大模型应用工程]]、[[Review/数据库与数据同步面试]]、[[Review/大模型应用工程面试]]。
+		- 补齐 MySQL、Binlog、Canal、表关联、窗口函数、常用函数、LangChain、LCEL 和 Streamlit 概念与面试题。
+		- 归档 Mysql、Binlog、Canal、LCEL、langchain的使用、Streamlit 和 Mysql 旧 namespace 页面。
+	- 2026-05-03
+		- 完成旧 namespace 和孤立页面治理第一批。
+		- 补齐 [[Concept/内积]]、[[Concept/余弦相似度]]、[[Concept/长尾查询]]、[[Concept/信噪比]]、[[Concept/相关性]]，并接入 [[MOC/向量检索]]、[[MOC/RAG]]、[[Review/RAG面试]]。
+		- 归档 [[内积]]、[[长尾查询]]、[[信噪比]]、[[相关性]] 旧页。
+	- 2026-05-03
+		- 完成旧 RAG namespace 多模态编码器治理。
+		- 新增 [[Concept/CLIP]]、[[Concept/图片编码器]]，并接入 [[Concept/图文检索]]、[[Concept/图文RAG]]、[[Concept/多模态LLM]] 和 [[MOC/RAG]]。
+		- 归档 Image Encoder、CLIP、音频编码器、视频编码器旧页。
+	- 2026-05-03
+		- 归档旧 RAG namespace 中的无监督聚类算法页，稳定内容已由 [[Concept/无监督学习]] 和 [[Concept/聚类]] 承接。
+	- 2026-05-03
+		- 完成旧 RAG namespace 格式标准化，清理已归档 RAG 旧页中的旧属性、块标题和内部 id 残留。
+	- 2026-05-03
+		- 完成旧 NLP/Transformer namespace 标准化。
+		- 新增 [[Concept/池化]]，并接入 [[Concept/文本嵌入]]、[[Concept/文本编码器]]、[[Concept/文档聚类]] 和 [[MOC/向量检索]]。
+		- 归档池化、平均池化、CLS 池化、Max 池化旧页，清理 Transformer 旧页旧属性和块标题残留。
+	- 2026-05-03
+		- 完成 Python 基础补漏。
+		- 新增 [[Concept/Python类型转换]]、[[Concept/Python运算符]]，并接入 [[MOC/Python]]、[[Concept/Python数据类型]]、[[Concept/Python字符串]] 和 [[Concept/Python函数]]。
+		- 归档 [[Python/字符串切片]]、[[Python/数据类型/转换]]、[[Python/运算符]] 和 [[Python/常用函数]]；[[Python/Api调用]] 后续已在 Python 第三批处理。
+	- 2026-05-03
+		- 标准化旧大模型基础 namespace，清理维度数和滑动窗口旧页的旧属性、内部 id 和折叠属性残留。
+	- 2026-05-03
+		- 完成旧 namespace 收口检查。
+		- 补齐 [[大模型/NLP]] 和 [[大模型/RAG/图文检索]] 的归档属性与迁移说明。
+		- 清理 [[大模型/Transformer/分词]] 中导致旧块属性反复出现的块引用。
+		- [[Python/Api调用]] 后续已在 Python 第三批处理。
+	- 2026-05-03
+		- 完成 RAG 与大模型应用孤立旧页治理。
+		- 新增 [[Concept/动态锚点法]]、[[Concept/归一化权重]]、[[Concept/m3e-base模型]]、[[Concept/Parallelization]]。
+		- 更新 [[Concept/文档切分]]、[[Concept/混合检索]]、[[Concept/RRF]]、[[Concept/近似最近邻搜索]]、[[MOC/RAG]]、[[MOC/大模型应用]]。
+		- 归档 [[Chunk]]、[[RecursiveCharacterTextSplitter]]、[[动态锚点法]]、[[归一化权重]]、[[m3e-base模型]]、[[Parallelization]]、[[近似最近邻]]、[[字符串前缀]]、[[PyTorch]]、[[AI大模型发展方向]]、[[简易聊天机器人]]。
+	- 2026-05-03
+		- 完成剩余可处理孤立旧页格式收口。
+		- 标准化 [[NLP]]、[[DBSCAN]]、[[交叉验证]]、[[PAGAS]]、[[张量]]、[[自查询检索]]、[[评估案例Prompt]]、[[大模型分类]]、[[token序列]]、[[均方误差]]、[[均方根误差]]、[[平均绝对误差]]、[[机器学习分类模型评估方法]]、[[大模型]]、[[正则表达式]]、[[项目实战]]。
+		- 此前跳过的 [[Python操作Mysql]] 和 [[Python操作Redis]] 后续已在 Python 第三批处理。
+	- 2026-05-03
+		- 恢复并完成推荐系统第二批。
+		- 补强 [[Concept/CTR预估]]、[[Concept/Embedding召回]]、[[Concept/推荐排序]] 和 [[Concept/冷启动]]。
+		- 新增 [[Question/CTR 预估为什么要用曝光日志]]、[[Question/Embedding 召回怎么训练和评估]]、[[Question/推荐排序为什么离线 AUC 高线上不一定好]]、[[Question/推荐系统特征工程要注意什么]]、[[Question/推荐系统如何做 A_B 测试]]。
+		- 更新 [[MOC/推荐系统]] 和 [[Review/推荐系统面试]]。
+	- 2026-05-03
+		- 恢复并完成 Python 第三批工程化与外部系统连接。
+		- 新增 [[Concept/Python操作MySQL]]、[[Concept/Python操作Redis]]、[[Concept/Python API调用]]、[[Concept/conda环境管理]]。
+		- 新增 [[Question/Python 操作 MySQL 要注意什么]]、[[Question/Python 操作 Redis 常见数据结构怎么选]]、[[Question/Python API 调用如何做稳定性处理]]、[[Question/conda 环境管理解决什么问题]]。
+		- 归档 [[Python操作Mysql]]、[[Python操作Redis]]、[[Python/Api调用]]、[[conda环境配置]]，并更新 [[MOC/Python]]、[[Concept/Python]] 和 [[Review/Python面试]]。
+	- 2026-05-03
+		- 记录最终收口阶段详细执行计划。
+		- 后续分四批推进：全库收口盘点、剩余旧页治理、项目与 Source 强化、最终质量检查。
+		- 明确每批完成后都要更新本项目页，并继续执行格式、入口、隐私和发布风险检查。
+	- 2026-05-03
+		- 完成最终收口批次一：全库收口盘点。
+		- 扫描页面总量、标准 namespace 页面、旧命名页面、迁移说明覆盖、旧格式残留、非标准 type、private 和发布风险关键词。
+		- 结论：大多数旧页已经归档或可作为来源保留；下一批优先治理 9 个旧入口/汇总页、1 个 pages 下二进制附件和少量规则类型问题。
+	- 2026-05-03
+		- 完成最终收口批次二：剩余旧页治理。
+		- 为 [[alias]]、[[contents]]、[[使用手册]]、[[大模型英语速记]]、[[大纲]]、[[概念类汇总]]、[[错题汇总]]、[[面试背诵汇总]] 添加属性和迁移说明。
+		- 将 [[知识库维护规则]] 的页面类型改为允许值。
+		- 将 `pages/聚类算法.assets/image_1772781200422_0.png` 移动到 `assets/sources/image_1772781200422_0.png`，并删除空的 pages 附件目录。
+		- 保留 [[excalidraw-library-items-storage]] 原样，因为它是插件数据页。
+		- 检查结果：除 [[知识库维护规则]] 中的禁用语法示例外，批次二目标项无旧标题、非标准类型、未归档旧入口或 pages 下二进制附件残留。
+	- 2026-05-03
+		- 完成最终收口批次三：项目与 Source 强化。
+		- 检查 Project 页面结构，RAG 项目页已具备项目目标、背景资料、系统架构、核心流程、关键模块、问题记录、经验沉淀、项目追问、相关概念和来源。
+		- 检查 Source 页面结构，官方文档 Source 页面已具备原始信息、核心观点、可沉淀的概念、已更新页面和待追问问题。
+		- 为 [[小说RAG实战数据分析报告]]、[[评估案例Prompt]]、[[项目实战]]、[[简易聊天机器人]]、[[大模型英语速记]] 补齐 Source-like 标准区块。
+		- 清理 [[Concept/Python生成器]]、[[Concept/Python迭代器]] 和 [[Question/Python 迭代器和生成器有什么区别]] 中误指向 [[评估案例Prompt]] 的来源引用。
+		- 检查结果：批次三目标文件无旧标题、格式残留或发布风险关键词命中。
+	- 2026-05-03
+		- 完成最终收口批次四：最终质量检查和阶段收口。
+		- 全库 Logseq 格式检查：除 [[知识库维护规则]] 中对禁用标题写法的说明示例外，无禁用标题命中。
+		- 全库页面类型检查：无非标准 `type` 值命中。
+		- 旧入口检查：除 [[excalidraw-library-items-storage]] 作为插件数据页保留外，旧入口和汇总页均已有迁移说明。
+		- 附件位置检查：`pages/` 下无二进制附件残留。
+		- 发布风险检查：没有发现 private 页面泄漏、本地路径、内网地址或真实访问凭据；脚本自身的 private 匹配逻辑、SQL 示例数字和 Python 字符串示例属于误报。
+		- 处理资产风险：将两个未引用 docker-compose 附件中的默认密码替换为占位符。
+		- 入口检查：首页、主题 MOC、Review 和 RAG 项目复习入口均已连接。
+		- PowerShell 在当前环境不可用，未实际运行 `scripts/prepare-publish-graph.ps1`；已用等价 shell 检查覆盖页面格式、private 风险、附件位置和未引用资产。
+		- 本轮重构项目状态改为 done。后续新增页面仍按 AGENTS.md 规则维护。
+
+- **相关概念**
+	- [[MOC/RAG]]
+	- [[MOC/Transformer]]
+	- [[MOC/大模型]]
+	- [[MOC/机器学习]]
+	- [[MOC/推荐系统]]
+	- [[MOC/Python]]
+	- [[MOC/向量检索]]
+	- [[MOC/大模型应用工程]]
+	- [[MOC/数据库与数据同步]]
+	- [[MOC/面试复习]]
+
+- **来源**
+	- [[知识库维护规则]]
+	- [[首页]]

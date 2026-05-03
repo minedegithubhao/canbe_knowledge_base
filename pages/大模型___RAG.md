@@ -1,9 +1,12 @@
 alias:: RAG, Retrieval-Augmented Generation, 检索增强生成
-tags::
-type:: 概念
-status:: 草稿 | 整理中 | 已掌握
+type:: concept
+status:: archived
 
-	- ## 📝 面试题（自问自答）
+- **迁移说明**
+	- 这页是旧 RAG 笔记，稳定内容已整理到 [[Concept/RAG]]、[[Review/RAG面试]] 和 [[MOC/RAG]]。
+	- 后续学习和复习优先使用新页面；本页保留为原始资料和历史上下文。
+
+	- **面试题**
 		- 什么是 RAG？ #card #面试背诵汇总/大模型/RAG
 			- RAG 是一种**大模型应用架构**：
 				- 先从**外部知识库 / 文档 / 数据库**里**检索**相关信息
