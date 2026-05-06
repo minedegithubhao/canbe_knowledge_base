@@ -3,12 +3,13 @@ type:: moc
 domain:: [[MOC/大模型应用]]
 status:: growing
 created:: 2026-05-03
-updated:: 2026-05-03
+updated:: 2026-05-04
 
 - **学习路径**
 	- 先理解应用框架定位：[[Concept/LangChain]]
 	- 再理解链式编排：[[Concept/LCEL]]
 	- 再理解工具调用和 Agent：[[Concept/Agent]]
+	- 再理解外部工具和业务系统接入：[[Concept/MCP]]
 	- 再理解开发代理和工程协作：[[Concept/Codex使用指南]]
 	- 再理解前端原型和演示：[[Concept/Streamlit]]
 	- 最后回到项目：[[Project/简易RAG系统]]、[[Project/智能客服RAG实战]]
@@ -18,6 +19,7 @@ updated:: 2026-05-03
 	- [[Concept/LCEL]]
 	- [[Concept/Streamlit]]
 	- [[Concept/Agent]]
+	- [[Concept/MCP]]
 	- [[Concept/Codex使用指南]]
 	- [[Concept/Prompt Chaining]]
 	- [[Concept/上下文工程]]
@@ -35,6 +37,8 @@ updated:: 2026-05-03
 	- [[Question/LCEL 解决什么问题]]
 	- [[Question/LangChain 工具调用和 Agent 有什么区别]]
 	- [[Question/Streamlit 适合什么场景]]
+	- [[Question/MCP 和 function calling 有什么区别]]
+	- [[Question/企业里 MCP Server 应该怎么设计]]
 	- [[Question/如何高效使用 Codex 维护代码和知识库]]
 
 - **旧页面迁移索引**
@@ -42,6 +46,8 @@ updated:: 2026-05-03
 	- 相关来源：[[简易聊天机器人]]、[[简易RAG系统]]
 
 - **最近更新**
+	- 2026-05-04
+		- 新增 [[Concept/MCP]]、[[Question/MCP 和 function calling 有什么区别]] 和 [[Question/企业里 MCP Server 应该怎么设计]]，接入 Model Context Protocol 官方资料。
 	- 2026-05-03
 		- 新增 [[Concept/Codex使用指南]] 和 [[Question/如何高效使用 Codex 维护代码和知识库]]，接入 Codex CLI、Codex web 和 OpenAI code generation 官方资料。
 	- 2026-05-03
@@ -49,4 +55,4 @@ updated:: 2026-05-03
 
 - **尚未整理**
 	- LangGraph、LangSmith、部署、可观测性、测试和评估流水线。
-	- Codex cloud 环境配置、MCP、审批模式和 CI/CD 自动化实践。
+	- Codex cloud 环境配置、审批模式和 CI/CD 自动化实践。

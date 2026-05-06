@@ -3,7 +3,7 @@ type:: review
 domain:: [[MOC/大模型应用]]
 status:: active
 created:: 2026-05-03
-updated:: 2026-05-03
+updated:: 2026-05-04
 
 - **怎么刷**
 	- 第一轮先刷 Prompt、上下文工程和 RAG 的关系。
@@ -23,6 +23,8 @@ updated:: 2026-05-03
 		- 它解决下一步走哪条链路的问题，根据输入和状态选择模型、工具、知识库、人工流程或拒答策略。
 	- Reflection 有什么作用和风险？ #card
 		- 它让 Agent 检查和改进自己的输出，提升复杂任务稳定性。风险是增加成本和延迟，也可能陷入无效循环，需要明确停止条件。
+	- MCP 是什么？ #card
+		- MCP 是大模型应用连接外部工具、数据源和业务系统的标准协议，让 Agent 能以统一方式发现、理解并调用外部能力。
 
 - **复杂题入口**
 	- [[Question/Prompt Engineering 的核心原则是什么]]
@@ -31,6 +33,7 @@ updated:: 2026-05-03
 	- [[Question/Prompt Chaining 适合什么场景]]
 	- [[Question/Routing 在 Agent 中解决什么问题]]
 	- [[Question/Reflection 有什么作用和风险]]
+	- [[Question/MCP 和 function calling 有什么区别]]
 
 - **关联概念**
 	- [[Concept/Prompt Engineering]]
@@ -40,6 +43,7 @@ updated:: 2026-05-03
 	- [[Concept/Routing]]
 	- [[Concept/Reflection]]
 	- [[Concept/Chain-of-Thought]]
+	- [[Concept/MCP]]
 
 - **项目入口**
 	- [[Project/简易RAG系统]]
