@@ -2,7 +2,7 @@ alias:: 数据库地图, 数据同步地图, MySQL地图
 type:: moc
 status:: growing
 created:: 2026-05-03
-updated:: 2026-05-03
+updated:: 2026-05-26
 
 - **学习路径**
 	- 先理解关系型数据库基础：[[Concept/MySQL]]
@@ -39,5 +39,5 @@ updated:: 2026-05-03
 	- 2026-05-03
 		- 建立数据库与数据同步 MOC，接入 MySQL、Binlog、Canal 和面试复习入口。
 
-- **尚未整理**
+- **后续深挖**
 	- 事务、索引、锁、隔离级别、慢查询优化。

@@ -2,7 +2,7 @@ alias:: 机器学习面试, ML面试, 机器学习刷题
 type:: review
 domain:: [[MOC/机器学习]]
 status:: active
-updated:: 2026-05-03
+updated:: 2026-05-26
 
 - **怎么刷**
 	- 第一轮刷总流程：业务问题、数据、特征、训练、评估、优化、上线。

@@ -3,7 +3,7 @@ type:: moc
 domain:: [[MOC/大模型应用]]
 status:: growing
 created:: 2026-05-03
-updated:: 2026-05-04
+updated:: 2026-05-26
 
 - **学习路径**
 	- 先理解应用框架定位：[[Concept/LangChain]]
@@ -53,6 +53,6 @@ updated:: 2026-05-04
 	- 2026-05-03
 		- 建立大模型应用工程 MOC，接入 LangChain、LCEL、Streamlit 和面试复习入口。
 
-- **尚未整理**
+- **后续深挖**
 	- LangGraph、LangSmith、部署、可观测性、测试和评估流水线。
 	- Codex cloud 环境配置、审批模式和 CI/CD 自动化实践。

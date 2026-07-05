@@ -4,7 +4,7 @@ domain:: [[MOC/Python]]
 status:: growing
 level:: 项目可用
 created:: 2026-05-03
-updated:: 2026-05-03
+updated:: 2026-05-26
 
 - **一句话定义**
 	- Python 操作 MySQL 是指用 Python 客户端连接 MySQL，执行查询、写入、事务和批量处理，并在工程中保证安全、稳定和可维护。
@@ -45,6 +45,11 @@ updated:: 2026-05-03
 	- 误区：字符串拼接 SQL 简单直接。
 		- 拼接用户输入会带来 SQL 注入风险，应该使用参数化查询。
 
+- **证据链说明**
+	- [[Python操作Mysql]] 是旧笔记来源，只能支撑“Python 操作 MySQL”这个主题入口和增删改查范围。
+	- 工程要点需要结合 [[Question/Python 操作 MySQL 要注意什么]] 复习，重点是连接生命周期、参数化 SQL、事务、异常处理和资源释放。
+	- MySQL 的数据库角色和数据同步背景可回到 [[Concept/MySQL]]、[[Concept/Binlog]] 和 [[Concept/Canal]]。
+
 - **相关概念**
 	- [[Concept/Python]]
 	- [[Concept/Python异常]]
@@ -56,4 +61,4 @@ updated:: 2026-05-03
 - **来源**
 	- [[Python操作Mysql]]
 	- [[Concept/MySQL]]
-
+	- [[Question/Python 操作 MySQL 要注意什么]]

@@ -2,7 +2,7 @@ alias:: 向量检索地图, 向量数据库地图, Vector Search Map
 type:: moc
 domain:: [[MOC/RAG]]
 status:: growing
-updated:: 2026-05-03
+updated:: 2026-05-26
 
 - **学习路径**
 	- 先理解基础表示：[[Concept/向量]]、[[Concept/文本嵌入]]、[[Concept/池化]]
@@ -56,5 +56,5 @@ updated:: 2026-05-03
 	- 2026-05-03
 		- 补齐池化概念页，接入文本嵌入和文档聚类主线。
 
-- **尚未整理**
+- **后续深挖**
 	- 过滤检索、BM25 与向量融合的工程细节、向量库压测和容量规划。

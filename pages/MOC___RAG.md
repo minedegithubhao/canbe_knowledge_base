@@ -2,7 +2,7 @@ alias:: RAG地图, RAG导航, RAG学习路径
 type:: moc
 domain:: [[MOC/大模型]]
 status:: growing
-updated:: 2026-05-03
+updated:: 2026-05-26
 
 - **这个地图解决什么问题**
 	- 把 RAG 知识从零散笔记重构为一条可学习、可复习、可面试、可项目复盘的主线。

@@ -2,7 +2,7 @@ alias:: RAG面试题, RAG刷题, RAG复习
 type:: review
 domain:: [[MOC/RAG]]
 status:: active
-updated:: 2026-05-03
+updated:: 2026-05-26
 
 - **怎么刷**
 	- 第一轮只刷“高频必会”，目标是能 2 分钟讲清楚 RAG 主线。

@@ -2,7 +2,7 @@ alias:: Python地图, Python学习路径
 type:: moc
 domain:: 编程语言
 status:: growing
-updated:: 2026-05-03
+updated:: 2026-05-26
 
 - **学习路径**
 	- 先看总览：[[Concept/Python]]
